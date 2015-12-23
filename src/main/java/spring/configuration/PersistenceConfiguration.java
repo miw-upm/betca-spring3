@@ -45,13 +45,13 @@ public class PersistenceConfiguration {
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", "false");
         properties.put("hibernate.format_sql", "true");
         properties.put("hibernate.connection.charSet", "UTF-8");
-        properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
-        //properties.put("hibernate.ejb.entitymanager_factory_name", "miw");
         entityManagerFactoryBean.setJpaProperties(properties);
 
         entityManagerFactoryBean.setPackagesToScan("spring.persistence.entities");

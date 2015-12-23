@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>JEE.Spring</artifactId> 
+	<artifactId>JEE.Spring</artifactId>
 	<groupId>es.upm.miw</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -11,30 +11,29 @@
 	<name>${project.groupId}.${project.artifactId}</name>
 
 	<properties>
+        <!-- Java -->
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
-		
+        <!-- Maven -->
 		<maven.compiler.version>3.3</maven.compiler.version>
 		<maven.failsafe.version>2.12</maven.failsafe.version>
-		
+        <!-- Logs -->
 		<log4j.version>2.3</log4j.version>
+        <!-- Pruebas -->
 		<junit.version>4.11</junit.version>
-		
+        <!-- Java EE -->
 		<javax.servlet.api.version>3.0.1</javax.servlet.api.version>
+        <!-- Spring -->
 		<spring.version>4.2.1.RELEASE</spring.version>
-        <spring.data.version>1.8.0.RELEASE</spring.data.version>
-		
+		<spring.data.version>1.8.0.RELEASE</spring.data.version>
+        <!-- Data Base -->
 		<mysql.connector.version>5.1.34</mysql.connector.version>
-		<database.driver>com.mysql.jdbc.Driver</database.driver>
-		<database.url>jdbc:mysql://localhost:3306/jee</database.url>
-		<hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
 		<hibernate.version>4.3.8.Final</hibernate.version>
-		
+
 		<api.resource>/${project.groupId}.${project.artifactId}.${project.version}/api</api.resource>
-		
 	</properties>
 
 	<profiles>
@@ -51,6 +50,7 @@
 			<properties>
 				<logs.level>debug</logs.level>
 				<logs.path>target/logs</logs.path>
+				<database.url>jdbc:mysql://localhost:3306/jee</database.url>
 				<database.user>root</database.user>
 				<database.password></database.password>
 				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
@@ -71,6 +71,7 @@
 				<logs.path>../logs</logs.path>
 				<database.user>miw**</database.user>
 				<database.password>********</database.password>
+                <database.url>jdbc:mysql://localhost:3306/${database.user}</database.url>
 				<!-- validate, create sólo una vez, cada vez que cambie la estructura 
 					de las tablas -->
 				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
@@ -88,10 +89,11 @@
 			</activation>
 			<properties>
 				<logs.level.root>error</logs.level.root>
-                <logs.path>../logs</logs.path>
-                <database.user>root</database.user>
-                <database.password></database.password>
-                <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+				<logs.path>../logs</logs.path>
+                <database.url>jdbc:mysql://localhost:3306/jee</database.url>
+				<database.user>root</database.user>
+				<database.password></database.password>
+				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
 			</properties>
 		</profile>
 	</profiles>
@@ -118,13 +120,14 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-		</dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
             <scope>test</scope>
-        </dependency>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- Java EE -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -224,7 +227,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<developers>
 		<developer>
 			<name>Nombre y Apellidos</name>

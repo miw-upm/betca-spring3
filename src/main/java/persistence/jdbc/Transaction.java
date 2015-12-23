@@ -11,7 +11,7 @@ public class Transaction {
         Connection conexion = null;
         Statement sentencia = null;
         ResultSet result = null;
-        String url = "jdbc:mysql://localhost:3306/javadb";
+        String url = "jdbc:mysql://localhost:3306/jee";
         String user = "root";
         String pass = "";
 
@@ -40,7 +40,7 @@ public class Transaction {
             try {
                 // Hay problemas, se deshace todo
                 conexion.rollback();
-                System.out.println("Deshaciendo por rollback... " + e.getMessage());
+                System.out.println("OK. Deshaciendo por rollback... " + e.getMessage());
             } catch (SQLException e1) {
                 System.out.println("ERROR (rollback): " + e1.getMessage());
             }

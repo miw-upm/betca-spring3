@@ -32,6 +32,7 @@ public class UnRelatedEntity {
     private String nick;
 
     @Enumerated(EnumType.STRING)
+    @Column(length=20)
     private Gender gender;
 
     @Temporal(TemporalType.TIMESTAMP)

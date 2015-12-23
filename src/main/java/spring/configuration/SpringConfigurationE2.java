@@ -5,6 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "spring.injection.annotation.e2")
-//@Import(Configuration.class)
 public class SpringConfigurationE2 {
 }
