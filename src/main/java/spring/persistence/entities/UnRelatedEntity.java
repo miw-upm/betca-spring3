@@ -45,7 +45,7 @@ public class UnRelatedEntity {
     private String[] strings; //ArrayList funciona igual
 
     //Se Almacena en otra tabla
-    @ElementCollection(fetch=FetchType.LAZY)//Perezoso
+    @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="unrelatedentity_list")//opcional el nombre de la tabla a utilizar
     private List<String> list;
     

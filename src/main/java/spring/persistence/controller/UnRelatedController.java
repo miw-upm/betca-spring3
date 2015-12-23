@@ -21,6 +21,6 @@ public class UnRelatedController {
         UnRelatedEntity entity = new UnRelatedEntity("Mi Nick", Gender.MALE, new GregorianCalendar(1964, 11, 31), "...", list,
                 Arrays.asList(list), "no persistence");
         unRelatedDao.save(entity);
-        System.out.println(">>>> UnRelatedEntity:  " + entity);
+        System.out.println(">>>> UnRelatedEntity:  " + unRelatedDao.findOne(entity.getId()));
     }
 }

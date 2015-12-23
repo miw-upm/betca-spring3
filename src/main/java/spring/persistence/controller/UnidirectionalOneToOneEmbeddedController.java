@@ -17,6 +17,7 @@ public class UnidirectionalOneToOneEmbeddedController {
         EmbeddableEntity embeddable = new EmbeddableEntity(666, "daemon");
         UnidirectionalOneToOneEmbeddedEntity entity = new UnidirectionalOneToOneEmbeddedEntity("Mi Nick", embeddable);
         unidirectionalOneToOneEmbeddedDao.save(entity);
-        System.out.println(">>>> UnidirectionalOneToOneEmbeddedEntity:  " + entity);
+
+        System.out.println(">>>> UnidirectionalOneToOneEmbeddedEntity:  " + unidirectionalOneToOneEmbeddedDao.findOne(entity.getId()));
     }
 }
