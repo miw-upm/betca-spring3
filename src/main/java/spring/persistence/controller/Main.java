@@ -10,8 +10,11 @@ public final class Main {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationController.class);
-        ControllerE1 controller = context.getBean("controllerE1", ControllerE1.class);
-        controller.process();
+        System.out.println("----------ooo----------");
+        context.getBean("unRelatedController", UnRelatedController.class).process();
+        System.out.println("----------ooo----------");
+        context.getBean("unidirectionalOneToOneEmbeddedController", UnidirectionalOneToOneEmbeddedController.class).process();
+        System.out.println("----------ooo----------");
         ((AbstractApplicationContext) context).close();
     }
 }

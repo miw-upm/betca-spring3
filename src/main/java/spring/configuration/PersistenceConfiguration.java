@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -24,7 +23,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories("spring.persistence.daos")
 @EnableTransactionManagement
-@ComponentScan({"spring.persistence.daos"})
 public class PersistenceConfiguration {
 
     @Autowired
@@ -45,7 +43,6 @@ public class PersistenceConfiguration {
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", "false");
         properties.put("hibernate.format_sql", "true");
@@ -53,7 +50,6 @@ public class PersistenceConfiguration {
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         entityManagerFactoryBean.setJpaProperties(properties);
-
         entityManagerFactoryBean.setPackagesToScan("spring.persistence.entities");
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.afterPropertiesSet();

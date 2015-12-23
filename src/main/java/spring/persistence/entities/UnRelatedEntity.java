@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-@Entity(name = "UnRelatedEntity")
+@Entity(name = "unrelatedentity")//nombre por defecto de la tabla
 public class UnRelatedEntity {
 
     public static final String TRANSIENT = "no persistent";
@@ -28,6 +28,7 @@ public class UnRelatedEntity {
     @GeneratedValue
     private int id;
 
+    //nombre por defecto de la columna el nombre del atributo
     @Column(name="KCIN", unique = true, nullable = false, length = 30)
     private String nick;
 
@@ -35,21 +36,24 @@ public class UnRelatedEntity {
     @Column(length=20)
     private Gender gender;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP) //Fecha y hora //TemporalType.DATE Solo fecha
     private Calendar bornDate;
 
     @Lob
     private String large;
 
-    private String[] strings; //ArrayList
+    private String[] strings; //ArrayList funciona igual
 
     //Se Almacena en otra tabla
-    @ElementCollection(fetch=FetchType.LAZY)
-    @CollectionTable(name="UnRelatedEntity_list")
+    @ElementCollection(fetch=FetchType.LAZY)//Perezoso
+    @CollectionTable(name="unrelatedentity_list")//opcional el nombre de la tabla a utilizar
     private List<String> list;
     
     @Transient
     private String noPersistent;
+
+    public UnRelatedEntity() {
+    }
 
     public UnRelatedEntity(String nick, Gender gender, Calendar bornDate, String large, String[] strings, List<String> list,
             String noPersistent) {
