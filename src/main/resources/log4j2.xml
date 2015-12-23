@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn" name="MyApp" packages="">
+	<appenders>
+		<Console name= "Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5level] %d{dd/MMM HH:mm:ss} %-30.30c{2} --> %msg%n" />
+		</Console>
+		<RollingFile name="RollingFile" fileName="${logs.path}/miw.JavaWeb.log"
+			filePattern="${logs.path}/miw.JavaWeb-%d{yyyy-MM-dd.HH}-%i.log">
+			<PatternLayout>
+				<pattern>[%-5level] %d{dd-MMM HH:mm:ss} %-30.30c{2} --> %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="40 MB" />
+			</Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<Logger name="es.upm.miw" level="${logs.level}" additivity="false">
+			<AppenderRef ref="Console" />
+			<appenderRef ref="RollingFile" />
+		</Logger>
+		<root level="info">
+			<AppenderRef ref="Console" />
+			<appenderRef ref="RollingFile" />
+		</root>
+	</loggers>
+</configuration>
