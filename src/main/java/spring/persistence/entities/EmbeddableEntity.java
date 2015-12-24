@@ -20,6 +20,14 @@ public class EmbeddableEntity {
     @Override
     public String toString() {
         return "EmbeddableEntity [number=" + number + ", value=" + value + "]";
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getValue() {
+        return value;
     }    
     
 }
