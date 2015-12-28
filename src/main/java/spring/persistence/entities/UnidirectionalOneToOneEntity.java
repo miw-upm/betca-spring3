@@ -1,8 +1,10 @@
 package spring.persistence.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UnidirectionalOneToOneEntity {
@@ -13,6 +15,7 @@ public class UnidirectionalOneToOneEntity {
 
     private String nick;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private AnyEntity anyEntity;
 
     public UnidirectionalOneToOneEntity() {
