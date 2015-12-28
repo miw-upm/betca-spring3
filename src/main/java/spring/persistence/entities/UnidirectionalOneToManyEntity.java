@@ -1,35 +1,38 @@
 package spring.persistence.entities;
 
-import java.util.Arrays;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class UnidirectionalOneToManyEmbeddedEntity {
-
+public class UnidirectionalOneToManyEntity {
+    
     @Id
     @GeneratedValue
     private int id;
 
     private String nick;
 
-    //1:0..n
-    private AnyClass[] anyClassArray;
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    private List<AnyEntity> anyEntityList;
 
-    public UnidirectionalOneToManyEmbeddedEntity() {
+    public UnidirectionalOneToManyEntity() {
     }
 
-    public UnidirectionalOneToManyEmbeddedEntity(String nick, AnyClass[] anyClassArray) {
+    public UnidirectionalOneToManyEntity(String nick, List<AnyEntity> anyEntityList) {
         this.nick = nick;
-        this.anyClassArray = anyClassArray;
+        this.anyEntityList = anyEntityList;
     }
+
 
     @Override
     public String toString() {
-        return "UnidirectionalOneToManyEmbeddedEntity [id=" + id + ", nick=" + nick + ", anyClassArray=" + Arrays.toString(anyClassArray)
-                + "]";
+        return "UnidirectionalOneToManyEntity [id=" + id + ", nick=" + nick + ", anyEntityList=" + anyEntityList + "]";
     }
 
     @Override
@@ -44,7 +47,7 @@ public class UnidirectionalOneToManyEmbeddedEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalOneToManyEmbeddedEntity other = (UnidirectionalOneToManyEmbeddedEntity) obj;
+            UnidirectionalOneToManyEntity other = (UnidirectionalOneToManyEntity) obj;
             return id == other.id;
         }
     }
@@ -57,8 +60,8 @@ public class UnidirectionalOneToManyEmbeddedEntity {
         return nick;
     }
 
-    public AnyClass[] getAnyClassArray() {
-        return anyClassArray;
+    public List<AnyEntity> getAnyEntityList() {
+        return anyEntityList;
     }
 
 }
