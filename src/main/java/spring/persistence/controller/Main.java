@@ -11,25 +11,25 @@ public final class Main {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationController.class);
         System.out.println("----------ooo----------");
-        context.getBean("unRelatedController", UnRelatedController.class).process();
+        context.getBean(UnRelatedController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("unidirectionalOneToOneEmbeddedController", UnidirectionalOneToOneEmbeddedController.class).process();
+        context.getBean(UnidirectionalOneToOneEmbeddedController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("unidirectionalOneToOneController", UnidirectionalOneToOneController.class).process();
+        context.getBean(UnidirectionalOneToOneJoinColumnController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("unidirectionalManyToOneController", UnidirectionalManyToOneController.class).process();
+        context.getBean(UnidirectionalManyToOneController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("unidirectionalOneToManyEmbeddedController", UnidirectionalOneToManyEmbeddedController.class).process();
+        context.getBean(UnidirectionalOneToManyEmbeddedController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("unidirectionalOneToManyController", UnidirectionalOneToManyController.class).process();
+        context.getBean(UnidirectionalOneToManyController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("bidirectionalOneToOneEmbeddedController", BidirectionalOneToOneEmbeddedController.class).process();
+        context.getBean(BidirectionalOneToOneEmbeddedController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("bidirectionalOneToOneJoinColumnController", BidirectionalOneToOneJoinColumnController.class).process();
+        context.getBean(BidirectionalOneToOneJoinColumnController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("bidirectionalOneToOneMappedByController", BidirectionalOneToOneMappedByController.class).process();
+        context.getBean(BidirectionalOneToOneMappedByController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean("bidirectionalManyToOneJoinColumnController", BidirectionalManyToOneJoinColumnController.class).process();
+        context.getBean(BidirectionalManyToOneJoinColumnController.class).process();
         System.out.println("----------ooo----------");
         ((AbstractApplicationContext) context).close();
     }
