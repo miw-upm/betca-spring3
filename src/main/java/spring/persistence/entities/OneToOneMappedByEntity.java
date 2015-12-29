@@ -33,6 +33,10 @@ public class OneToOneMappedByEntity {
                 + ", bidirectionalOneToOneJoinColumnEntityId=" + bidirectionalOneToOneJoinColumnEntity.getId() + "]";
     }
 
+    public int getId() {
+        return id;
+    }
+
     public int getNumber() {
         return number;
     }

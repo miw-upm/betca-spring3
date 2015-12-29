@@ -29,6 +29,8 @@ public final class Main {
         System.out.println("----------ooo----------");
         context.getBean("bidirectionalOneToOneMappedByController", BidirectionalOneToOneMappedByController.class).process();
         System.out.println("----------ooo----------");
+        context.getBean("bidirectionalManyToOneJoinColumnController", BidirectionalManyToOneJoinColumnController.class).process();
+        System.out.println("----------ooo----------");
         ((AbstractApplicationContext) context).close();
     }
 }
