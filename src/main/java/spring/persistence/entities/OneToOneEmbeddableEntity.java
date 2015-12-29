@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
 
 @Embeddable
-public class BidirectionalOneToOneEmbeddableEntity {
+public class OneToOneEmbeddableEntity {
 
     private int number;
     
@@ -13,10 +13,10 @@ public class BidirectionalOneToOneEmbeddableEntity {
     @OneToOne
     private BidirectionalOneToOneEmbeddedEntity bidirectionalOneToOneEmbeddedEntity;
    
-    public BidirectionalOneToOneEmbeddableEntity() {
+    public OneToOneEmbeddableEntity() {
     }
 
-    public BidirectionalOneToOneEmbeddableEntity(int number, String value) {
+    public OneToOneEmbeddableEntity(int number, String value) {
         this.number = number;
         this.value = value;
     }
@@ -24,7 +24,7 @@ public class BidirectionalOneToOneEmbeddableEntity {
 
     @Override
     public String toString() {
-        return "BidirectionalOneToOneEmbeddableEntity [number=" + number + ", value=" + value + ", bidirectionalOneToOneEmbeddedEntityId="
+        return "OneToOneEmbeddableEntity [number=" + number + ", value=" + value + ", bidirectionalOneToOneEmbeddedEntityId="
                 + bidirectionalOneToOneEmbeddedEntity.getId() + "]";
     }
 

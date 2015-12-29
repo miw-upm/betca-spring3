@@ -14,21 +14,20 @@ public class BidirectionalOneToOneEmbeddedEntity {
     private String nick;
 
     @Embedded
-    private BidirectionalOneToOneEmbeddableEntity bidirectionalOneToOneEmbeddableEntity;
+    private OneToOneEmbeddableEntity oneToOneEmbeddableEntity;
 
     public BidirectionalOneToOneEmbeddedEntity() {
     }
 
-    public BidirectionalOneToOneEmbeddedEntity(String nick, BidirectionalOneToOneEmbeddableEntity bidirectionalOneToOneEmbeddableEntity) {
+    public BidirectionalOneToOneEmbeddedEntity(String nick, OneToOneEmbeddableEntity bidirectionalOneToOneEmbeddableEntity) {
         this.nick = nick;
-        this.bidirectionalOneToOneEmbeddableEntity = bidirectionalOneToOneEmbeddableEntity;
+        this.oneToOneEmbeddableEntity = bidirectionalOneToOneEmbeddableEntity;
     }
-
 
     @Override
     public String toString() {
-        return "BidirectionalOneToOneEmbeddedEntity [id=" + id + ", nick=" + nick + ", bidirectionalOneToOneEmbeddableEntity="
-                + bidirectionalOneToOneEmbeddableEntity + "]";
+        return "BidirectionalOneToOneEmbeddedEntity [id=" + id + ", nick=" + nick + ", oneToOneEmbeddableEntity="
+                + oneToOneEmbeddableEntity + "]";
     }
 
     @Override
@@ -56,8 +55,8 @@ public class BidirectionalOneToOneEmbeddedEntity {
         return nick;
     }
 
-    public BidirectionalOneToOneEmbeddableEntity getBidirectionalOneToOneEmbeddableEntity() {
-        return bidirectionalOneToOneEmbeddableEntity;
+    public OneToOneEmbeddableEntity getOneToOneEmbeddableEntity() {
+        return oneToOneEmbeddableEntity;
     }
 
 }

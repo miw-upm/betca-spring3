@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import spring.persistence.daos.BidirectionalOneToOneEmbeddedDao;
-import spring.persistence.entities.BidirectionalOneToOneEmbeddableEntity;
+import spring.persistence.entities.OneToOneEmbeddableEntity;
 import spring.persistence.entities.BidirectionalOneToOneEmbeddedEntity;
 
 @Controller
@@ -14,7 +14,7 @@ public class BidirectionalOneToOneEmbeddedController {
     private BidirectionalOneToOneEmbeddedDao bidirectionalOneToOneEmbeddedDao;
 
     public void process() {
-        BidirectionalOneToOneEmbeddableEntity embeddable = new BidirectionalOneToOneEmbeddableEntity(666, "daemon");
+        OneToOneEmbeddableEntity embeddable = new OneToOneEmbeddableEntity(666, "daemon");
         BidirectionalOneToOneEmbeddedEntity entity = new BidirectionalOneToOneEmbeddedEntity("Mi Nick", embeddable);
         embeddable.setBidirectionalOneToOneEmbeddedEntity(entity);
         bidirectionalOneToOneEmbeddedDao.save(entity);
