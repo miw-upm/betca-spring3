@@ -16,14 +16,14 @@ public class BidirectionalOneToManyMappedByController {
     private BidirectionalOneToManyMappedByDao bidirectionalOneToManyMappedByDao;
 
     public void process() {
-        ManyToOneJoinColumnEntity[] array = {new ManyToOneJoinColumnEntity(1, "uno"), new ManyToOneJoinColumnEntity(2, "dos"),
-                new ManyToOneJoinColumnEntity(3, "tres")};
+        ManyToOneJoinColumnEntity[] array = {new ManyToOneJoinColumnEntity("uno"), new ManyToOneJoinColumnEntity("dos"),
+                new ManyToOneJoinColumnEntity("tres")};
         BidirectionalOneToManyMappedByEntity entity = new BidirectionalOneToManyMappedByEntity("Mi Nick", Arrays.asList(array));
         for (ManyToOneJoinColumnEntity manyToOneJoinColumnEntity : array) {
             manyToOneJoinColumnEntity.setBidirectionalOneToManyMappedByEntity(entity);
         }
         bidirectionalOneToManyMappedByDao.save(entity);
-        
+
         System.out.println(">>>> BidirectionalOneToManyMappedByEntity:  " + bidirectionalOneToManyMappedByDao.findOne(entity.getId()));
     }
 }

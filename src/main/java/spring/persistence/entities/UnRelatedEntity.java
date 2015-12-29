@@ -19,7 +19,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-@Entity(name = "unrelatedentity")//nombre por defecto de la tabla
+// Parámetro name opcional: se indica el nombre de la tabla
+// Nombre por defecto de la tabla: nombre de la clase en minusculas
+@Entity(name = "other_name_for_unrelatedentity")
 public class UnRelatedEntity {
 
     public static final String TRANSIENT = "no persistent";
@@ -28,27 +30,29 @@ public class UnRelatedEntity {
     @GeneratedValue
     private int id;
 
-    //nombre por defecto de la columna el nombre del atributo
-    @Column(name="KCIN", unique = true, nullable = false, length = 30)
+    // Nombre por defecto de la columna el nombre del atributo en minusculas
+    @Column(name = "KCIN", unique = true, nullable = false, length = 30)
     private String nick;
 
     @Enumerated(EnumType.STRING)
-    @Column(length=20)
+    @Column(length = 20)
     private Gender gender;
 
-    @Temporal(TemporalType.TIMESTAMP) //Fecha y hora //TemporalType.DATE Solo fecha
+    // TemporalType.TIMESTAMP: Fecha y hora, TemporalType.DATE Solo fecha
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar bornDate;
 
     @Lob
     private String large;
 
-    private String[] strings; //ArrayList funciona igual
+    private String[] strings; // Clase ArrayList funciona igual
 
-    //Se Almacena en otra tabla
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable(name="unrelatedentity_list")//opcional el nombre de la tabla a utilizar
+    // Se Almacena en otra tabla
+    @ElementCollection(fetch = FetchType.EAGER)
+    // opcional el nombre de la tabla a utilizar
+    @CollectionTable(name = "unrelatedentity_list")
     private List<String> list;
-    
+
     @Transient
     private String noPersistent;
 
@@ -69,8 +73,8 @@ public class UnRelatedEntity {
 
     @Override
     public String toString() {
-        return "UnRelatedEntity [id=" + id + ", nick=" + nick + ", gender=" + gender + ", bornDate=" + formatBornDate() + ", large=" + large
-                + ", strings=" + Arrays.toString(strings) + ", list=" + list + ", noPersistent=" + noPersistent + "]";
+        return "UnRelatedEntity [id=" + id + ", nick=" + nick + ", gender=" + gender + ", bornDate=" + formatBornDate() + ", large="
+                + large + ", strings=" + Arrays.toString(strings) + ", list=" + list + ", noPersistent=" + noPersistent + "]";
     }
 
     @Override

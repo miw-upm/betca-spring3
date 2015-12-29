@@ -20,8 +20,8 @@ public class BidirectionalManyToOneJoinColumnController {
     private OneToManyMappedByDao oneToManyMappedByDao;
 
     public void process() {
-        OneToManyMappedByEntity[] array = {new OneToManyMappedByEntity(1, "uno"), new OneToManyMappedByEntity(2, "dos"),
-                new OneToManyMappedByEntity(3, "tres")};
+        OneToManyMappedByEntity[] array = {new OneToManyMappedByEntity("uno"), new OneToManyMappedByEntity("dos"),
+                new OneToManyMappedByEntity("tres")};
         oneToManyMappedByDao.save(Arrays.asList(array));
 
         BidirectionalManyToOneJoinColumnEntity entity = new BidirectionalManyToOneJoinColumnEntity("Mi Nick", array[0]);

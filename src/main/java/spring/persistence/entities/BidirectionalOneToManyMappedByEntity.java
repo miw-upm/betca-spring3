@@ -19,19 +19,19 @@ public class BidirectionalOneToManyMappedByEntity {
     private String nick;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "bidirectionalOneToManyMappedByEntity")
-    private List<ManyToOneJoinColumnEntity> manyToOneJoinColumnEntity;
+    private List<ManyToOneJoinColumnEntity> manyToOneJoinColumnEntityList;
 
     public BidirectionalOneToManyMappedByEntity() {
     }
 
-    public BidirectionalOneToManyMappedByEntity(String nick, List<ManyToOneJoinColumnEntity> manyToOneJoinColumnEntity) {
+    public BidirectionalOneToManyMappedByEntity(String nick, List<ManyToOneJoinColumnEntity> manyToOneJoinColumnEntityList) {
         this.nick = nick;
-        this.manyToOneJoinColumnEntity = manyToOneJoinColumnEntity;
+        this.manyToOneJoinColumnEntityList = manyToOneJoinColumnEntityList;
     }
 
     @Override
     public String toString() {
-        return "BidirectionalOneToManyMappedByEntity [id=" + id + ", nick=" + nick + ", manyToOneJoinColumnEntity=" + manyToOneJoinColumnEntity
+        return "BidirectionalOneToManyMappedByEntity [id=" + id + ", nick=" + nick + ", manyToOneJoinColumnEntity=" + manyToOneJoinColumnEntityList
                 + "]";
     }
 
@@ -60,8 +60,8 @@ public class BidirectionalOneToManyMappedByEntity {
         return nick;
     }
 
-    public List<ManyToOneJoinColumnEntity> getManyToOneJoinColumnEntity() {
-        return manyToOneJoinColumnEntity;
+    public List<ManyToOneJoinColumnEntity> getManyToOneJoinColumnEntityList() {
+        return manyToOneJoinColumnEntityList;
     }
 
 }

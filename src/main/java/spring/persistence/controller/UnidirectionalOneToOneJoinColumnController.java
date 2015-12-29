@@ -14,7 +14,7 @@ public class UnidirectionalOneToOneJoinColumnController {
     private UnidirectionalOneToOneJoinColumnDao unidirectionalOneToOneJoinColumnDao;
 
     public void process() {
-        AnyEntity anyEntity = new AnyEntity(666, "daemon");
+        AnyEntity anyEntity = new AnyEntity("daemon");
         UnidirectionalOneToOneJoinColumnEntity entity = new UnidirectionalOneToOneJoinColumnEntity("Mi Nick", anyEntity);
         unidirectionalOneToOneJoinColumnDao.save(entity);
 

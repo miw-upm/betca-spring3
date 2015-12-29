@@ -15,33 +15,26 @@ public class OneToManyMappedByEntity {
     @GeneratedValue
     private int id;
 
-    private int number;
-
     private String value;
 
-    @OneToMany(mappedBy = "oneToManyMappedByEntity",fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "oneToManyMappedByEntity", fetch = FetchType.EAGER)
     private List<BidirectionalManyToOneJoinColumnEntity> bidirectionalManyToOneJoinColumnEntityList;
 
     public OneToManyMappedByEntity() {
     }
 
-    public OneToManyMappedByEntity(int number, String value) {
-        this.number = number;
+    public OneToManyMappedByEntity(String value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "OneToManyMappedByEntity [id=" + id + ", number=" + number + ", value=" + value
-                + ", bidirectionalManyToOneJoinColumnEntityList=" + bidirectionalManyToOneJoinColumnEntityList + "]";
+        return "OneToManyMappedByEntity [id=" + id + ", value=" + value + ", bidirectionalManyToOneJoinColumnEntityList="
+                + bidirectionalManyToOneJoinColumnEntityList + "]";
     }
 
     public int getId() {
         return id;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public String getValue() {

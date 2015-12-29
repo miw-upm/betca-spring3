@@ -15,8 +15,6 @@ public class ManyToManyMappedByEntity {
     @GeneratedValue
     private int id;
 
-    private int number;
-
     private String value;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "manyToManyMappedByEntityList")
@@ -25,22 +23,17 @@ public class ManyToManyMappedByEntity {
     public ManyToManyMappedByEntity() {
     }
 
-    public ManyToManyMappedByEntity(int number, String value) {
-        this.number = number;
+    public ManyToManyMappedByEntity(String value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "ManyToManyMappedByEntity [id=" + id + ", number=" + number + ", value=" + value + "]";
+        return "ManyToManyMappedByEntity [id=" + id + ", value=" + value + "]";
     }
 
     public int getId() {
         return id;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public String getValue() {

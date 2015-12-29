@@ -12,8 +12,6 @@ public class OneToOneMappedByEntity {
     @GeneratedValue
     private int id;
 
-    private int number;
-
     private String value;
 
     @OneToOne(mappedBy = "oneToOneMappedByEntity")
@@ -22,23 +20,18 @@ public class OneToOneMappedByEntity {
     public OneToOneMappedByEntity() {
     }
 
-    public OneToOneMappedByEntity(int number, String value) {
-        this.number = number;
+    public OneToOneMappedByEntity(String value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "OneToOneMappedByEntity [number=" + number + ", value=" + value
-                + ", bidirectionalOneToOneJoinColumnEntityId=" + bidirectionalOneToOneJoinColumnEntity.getId() + "]";
+        return "OneToOneMappedByEntity [value=" + value + ", bidirectionalOneToOneJoinColumnEntityId="
+                + bidirectionalOneToOneJoinColumnEntity.getId() + "]";
     }
 
     public int getId() {
         return id;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public String getValue() {

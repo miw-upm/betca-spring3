@@ -11,21 +11,18 @@ public class AnyEntity {
     @GeneratedValue
     private int id;
 
-    private int number;
-    
     private String value;
    
     public AnyEntity() {
     }
 
-    public AnyEntity(int number, String value) {
-        this.number = number;
+    public AnyEntity(String value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "AnyEntity [id=" + id + ", number=" + number + ", value=" + value + "]";
+        return "AnyEntity [id=" + id + ", value=" + value + "]";
     }    
     
     @Override
@@ -47,10 +44,6 @@ public class AnyEntity {
 
     public int getId() {
         return id;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public String getValue() {

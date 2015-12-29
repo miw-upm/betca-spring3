@@ -16,7 +16,7 @@ public class UnidirectionalOneToManyController {
     private UnidirectionalOneToManyDao unidirectionalOneToManyDao;
 
     public void process() {
-        AnyEntity[] array = {new AnyEntity(1,"uno"), new AnyEntity(2,"dos"), new AnyEntity(3,"tres")};
+        AnyEntity[] array = {new AnyEntity("uno"), new AnyEntity("dos"), new AnyEntity("tres")};
         UnidirectionalOneToManyEntity entity = new UnidirectionalOneToManyEntity("Mi Nick",Arrays.asList(array));
         unidirectionalOneToManyDao.save(entity);
         System.out.println(">>>> UnidirectionalOneToManyEntity:  " + unidirectionalOneToManyDao.findOne(entity.getId()));

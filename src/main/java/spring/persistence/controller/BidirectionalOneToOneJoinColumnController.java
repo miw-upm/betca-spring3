@@ -14,7 +14,7 @@ public class BidirectionalOneToOneJoinColumnController {
     private BidirectionalOneToOneJoinColumnDao bidirectionalOneToOneJoinColumnDao;
 
     public void process() {
-        OneToOneMappedByEntity mappedBy = new OneToOneMappedByEntity(666, "daemon");
+        OneToOneMappedByEntity mappedBy = new OneToOneMappedByEntity("daemon");
         BidirectionalOneToOneJoinColumnEntity entity = new BidirectionalOneToOneJoinColumnEntity("Mi Nick", mappedBy);
         mappedBy.setBidirectionalOneToOneJoinColumnEntity(entity);
         bidirectionalOneToOneJoinColumnDao.save(entity);

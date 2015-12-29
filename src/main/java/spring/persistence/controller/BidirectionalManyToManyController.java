@@ -16,8 +16,8 @@ public class BidirectionalManyToManyController {
     private BidirectionalManyToManyDao bidirectionalManyToManyDao;
 
     public void process() {
-        ManyToManyMappedByEntity[] array = {new ManyToManyMappedByEntity(1, "uno"), new ManyToManyMappedByEntity(2, "dos"),
-                new ManyToManyMappedByEntity(3, "tres")};
+        ManyToManyMappedByEntity[] array = {new ManyToManyMappedByEntity("uno"), new ManyToManyMappedByEntity("dos"),
+                new ManyToManyMappedByEntity("tres")};
         BidirectionalManyToManyEntity entity = new BidirectionalManyToManyEntity("Mi Nick", Arrays.asList(array));
         BidirectionalManyToManyEntity[] entityArray = {entity};
         for (ManyToManyMappedByEntity manyToManyMappedByEntity : array) {

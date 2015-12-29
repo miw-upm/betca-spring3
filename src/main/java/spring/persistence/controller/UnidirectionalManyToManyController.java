@@ -20,8 +20,8 @@ public class UnidirectionalManyToManyController {
     private AnyDao anyDao;
 
     public void process() {
-        AnyEntity[] array = {new AnyEntity(1, "uno"), new AnyEntity(2, "dos"), new AnyEntity(3, "tres")};
-        AnyEntity[] array2 = {new AnyEntity(4, "cuatro"), new AnyEntity(5, "cinco")};
+        AnyEntity[] array = {new AnyEntity("uno"), new AnyEntity("dos"), new AnyEntity("tres")};
+        AnyEntity[] array2 = {new AnyEntity("cuatro"), new AnyEntity("cinco")};
         anyDao.save(Arrays.asList(array));
         anyDao.save(Arrays.asList(array2));
         UnidirectionalManyToManyEntity entity = new UnidirectionalManyToManyEntity("Mi Nick", Arrays.asList(array));

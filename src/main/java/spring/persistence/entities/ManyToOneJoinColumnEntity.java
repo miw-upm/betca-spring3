@@ -13,8 +13,6 @@ public class ManyToOneJoinColumnEntity {
     @GeneratedValue
     private int id;
 
-    private int number;
-
     private String value;
 
     @ManyToOne
@@ -24,19 +22,14 @@ public class ManyToOneJoinColumnEntity {
     public ManyToOneJoinColumnEntity() {
     }
 
-    public ManyToOneJoinColumnEntity(int number, String value) {
-        this.number = number;
+    public ManyToOneJoinColumnEntity(String value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "ManyToOneJoinColumnEntity [id=" + id + ", number=" + number + ", value=" + value + ", bidirectionalOneToManyEntityId="
+        return "ManyToOneJoinColumnEntity [id=" + id + ", value=" + value + ", bidirectionalOneToManyEntityId="
                 + bidirectionalOneToManyMappedByEntity.getId() + "]";
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public String getValue() {
