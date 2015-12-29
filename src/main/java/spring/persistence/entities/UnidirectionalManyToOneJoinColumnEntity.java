@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class UnidirectionalManyToOneEntity {
+public class UnidirectionalManyToOneJoinColumnEntity {
     
     @Id
     @GeneratedValue
@@ -15,19 +15,20 @@ public class UnidirectionalManyToOneEntity {
     private String nick;
 
     @ManyToOne
+    //@JoinColumn
     private AnyEntity anyEntity;
 
-    public UnidirectionalManyToOneEntity() {
+    public UnidirectionalManyToOneJoinColumnEntity() {
     }
 
-    public UnidirectionalManyToOneEntity(String nick, AnyEntity anyEntity) {
+    public UnidirectionalManyToOneJoinColumnEntity(String nick, AnyEntity anyEntity) {
         this.nick = nick;
         this.anyEntity = anyEntity;
     }
 
     @Override
     public String toString() {
-        return "UnidirectionalOneToOneEntity [id=" + id + ", nick=" + nick + ", anyEntity=" + anyEntity + "]";
+        return "UnidirectionalManyToOneJoinColumnEntity [id=" + id + ", nick=" + nick + ", anyEntity=" + anyEntity + "]";
     }
 
     @Override
@@ -42,7 +43,7 @@ public class UnidirectionalManyToOneEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalManyToOneEntity other = (UnidirectionalManyToOneEntity) obj;
+            UnidirectionalManyToOneJoinColumnEntity other = (UnidirectionalManyToOneJoinColumnEntity) obj;
             return id == other.id;
         }
     }

@@ -17,7 +17,7 @@ public final class Main {
         System.out.println("----------ooo----------");
         context.getBean(UnidirectionalOneToOneJoinColumnController.class).process();
         System.out.println("----------ooo----------");
-        context.getBean(UnidirectionalManyToOneController.class).process();
+        context.getBean(UnidirectionalManyToOneJoinColumnController.class).process();
         System.out.println("----------ooo----------");
         context.getBean(UnidirectionalOneToManyEmbeddedController.class).process();
         System.out.println("----------ooo----------");
