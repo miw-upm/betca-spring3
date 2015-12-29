@@ -16,7 +16,7 @@ public class OneToOneMappedByEntity {
 
     private String value;
 
-    @OneToOne(mappedBy = "bidirectionalOneToOneMappedByEntity")
+    @OneToOne(mappedBy = "oneToOneMappedByEntity")
     private BidirectionalOneToOneJoinColumnEntity bidirectionalOneToOneJoinColumnEntity;
 
     public OneToOneMappedByEntity() {

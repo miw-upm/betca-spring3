@@ -4,11 +4,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class BidirectionalOneToOneJoinColumnEntity {
+public class BidirectionalOneToOneMappedByEntity {
 
     @Id
     @GeneratedValue
@@ -16,22 +15,21 @@ public class BidirectionalOneToOneJoinColumnEntity {
 
     private String nick;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private OneToOneMappedByEntity oneToOneMappedByEntity;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "bidirectionalOneToOneMappedByEntity")
+    private OneToOneJoinColumnEntity oneToOneJoinColumnEntity;
 
-    public BidirectionalOneToOneJoinColumnEntity() {
+    public BidirectionalOneToOneMappedByEntity() {
     }
 
-    public BidirectionalOneToOneJoinColumnEntity(String nick, OneToOneMappedByEntity oneToOneMappedByEntity) {
+    public BidirectionalOneToOneMappedByEntity(String nick, OneToOneJoinColumnEntity oneToOneJoinColumnEntity) {
         this.nick = nick;
-        this.oneToOneMappedByEntity = oneToOneMappedByEntity;
+        this.oneToOneJoinColumnEntity = oneToOneJoinColumnEntity;
     }
 
     @Override
     public String toString() {
-        return "BidirectionalOneToOneJoinColumnEntity [id=" + id + ", nick=" + nick + ", OneToOneMappedByEntity="
-                + oneToOneMappedByEntity + "]";
+        return "BidirectionalOneToOneMappedByEntity [id=" + id + ", nick=" + nick + ", OneToOneJoinColumnEntity="
+                + oneToOneJoinColumnEntity + "]";
     }
 
     @Override
@@ -46,7 +44,7 @@ public class BidirectionalOneToOneJoinColumnEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            BidirectionalOneToOneJoinColumnEntity other = (BidirectionalOneToOneJoinColumnEntity) obj;
+            BidirectionalOneToOneMappedByEntity other = (BidirectionalOneToOneMappedByEntity) obj;
             return id == other.id;
         }
     }
@@ -59,8 +57,8 @@ public class BidirectionalOneToOneJoinColumnEntity {
         return nick;
     }
 
-    public OneToOneMappedByEntity getOneToOneMappedByEntity() {
-        return oneToOneMappedByEntity;
+    public OneToOneJoinColumnEntity getOneToOneJoinColumnEntity() {
+        return oneToOneJoinColumnEntity;
     }
-    
+
 }
