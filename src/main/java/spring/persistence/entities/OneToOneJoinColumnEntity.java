@@ -32,6 +32,22 @@ public class OneToOneJoinColumnEntity {
                 + bidirectionalOneToOneMappedByEntity.getId() + "]";
     }
 
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (getClass() != obj.getClass()) {
+            return false;
+        } else {
+            return id == ((OneToOneJoinColumnEntity) obj).id;
+        }
+    }
+
     public String getValue() {
         return value;
     }

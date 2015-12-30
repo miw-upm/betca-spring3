@@ -15,7 +15,7 @@ public class UnidirectionalOneToManyEmbeddedEntity {
 
     private String nick;
 
-    //1:0..n
+    // 1:0..n
     private AnyClass[] anyClassArray;
 
     public UnidirectionalOneToManyEmbeddedEntity() {
@@ -44,8 +44,7 @@ public class UnidirectionalOneToManyEmbeddedEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalOneToManyEmbeddedEntity other = (UnidirectionalOneToManyEmbeddedEntity) obj;
-            return id == other.id;
+            return id == ((UnidirectionalOneToManyEmbeddedEntity) obj).id;
         }
     }
 

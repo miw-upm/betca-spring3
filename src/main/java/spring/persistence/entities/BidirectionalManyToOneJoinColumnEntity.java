@@ -15,7 +15,8 @@ public class BidirectionalManyToOneJoinColumnEntity {
 
     private String nick;
 
-    @ManyToOne // Not cascade
+    @ManyToOne
+    // Not cascade
     @JoinColumn
     private OneToManyMappedByEntity oneToManyMappedByEntity;
 
@@ -45,8 +46,7 @@ public class BidirectionalManyToOneJoinColumnEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            BidirectionalManyToOneJoinColumnEntity other = (BidirectionalManyToOneJoinColumnEntity) obj;
-            return id == other.id;
+            return id == ((BidirectionalManyToOneJoinColumnEntity) obj).id;
         }
     }
 
@@ -61,5 +61,5 @@ public class BidirectionalManyToOneJoinColumnEntity {
     public OneToManyMappedByEntity getOneToManyMappedByEntity() {
         return oneToManyMappedByEntity;
     }
-    
+
 }

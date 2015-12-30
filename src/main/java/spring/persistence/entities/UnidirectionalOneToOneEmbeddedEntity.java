@@ -26,8 +26,7 @@ public class UnidirectionalOneToOneEmbeddedEntity {
 
     @Override
     public String toString() {
-        return "UnidirectionalOneToOneEmbeddedEntity [id=" + id + ", nick=" + nick + ", embeddableEntity=" + embeddableEntity
-                + "]";
+        return "UnidirectionalOneToOneEmbeddedEntity [id=" + id + ", nick=" + nick + ", embeddableEntity=" + embeddableEntity + "]";
     }
 
     @Override
@@ -42,8 +41,7 @@ public class UnidirectionalOneToOneEmbeddedEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalOneToOneEmbeddedEntity other = (UnidirectionalOneToOneEmbeddedEntity) obj;
-            return id == other.id;
+            return id == ((UnidirectionalOneToOneEmbeddedEntity) obj).id;
         }
     }
 

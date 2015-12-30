@@ -7,12 +7,12 @@ import javax.persistence.OneToOne;
 public class OneToOneEmbeddableEntity {
 
     private int number;
-    
+
     private String value;
-    
+
     @OneToOne
     private BidirectionalOneToOneEmbeddedEntity bidirectionalOneToOneEmbeddedEntity;
-   
+
     public OneToOneEmbeddableEntity() {
     }
 
@@ -20,7 +20,6 @@ public class OneToOneEmbeddableEntity {
         this.number = number;
         this.value = value;
     }
-
 
     @Override
     public String toString() {
@@ -42,6 +41,6 @@ public class OneToOneEmbeddableEntity {
 
     public void setBidirectionalOneToOneEmbeddedEntity(BidirectionalOneToOneEmbeddedEntity bidirectionalOneToOneEmbeddedEntity) {
         this.bidirectionalOneToOneEmbeddedEntity = bidirectionalOneToOneEmbeddedEntity;
-    }    
-    
+    }
+
 }

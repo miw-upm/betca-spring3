@@ -42,8 +42,7 @@ public class BidirectionalOneToOneEmbeddedEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            BidirectionalOneToOneEmbeddedEntity other = (BidirectionalOneToOneEmbeddedEntity) obj;
-            return id == other.id;
+            return id == ((BidirectionalOneToOneEmbeddedEntity) obj).id;
         }
     }
 

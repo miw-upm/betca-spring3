@@ -31,8 +31,8 @@ public class BidirectionalOneToManyMappedByEntity {
 
     @Override
     public String toString() {
-        return "BidirectionalOneToManyMappedByEntity [id=" + id + ", nick=" + nick + ", manyToOneJoinColumnEntity=" + manyToOneJoinColumnEntityList
-                + "]";
+        return "BidirectionalOneToManyMappedByEntity [id=" + id + ", nick=" + nick + ", manyToOneJoinColumnEntity="
+                + manyToOneJoinColumnEntityList + "]";
     }
 
     @Override
@@ -47,8 +47,7 @@ public class BidirectionalOneToManyMappedByEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            BidirectionalOneToManyMappedByEntity other = (BidirectionalOneToManyMappedByEntity) obj;
-            return id == other.id;
+            return id == ((BidirectionalOneToManyMappedByEntity) obj).id;
         }
     }
 

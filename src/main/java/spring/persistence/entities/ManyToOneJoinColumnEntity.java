@@ -32,6 +32,22 @@ public class ManyToOneJoinColumnEntity {
                 + bidirectionalOneToManyMappedByEntity.getId() + "]";
     }
 
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (getClass() != obj.getClass()) {
+            return false;
+        } else {
+            return id == ((ManyToOneJoinColumnEntity) obj).id;
+        }
+    }
+
     public String getValue() {
         return value;
     }

@@ -47,8 +47,7 @@ public class BidirectionalManyToManyEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            BidirectionalManyToManyEntity other = (BidirectionalManyToManyEntity) obj;
-            return id == other.id;
+            return id == ((BidirectionalManyToManyEntity) obj).id;
         }
     }
 

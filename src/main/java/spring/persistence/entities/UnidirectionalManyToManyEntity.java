@@ -45,8 +45,7 @@ public class UnidirectionalManyToManyEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalManyToManyEntity other = (UnidirectionalManyToManyEntity) obj;
-            return id == other.id;
+            return id == ((UnidirectionalManyToManyEntity) obj).id;
         }
     }
 

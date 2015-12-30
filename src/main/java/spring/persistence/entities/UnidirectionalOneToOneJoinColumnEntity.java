@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class UnidirectionalOneToOneJoinColumnEntity {
-    
+
     @Id
     @GeneratedValue
     private int id;
@@ -16,7 +16,7 @@ public class UnidirectionalOneToOneJoinColumnEntity {
     private String nick;
 
     @OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn
+    // @JoinColumn
     private AnyEntity anyEntity;
 
     public UnidirectionalOneToOneJoinColumnEntity() {
@@ -44,8 +44,7 @@ public class UnidirectionalOneToOneJoinColumnEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalOneToOneJoinColumnEntity other = (UnidirectionalOneToOneJoinColumnEntity) obj;
-            return id == other.id;
+            return id == ((UnidirectionalOneToOneJoinColumnEntity) obj).id;
         }
     }
 

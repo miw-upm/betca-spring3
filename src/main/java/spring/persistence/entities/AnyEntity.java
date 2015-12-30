@@ -12,7 +12,7 @@ public class AnyEntity {
     private int id;
 
     private String value;
-   
+
     public AnyEntity() {
     }
 
@@ -23,8 +23,8 @@ public class AnyEntity {
     @Override
     public String toString() {
         return "AnyEntity [id=" + id + ", value=" + value + "]";
-    }    
-    
+    }
+
     @Override
     public int hashCode() {
         return id;
@@ -37,8 +37,7 @@ public class AnyEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            AnyEntity other = (AnyEntity) obj;
-            return id == other.id;
+            return id == ((AnyEntity) obj).id;
         }
     }
 

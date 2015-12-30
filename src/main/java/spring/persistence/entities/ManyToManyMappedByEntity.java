@@ -32,6 +32,22 @@ public class ManyToManyMappedByEntity {
         return "ManyToManyMappedByEntity [id=" + id + ", value=" + value + "]";
     }
 
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (getClass() != obj.getClass()) {
+            return false;
+        } else {
+            return id == ((ManyToManyMappedByEntity) obj).id;
+        }
+    }
+
     public int getId() {
         return id;
     }

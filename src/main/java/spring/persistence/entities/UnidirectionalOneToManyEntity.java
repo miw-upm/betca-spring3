@@ -11,14 +11,14 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class UnidirectionalOneToManyEntity {
-    
+
     @Id
     @GeneratedValue
     private int id;
 
     private String nick;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<AnyEntity> anyEntityList;
 
     public UnidirectionalOneToManyEntity() {
@@ -28,7 +28,6 @@ public class UnidirectionalOneToManyEntity {
         this.nick = nick;
         this.anyEntityList = anyEntityList;
     }
-
 
     @Override
     public String toString() {
@@ -47,8 +46,7 @@ public class UnidirectionalOneToManyEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            UnidirectionalOneToManyEntity other = (UnidirectionalOneToManyEntity) obj;
-            return id == other.id;
+            return id == ((UnidirectionalOneToManyEntity) obj).id;
         }
     }
 

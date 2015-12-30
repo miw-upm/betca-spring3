@@ -44,8 +44,7 @@ public class BidirectionalOneToOneMappedByEntity {
         } else if (getClass() != obj.getClass()) {
             return false;
         } else {
-            BidirectionalOneToOneMappedByEntity other = (BidirectionalOneToOneMappedByEntity) obj;
-            return id == other.id;
+            return id == ((BidirectionalOneToOneMappedByEntity) obj).id;
         }
     }
 
