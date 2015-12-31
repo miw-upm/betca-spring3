@@ -6,7 +6,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 import spring.configuration.SpringConfigurationController;
 
-public final class Main {
+public final class RelationMain {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurationController.class);

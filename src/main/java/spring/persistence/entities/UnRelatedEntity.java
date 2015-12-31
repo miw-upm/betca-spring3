@@ -1,7 +1,9 @@
 package spring.persistence.entities;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -61,7 +63,6 @@ public class UnRelatedEntity {
 
     public UnRelatedEntity(String nick, Gender gender, Calendar bornDate, String large, String[] strings, List<String> list,
             String noPersistent) {
-        super();
         this.nick = nick;
         this.gender = gender;
         this.bornDate = bornDate;
@@ -69,6 +70,10 @@ public class UnRelatedEntity {
         this.strings = strings;
         this.list = list;
         this.noPersistent = noPersistent;
+    }
+
+    public UnRelatedEntity(String nick) {
+        this(nick, Gender.FEMALE, new GregorianCalendar(), "", null, new ArrayList<String>(), "");
     }
 
     @Override
@@ -130,4 +135,13 @@ public class UnRelatedEntity {
     public String getNoPersistent() {
         return noPersistent;
     }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setLarge(String large) {
+        this.large = large;
+    }
+    
 }
