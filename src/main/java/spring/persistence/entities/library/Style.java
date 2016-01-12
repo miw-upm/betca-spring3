@@ -1,5 +1,6 @@
 package spring.persistence.entities.library;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ public class Style {
     @GeneratedValue
     private int id;
 
+    @Column(unique = true, nullable = false, length = 30)
     private String name;
     
     private String description;
