@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 // Parámetro name opcional: se indica el nombre de la tabla
-// Nombre por defecto de la tabla: nombre de la clase en minusculas
+// Nombre por defecto de la tabla: nombre de la clase (UnRelatedEntity)
 @Entity(name = "other_name_for_unrelatedentity")
 public class UnRelatedEntity {
 

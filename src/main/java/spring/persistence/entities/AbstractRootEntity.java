@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 //InheritanceType.JOINED: Una tabla por clase
 //InheritanceType.SINGLE_TABLE: En una tabla se mapea todo
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class AbstractRootEntity {
     @Id
     @GeneratedValue
