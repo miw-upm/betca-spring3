@@ -23,23 +23,27 @@ public class QueryJPQLController {
                 entityList.add(new UnRelatedEntity("JPQL" + i));
             }
         }
+        entityList.add(new UnRelatedEntity("SQL666"));
+        
         entityList.get(6).setLarge("large");
         unRelatedDao.save(entityList);
         System.out.println(">>>> UnRelatedEntity JPQL...");
 
-        System.out.print("         select u.nick from other_name_for_unrelatedentity u where u.nick like ?1... JPQL0%");
+        System.out.print("         select u.nick from other_name_for_unrelatedentity u where u.nick like ?1... JPQL0% >>>>>");
         for (String nick : unRelatedDao.findNickByNickLike("JPQL0%")) {
             System.out.print(" " + nick);
         }
         System.out.println();
         
-        System.out.print("         select u.id from other_name_for_unrelatedentity u where u.id > ?1 and u.id < ?2... 20,25");
+        System.out.print("         select u.id from other_name_for_unrelatedentity u where u.id > ?1 and u.id < ?2... 20,25 >>>>>");
         for (Integer id : unRelatedDao.findIdByIdBetween(20, 25)) {
             System.out.print(" " + id);
         }
         System.out.println();
         
-
+        System.out.println(">>>> UnRelatedEntity SQL...");
+        System.out.print("         SELECT * FROM other_name_for_unrelatedentity WHERE KCIN = ?1... SQL666 >>>>>");
+        System.out.println(" " + unRelatedDao.findByNick("SQL666"));
     }
 
 }

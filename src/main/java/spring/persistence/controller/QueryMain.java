@@ -17,6 +17,8 @@ public final class QueryMain {
         System.out.println("----------ooo----------");
         context.getBean(QueryJPQLController.class).process();
         System.out.println("----------ooo----------");
+        context.getBean(MethodsImplementationController.class).process();
+        System.out.println("----------ooo----------");
         
         ((AbstractApplicationContext) context).close();
     }
