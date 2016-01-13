@@ -8,7 +8,7 @@ import spring.api.uris.AdminUris;
 
 @RestController
 @RequestMapping(AdminUris.ADMINS)
-public class AdminsApi {
+public class AdminResource {
 
     @RequestMapping(value = AdminUris.START, method = RequestMethod.GET)
     public String start() {

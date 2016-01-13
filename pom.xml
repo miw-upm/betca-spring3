@@ -11,29 +11,29 @@
 	<name>${project.groupId}.${project.artifactId}</name>
 
 	<properties>
-        <!-- Java -->
+		<!-- Java -->
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
-        <!-- Maven -->
+		<!-- Maven -->
 		<maven.compiler.version>3.3</maven.compiler.version>
 		<maven.failsafe.version>2.12</maven.failsafe.version>
-        <!-- Logs -->
+		<!-- Logs -->
 		<log4j.version>2.3</log4j.version>
-        <!-- Pruebas -->
+		<!-- Pruebas -->
 		<junit.version>4.11</junit.version>
-        <!-- Java EE -->
+		<!-- Java EE -->
 		<javax.servlet.api.version>3.0.1</javax.servlet.api.version>
-        <!-- Spring -->
+		<!-- Spring -->
 		<spring.version>4.2.1.RELEASE</spring.version>
 		<spring.data.version>1.8.0.RELEASE</spring.data.version>
-        <!-- Data Base -->
+		<!-- Data Base -->
 		<mysql.connector.version>5.1.34</mysql.connector.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
 
-		<api.resource>/${project.artifactId}/api/v0</api.resource>
+		<api.resource>/${project.artifactId}.${project.version}/api/v0</api.resource>
 	</properties>
 
 	<profiles>
@@ -71,7 +71,7 @@
 				<logs.path>../logs</logs.path>
 				<database.user>miw**</database.user>
 				<database.password>********</database.password>
-                <database.url>jdbc:mysql://localhost:3306/${database.user}</database.url>
+				<database.url>jdbc:mysql://localhost:3306/${database.user}</database.url>
 				<!-- validate, create sólo una vez, cada vez que cambie la estructura 
 					de las tablas -->
 				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
@@ -90,7 +90,7 @@
 			<properties>
 				<logs.level.root>error</logs.level.root>
 				<logs.path>../logs</logs.path>
-                <database.url>jdbc:mysql://localhost:3306/jee</database.url>
+				<database.url>jdbc:mysql://localhost:3306/jee</database.url>
 				<database.user>root</database.user>
 				<database.password></database.password>
 				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
@@ -120,7 +120,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-            <scope>test</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -185,6 +185,12 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -1,12 +1,12 @@
-package spring.configurationWeb;
+package spring.configurationApi;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@EnableWebMvc
 @Configuration
+@EnableWebMvc
 @ComponentScan(basePackages = {"spring.api"})
-public class SpringConfigurationWeb extends WebMvcConfigurerAdapter{
+public class SpringConfigurationApi extends WebMvcConfigurerAdapter{
 }
