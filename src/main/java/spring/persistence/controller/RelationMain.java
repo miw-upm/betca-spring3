@@ -1,23 +1,10 @@
-package spring.persistence.mains;
+package spring.persistence.controller;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import spring.configuration.SpringConfigurationController;
-import spring.persistence.controller.BidirectionalManyToManyController;
-import spring.persistence.controller.BidirectionalManyToOneJoinColumnController;
-import spring.persistence.controller.BidirectionalOneToManyMappedByController;
-import spring.persistence.controller.BidirectionalOneToOneEmbeddedController;
-import spring.persistence.controller.BidirectionalOneToOneJoinColumnController;
-import spring.persistence.controller.BidirectionalOneToOneMappedByController;
-import spring.persistence.controller.UnRelatedController;
-import spring.persistence.controller.UnidirectionalManyToManyController;
-import spring.persistence.controller.UnidirectionalManyToOneJoinColumnController;
-import spring.persistence.controller.UnidirectionalOneToManyController;
-import spring.persistence.controller.UnidirectionalOneToManyEmbeddedController;
-import spring.persistence.controller.UnidirectionalOneToOneEmbeddedController;
-import spring.persistence.controller.UnidirectionalOneToOneJoinColumnController;
+import spring.configurationMain.SpringConfigurationController;
 
 public final class RelationMain {
 

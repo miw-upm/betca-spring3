@@ -1,11 +1,10 @@
-package spring.persistence.mains;
+package spring.persistence.controller;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import spring.configuration.SpringConfigurationController;
-import spring.persistence.controller.LibraryController;
+import spring.configurationMain.SpringConfigurationController;
 
 public final class LibraryMain {
 
