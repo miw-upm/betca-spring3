@@ -26,7 +26,7 @@ public class ApiExceptionHandler {
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler({UnauthorizedException.class})
-    public void Unauthorized(ApiException exception) {
+    public void unauthorized(ApiException exception) {
         ApiErrorMessage apiErrorMessage = new ApiErrorMessage(exception);
         LogManager.getLogger(this.getClass()).info("  ERROR: UNAUTHORIZED, " + apiErrorMessage);
     }
