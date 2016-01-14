@@ -17,15 +17,15 @@ import spring.api.exceptions.UnauthorizedException;
 import spring.api.exceptions.UserIdNotExistException;
 
 @RestController
-@RequestMapping(AdminUris.ADMINS)
+@RequestMapping(Uris.ADMINS)
 public class AdminResource {
 
-    @RequestMapping(value = AdminUris.START, method = RequestMethod.GET)
+    @RequestMapping(value = Uris.START, method = RequestMethod.GET)
     public String start() {
         return "OK. Servidor levantado";
     }
 
-    @RequestMapping(value = AdminUris.ECHO + AdminUris.ID, method = RequestMethod.GET)
+    @RequestMapping(value = Uris.ECHO + Uris.ID, method = RequestMethod.GET)
     public String eco(@RequestHeader(value = "token", required = false) String token, @PathVariable(value = "id") int id,
             @RequestParam(defaultValue = "Non") String param) {
         String response = "@PathVariable:" + id;
@@ -34,17 +34,17 @@ public class AdminResource {
         return response;
     }
 
-    @RequestMapping(value = AdminUris.BODY, method = RequestMethod.POST)
+    @RequestMapping(value = Uris.BODY, method = RequestMethod.POST)
     public Wrapper body(@RequestBody Wrapper wrapper) {
         return wrapper;
     }
 
-    @RequestMapping(value = AdminUris.BODY + AdminUris.STRING_LIST, method = RequestMethod.GET)
+    @RequestMapping(value = Uris.BODY + Uris.STRING_LIST, method = RequestMethod.GET)
     public List<String> bodyStringList() {
         return Arrays.asList("uno", "dos", "tres");
     }
 
-    @RequestMapping(value = AdminUris.BODY + AdminUris.WRAPPER_LIST, method = RequestMethod.GET)
+    @RequestMapping(value = Uris.BODY + Uris.WRAPPER_LIST, method = RequestMethod.GET)
     public List<Wrapper> bodyWrapperList() {
         Wrapper wrapper1 = new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
         Wrapper wrapper2 = new Wrapper(999, "last", Gender.MALE, new GregorianCalendar(1979, 07, 22));
@@ -52,7 +52,7 @@ public class AdminResource {
         return Arrays.asList(wrapper1, wrapper2, wrapper3);
     }
 
-    @RequestMapping(value = AdminUris.ERROR + AdminUris.ID, method = RequestMethod.GET)
+    @RequestMapping(value = Uris.ERROR + Uris.ID, method = RequestMethod.GET)
     public Wrapper error(@RequestHeader(value = "token") String token, @PathVariable(value = "id") int id) throws UserIdNotExistException,
             UnauthorizedException, MalformedHeaderException {
         if (id == 0) {

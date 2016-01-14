@@ -38,12 +38,12 @@ public class AdminResourceIT {
 
     @PostConstruct
     private void postConstruct() {
-        this.url = environment.getProperty("api.url") + environment.getProperty("api.resource");
+        this.url = environment.getProperty("server.uri") + environment.getProperty("deploy.uri") + Uris.SERVLET_MAP;
     }
 
     @Test
     public void testStart() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url + AdminUris.ADMINS + AdminUris.START).build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url + Uris.ADMINS + Uris.START).build().encode().toUri();
         String response = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<String>(new HttpHeaders()), String.class)
                 .getBody();
         assertEquals("OK. Servidor levantado", response);
@@ -61,8 +61,8 @@ public class AdminResourceIT {
         params.add("other", "ooooother");
 
         // Uri
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(AdminUris.ADMINS).path(AdminUris.ECHO).path("/666").queryParams(params)
-                .build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.ECHO).path("/666").queryParams(params).build().encode()
+                .toUri();
         System.out.println("URI: " + uri);
 
         String response = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<String>(headers), String.class).getBody();
@@ -71,7 +71,7 @@ public class AdminResourceIT {
 
     @Test
     public void testBodyWrapper() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(AdminUris.ADMINS).path(AdminUris.BODY).build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).build().encode().toUri();
         Wrapper wrapper = new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
         String json = new RestTemplate().exchange(uri, HttpMethod.POST, new HttpEntity<Object>(wrapper, new HttpHeaders()), String.class)
                 .getBody();
@@ -83,8 +83,7 @@ public class AdminResourceIT {
 
     @Test
     public void testBodyStringList() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(AdminUris.ADMINS).path(AdminUris.BODY).path(AdminUris.STRING_LIST).build()
-                .encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).path(Uris.STRING_LIST).build().encode().toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
         List<String> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
@@ -94,8 +93,7 @@ public class AdminResourceIT {
 
     @Test
     public void testBodyWrapperList() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(AdminUris.ADMINS).path(AdminUris.BODY).path(AdminUris.WRAPPER_LIST).build()
-                .encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).path(Uris.WRAPPER_LIST).build().encode().toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
         List<Wrapper> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
@@ -106,7 +104,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorNotToken() {
         try {
-            new RestBuilder<Wrapper>(url).path(AdminUris.ADMINS).path(AdminUris.ERROR).path("/66").get().build();
+            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/66").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.BAD_REQUEST, httpError.getStatusCode());
@@ -118,7 +116,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorMalFormedToken() {
         try {
-            new RestBuilder<Wrapper>(url).path(AdminUris.ADMINS).path(AdminUris.ERROR).path("/66").header("token", "kk").get().build();
+            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "kk").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.BAD_REQUEST, httpError.getStatusCode());
@@ -130,7 +128,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorNotExistToken() {
         try {
-            new RestBuilder<Wrapper>(url).path(AdminUris.ADMINS).path(AdminUris.ERROR).path("/66").header("token", "Basic kk").get().build();
+            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "Basic kk").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
@@ -142,7 +140,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorNotExistId() {
         try {
-            new RestBuilder<Wrapper>(url).path(AdminUris.ADMINS).path(AdminUris.ERROR).path("/0").header("token", "Basic good").get().build();
+            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/0").header("token", "Basic good").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.NOT_FOUND, httpError.getStatusCode());
@@ -153,7 +151,7 @@ public class AdminResourceIT {
 
     @Test
     public void testErrorOk() {
-        Wrapper response = new RestBuilder<Wrapper>(url).path(AdminUris.ADMINS).path(AdminUris.ERROR).path("/666").header("token", "Basic good")
+        Wrapper response = new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/666").header("token", "Basic good")
                 .clazz(Wrapper.class).get().build();
         System.out.println("INFO >>>>> " + response);
     }
