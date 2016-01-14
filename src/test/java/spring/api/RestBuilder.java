@@ -3,6 +3,8 @@ package spring.api;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,41 +21,26 @@ public class RestBuilder<T> {
 
     private String uri;
 
-    private String headerKey = null;
-
-    private String headerValue = "";
-
-    private String token = null;
+    private Map<String, String> headerValues;
 
     private String authorization = null;
 
     private Object body = null;
 
-    private MultiValueMap<String, String> params = new HttpHeaders();
+    private MultiValueMap<String, String> params;
 
     private Class<T> clazz;
 
+    private HttpMethod method;
+
     public RestBuilder(String serverUri) {
         this.uri = serverUri;
+        headerValues = new HashMap<>();
+        params = new HttpHeaders();
     }
 
-    public RestBuilder<T> uri(String uri) {
-        this.uri = this.uri + uri;
-        return this;
-    }
-
-    public RestBuilder<T> headerKey(String headerKey) {
-        this.headerKey = headerKey;
-        return this;
-    }
-
-    public RestBuilder<T> headerValue(String headerValue) {
-        this.headerValue = headerValue;
-        return this;
-    }
-
-    public RestBuilder<T> token(String tokenValue) {
-        this.token = tokenValue;
+    public RestBuilder<T> path(String path) {
+        this.uri = this.uri + path;
         return this;
     }
 
@@ -62,7 +49,7 @@ public class RestBuilder<T> {
         return this;
     }
 
-    public RestBuilder<T> authorization(String nick, String pass) {
+    public RestBuilder<T> basicAuth(String nick, String pass) {
         String auth = nick + ":" + pass;
         String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
         String authHeader = "Basic " + encodedAuth;
@@ -70,8 +57,13 @@ public class RestBuilder<T> {
         return this;
     }
 
-    public RestBuilder<T> param(String name, String value) {
-        this.params.add(name, value);
+    public RestBuilder<T> param(String key, String value) {
+        this.params.add(key, value);
+        return this;
+    }
+
+    public RestBuilder<T> header(String key, String value) {
+        this.headerValues.put(key, value);
         return this;
     }
 
@@ -96,13 +88,9 @@ public class RestBuilder<T> {
 
     private HttpHeaders headers() {
         HttpHeaders headers = new HttpHeaders();
-        if (headerKey != null) {
-            headers.set(headerKey, headerValue);
+        for (String key : headerValues.keySet()) {
+            headers.set(key, headerValues.get(key));
         }
-        if (token != null) {
-            headers.set("token", token);
-        }
-
         if (authorization != null) {
             headers.set("Authorization", authorization);
         }
@@ -117,27 +105,36 @@ public class RestBuilder<T> {
         }
     }
 
-    private T httpMethod(HttpMethod method) {
-        if (body == null) {
-            return restTemplate.exchange(this.uri(), method, new HttpEntity<String>(this.headers()), clazz).getBody();
-        } else {
+    public T build() {
+        if (body != null && !method.equals(HttpMethod.GET)) {
             return restTemplate.exchange(this.uri(), method, new HttpEntity<Object>(body, this.headers()), clazz).getBody();
+        } else {
+            return restTemplate.exchange(this.uri(), method, new HttpEntity<Object>(this.headers()), clazz).getBody();
         }
     }
 
-    public T get() {
-        return this.httpMethod(HttpMethod.GET);
+    public RestBuilder<T> post() {
+        this.method = HttpMethod.POST;
+        return this;
     }
 
-    public T post() {
-        return this.httpMethod(HttpMethod.POST);
+    public RestBuilder<T> get() {
+        this.method = HttpMethod.GET;
+        return this;
     }
 
-    public T delete() {
-        return this.httpMethod(HttpMethod.DELETE);
+    public RestBuilder<T> put() {
+        this.method = HttpMethod.PUT;
+        return this;
     }
 
-    public T put() {
-        return this.httpMethod(HttpMethod.PUT);
+    public RestBuilder<T> patch() {
+        this.method = HttpMethod.PATCH;
+        return this;
+    }
+
+    public RestBuilder<T> delete() {
+        this.method = HttpMethod.DELETE;
+        return this;
     }
 }
