@@ -11,7 +11,7 @@ import spring.api.RequestProcessingTimeInterceptor;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"spring.api"})
-public class ApiConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     // Se configuran los interceptores
     @Override
