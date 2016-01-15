@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 import java.util.ArrayList;
 import java.util.List;

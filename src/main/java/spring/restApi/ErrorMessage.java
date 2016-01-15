@@ -1,8 +1,8 @@
-package spring.api;
+package spring.restApi;
 
-import spring.api.exceptions.ApiException;
+import spring.restApi.exceptions.ApiException;
 
-public class ApiErrorMessage {
+public class ErrorMessage {
 
     private String error;
 
@@ -10,11 +10,11 @@ public class ApiErrorMessage {
 
     private String url;
 
-    public ApiErrorMessage(ApiException exception) {
+    public ErrorMessage(ApiException exception) {
         this(exception.getClass().getSimpleName(), exception.getMessage(), exception.getUrl());
     }
 
-    public ApiErrorMessage(String error, String description, String url) {
+    public ErrorMessage(String error, String description, String url) {
         this.error = error;
         this.description = description;
         this.url = url;

@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             System.out.println(">>>>>>>> No authorization");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             ObjectMapper mapper = new ObjectMapper();
-            response.getWriter().write(mapper.writeValueAsString(new ApiErrorMessage("error","description","url")));
+            response.getWriter().write(mapper.writeValueAsString(new ErrorMessage("error","description","url")));
             return false;
         } else {
             return true;

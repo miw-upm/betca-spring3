@@ -1,4 +1,4 @@
-package spring.api.exceptions;
+package spring.restApi.exceptions;
 
 public class UserIdNotExistException extends ApiException {
 

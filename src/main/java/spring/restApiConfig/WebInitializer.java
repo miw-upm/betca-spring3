@@ -1,4 +1,4 @@
-package spring.apiConfig;
+package spring.restApiConfig;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -8,7 +8,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import spring.api.Uris;
+import spring.restApi.Uris;
 
 public class WebInitializer implements WebApplicationInitializer {
 
@@ -19,7 +19,7 @@ public class WebInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext annConWebAppCtx = new AnnotationConfigWebApplicationContext();
 
         // Se configura el paquete de los ficheros de configuración
-        annConWebAppCtx.setConfigLocation("spring.apiConfig");
+        annConWebAppCtx.setConfigLocation("spring.restApiConfig");
 
         // Se configura el contexto utilizado en Securiry
         annConWebAppCtx.setServletContext(servletContext);

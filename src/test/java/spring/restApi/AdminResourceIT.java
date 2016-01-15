@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -25,6 +25,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import spring.restApi.Gender;
+import spring.restApi.Uris;
+import spring.restApi.Wrapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {ApiTestConfiguration.class})

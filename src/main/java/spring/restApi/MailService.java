@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;

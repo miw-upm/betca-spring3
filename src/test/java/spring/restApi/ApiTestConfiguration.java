@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

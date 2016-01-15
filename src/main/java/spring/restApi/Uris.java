@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 public class Uris {
     

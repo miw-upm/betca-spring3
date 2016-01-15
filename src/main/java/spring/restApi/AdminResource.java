@@ -1,4 +1,4 @@
-package spring.api;
+package spring.restApi;
 
 import java.util.Arrays;
 import java.util.GregorianCalendar;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import spring.api.exceptions.MalformedHeaderException;
-import spring.api.exceptions.UnauthorizedException;
-import spring.api.exceptions.UserIdNotExistException;
+import spring.restApi.exceptions.MalformedHeaderException;
+import spring.restApi.exceptions.UnauthorizedException;
+import spring.restApi.exceptions.UserIdNotExistException;
 
 @RestController
 @RequestMapping(Uris.ADMINS)

@@ -1,4 +1,4 @@
-package spring.api.exceptions;
+package spring.restApi.exceptions;
 
 public class ApiException extends Exception {
     private static final long serialVersionUID = 1613504205825647750L;
