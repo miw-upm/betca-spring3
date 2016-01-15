@@ -20,19 +20,27 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        System.out.println(">>>> UserDetailsServiceImpl");
-        List<GrantedAuthority> authorities = new ArrayList<>();
         if ("user".equals(username)) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-            // username,password,enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,authorities
-            return new User(username, new BCryptPasswordEncoder().encode("123456"), true, true, true, true, authorities);
+            return this.userBuilder(username, "123456", "USER");
+        } else if ("manager".equals(username)) {
+            return this.userBuilder(username, "123456", "MANAGER");
         } else if ("admin".equals(username)) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-            authorities.add(new SimpleGrantedAuthority("ROLE_MANAGER"));
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-            return new User(username, new BCryptPasswordEncoder().encode("123456"), true, true, true, true, authorities);
+            return this.userBuilder(username, "123456", "USER", "MANAGER", "ADMIN");
         } else {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
+    }
+
+    private User userBuilder(String username, String password, String... roles) {
+        boolean enabled = true;
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (String role : roles) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+        }
+        return new User(username, new BCryptPasswordEncoder().encode("123456"), enabled, accountNonExpired, credentialsNonExpired,
+                accountNonLocked, authorities);
     }
 }

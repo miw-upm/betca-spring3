@@ -38,6 +38,13 @@ public class SecurityResourceIT {
     }
 
     @Test
+    public void testManagerOK() {
+        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.MANAGER).basicAuth("manager", "123456")
+                .clazz(String.class).get().build();
+        System.out.println("INFO >>>>> " + response);
+    }
+
+    @Test
     public void testAdminUnauthorizedPassError() {
         try {
             new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.ADMIN).basicAuth("admin", "kk").clazz(String.class).get().build();
@@ -62,15 +69,29 @@ public class SecurityResourceIT {
             System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
         }
     }
-    
+
     @Test
-    public void testUserUnauthorizedUser() {
+    public void testUserUnauthorizedNonUser() {
         try {
             String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).clazz(String.class).get().build();
             System.out.println("INFO >>>>> " + response);
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
+            System.out.println("ERROR >>>>> " + httpError.getMessage());
+            System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
+        }
+    }
+
+    @Test
+    public void testManagerUnauthorizedUser() {
+        try {
+            String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.MANAGER).basicAuth("user", "123456")
+                    .clazz(String.class).get().build();
+            System.out.println("INFO >>>>> " + response);
+            fail();
+        } catch (HttpClientErrorException httpError) {
+            assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
             System.out.println("ERROR >>>>> " + httpError.getMessage());
             System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
         }
