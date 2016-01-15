@@ -1,4 +1,4 @@
-package spring.configurationApi;
+package spring.apiConfig;
 
 import java.util.Properties;
 
@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-public class SpringMailConfiguration {
+public class MailConfig {
     @Autowired
     private Environment environment;
 

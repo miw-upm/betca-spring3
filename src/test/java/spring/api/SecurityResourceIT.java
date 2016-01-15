@@ -62,5 +62,18 @@ public class SecurityResourceIT {
             System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
         }
     }
+    
+    @Test
+    public void testUserUnauthorizedUser() {
+        try {
+            String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).clazz(String.class).get().build();
+            System.out.println("INFO >>>>> " + response);
+            fail();
+        } catch (HttpClientErrorException httpError) {
+            assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
+            System.out.println("ERROR >>>>> " + httpError.getMessage());
+            System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
+        }
+    }
 
 }
