@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class LogAspect {
+public class Aspects {
 
     @Before("allMethodsPackage()")
     public void adviceA(JoinPoint jp) {
@@ -25,11 +25,11 @@ public class LogAspect {
         System.out.println("=== Consejo Antes de ejecutar a metodos que empienzan por me*:" + jp.getSignature().getName());
     }
 
-    @Before("args(name)")
-    public void adviceC(JoinPoint jp, Object name) {
-        System.out.println("=== Consejo Antes de ejecutar metodos con el argumento name:" + jp.getSignature().getName() + "(name):" + name);
+    @Before("args(arg)")
+    public void adviceC(JoinPoint jp, String arg) {
+        System.out.println("=== Consejo Antes de ejecutar metodos con un argumento de tipo String:" + jp.getSignature().getName() + "(arg):" + arg);
     }
-
+    
     @Before("@target(spring.aspect.GenericAnnotation)")
     public void adviceD(JoinPoint jp) {
         System.out.println("=== Consejo Antes de ejecutar metodos de una clase con GenericAnnotation:" + jp.getSignature().getName());

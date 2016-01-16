@@ -13,12 +13,8 @@ public class ServiceOne {
         System.out.println("-----------------> ServiceOne:method");
     }
 
-    public void argName(String name) {
-        System.out.println("-----------------> ServiceOne:argName(name=" + name + ")");
-    }
-
-    public void argString(String other) {
-        System.out.println("-----------------> ServiceOne:argString(other=" + other + ")");
+    public void argOneString(String name) {
+        System.out.println("-----------------> ServiceOne:argOneString(name=" + name + ")");
     }
 
     public int returnInt() {

@@ -13,7 +13,7 @@ public final class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigAspect.class);
         ServiceOne serviceOne = context.getBean(ServiceOne.class);
         serviceOne.method();
-        serviceOne.argName("cadena");
+        serviceOne.argOneString("cadena");
         serviceOne.returnInt();
         try {
             serviceOne.exception();
