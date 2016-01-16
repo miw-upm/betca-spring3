@@ -27,9 +27,10 @@ public class Aspects {
 
     @Before("args(arg)")
     public void adviceC(JoinPoint jp, String arg) {
-        System.out.println("=== Consejo Antes de ejecutar metodos con un argumento de tipo String:" + jp.getSignature().getName() + "(arg):" + arg);
+        System.out.println("=== Consejo Antes de ejecutar metodos con un argumento de tipo String:" + jp.getSignature().getName()
+                + "(arg):" + arg);
     }
-    
+
     @Before("@target(spring.aspect.GenericAnnotation)")
     public void adviceD(JoinPoint jp) {
         System.out.println("=== Consejo Antes de ejecutar metodos de una clase con GenericAnnotation:" + jp.getSignature().getName());
