@@ -5,12 +5,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 
 import spring.aspectTarget.ServiceOne;
-import spring.configurationMain.SpringConfigAspect;
+import spring.configurationMain.AspectConfig;
 
 public final class Main {
 
     public static void main(String[] args){
-        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigAspect.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AspectConfig.class);
         ServiceOne serviceOne = context.getBean(ServiceOne.class);
         serviceOne.method();
         serviceOne.argOneString("cadena");

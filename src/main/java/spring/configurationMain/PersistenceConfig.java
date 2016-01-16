@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories(basePackages = "spring.persistence.daos", repositoryImplementationPostfix = "Impl")
 @EnableTransactionManagement
-public class PersistenceConfiguration {
+public class PersistenceConfig {
 
     @Autowired
     private Environment environment;

@@ -10,11 +10,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import spring.configuration.SpringTestPersistenceConfiguration;
-import spring.configurationMain.PersistenceConfiguration;
+import spring.configurationMain.PersistenceConfig;
 import spring.persistence.daos.library.BookDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PersistenceConfiguration.class, SpringTestPersistenceConfiguration.class})
+@ContextConfiguration(classes = {PersistenceConfig.class, SpringTestPersistenceConfiguration.class})
 public class LibraryRepositoryTest {
 
     @Autowired

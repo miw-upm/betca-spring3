@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import spring.configurationMain.SpringConfigurationE1;
+import spring.configurationMain.AnnotationE1Config;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = SpringConfigurationE1.class)
+@ContextConfiguration(classes = AnnotationE1Config.class)
 public class MessageServiceTest {
 
     @Autowired
