@@ -20,5 +20,80 @@ paths:
       responses:
         200:
           description: successful response
+          
+  /admins/echo/{id}:
+    get:
+      tags:
+        - admins
+      summary: Realiza un eco.
+      description: Realiza un eco. 
+      parameters:
+        - name: token
+          description: token...
+          in: header
+          type: string
+          required: false
+        - name: id
+          description: id...
+          in: path
+          type: integer
+          format: int64
+          required: true
+        - name: param
+          description: param...
+          in: query
+          type: string
+          required: false
+      responses:      
+        200:
+          description: successful response
+
+  /admins/body:
+    post:
+      tags:
+        - admins
+      summary: Realiza un eco de un wrapper.
+      description: Realiza un eco. 
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: wrapper
+          description: wrapper...
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Wrapper'
+      responses:      
+        200:
+          description: successful response
+          schema:
+            $ref: '#/definitions/Wrapper'
+
+definitions:
+
+  ApiErrorMessage:
+    properties:
+      error:
+        type: string
+      message:
+        type: string
+        
+  Wrapper:
+    properties:
+      id:
+        type: integer
+        description: id del "evaluated"
+      name:
+        type: string
+        description: nombre del "evaluated"
+      gender:
+        type: string
+        description: sexo MALE, FEMALE;
+      bornDate:
+        type: string
+        format: date
+        description: fecha de nacimiento
 
   
