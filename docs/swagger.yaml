@@ -17,6 +17,8 @@ paths:
         - admins
       summary: Test API-REST
       description: Test API-REST. Prueba el api rest este funcionado
+      produces:
+        - text/plain; charset=utf-8
       responses:
         200:
           description: successful response
@@ -27,6 +29,8 @@ paths:
         - admins
       summary: Realiza un eco.
       description: Realiza un eco. 
+      produces:
+        - text/plain; charset=utf-8
       parameters:
         - name: token
           description: token...
