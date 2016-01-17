@@ -3,34 +3,25 @@ package spring.restApi;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import javax.annotation.PostConstruct;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
+import spring.configuration.TestsApiConfig;
 import spring.restApi.Uris;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ApiTestConfig.class})
+@ContextConfiguration(classes = {TestsApiConfig.class})
 @TestPropertySource(locations = "classpath:test.properties")
 public class SecurityResourceIT {
 
-    private String url;
+    private static final String url = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
 
-    @Autowired
-    private Environment environment;
-
-    @PostConstruct
-    private void postConstruct() {
-        this.url = environment.getProperty("server.uri") + environment.getProperty("deploy.uri") + Uris.SERVLET_MAP;
-    }
+    // private static final String url = "http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
 
     @Test
     public void testAdminOK() {

@@ -21,7 +21,7 @@
 		<!-- Maven -->
 		<maven.compiler.version>3.3</maven.compiler.version>
 		<maven.failsafe.version>2.19.1</maven.failsafe.version>
-        <tomcat7.maven.version>2.2</tomcat7.maven.version>
+		<tomcat7.maven.version>2.2</tomcat7.maven.version>
 		<!-- Logs -->
 		<log4j.version>2.3</log4j.version>
 		<!-- Pruebas -->
@@ -61,7 +61,7 @@
 				<database.password></database.password>
 				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
 				<server.uri>http://localhost:8080</server.uri>
-                <tomcat.url>http://localhost:8080/manager/text</tomcat.url>
+				<tomcat.url>http://localhost:8080/manager/text</tomcat.url>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=preproduction -->
@@ -83,7 +83,7 @@
 					de las tablas -->
 				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
 				<server.uri>http://art83.etsisi.upm.es:80</server.uri>
-                <tomcat.url>http://art83.etsisi.upm.es:80/manager/text</tomcat.url>
+				<tomcat.url>http://art83.etsisi.upm.es:80/manager/text</tomcat.url>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=production -->
@@ -102,8 +102,8 @@
 				<database.user>root</database.user>
 				<database.password></database.password>
 				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
-                <server.uri></server.uri>
-                <tomcat.url></tomcat.url>
+				<server.uri></server.uri>
+				<tomcat.url></tomcat.url>
 			</properties>
 		</profile>
 	</profiles>
@@ -170,11 +170,11 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<!-- Spring Data -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -223,12 +223,6 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-		<testResources>
-			<testResource>
-				<directory>src/test/resources</directory>
-				<filtering>true</filtering>
-			</testResource>
-		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -239,48 +233,43 @@
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.failsafe.version}</version>
-                <configuration>
-                    <includes>
-                        <include>**/*IT.java</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>integration-test</id>
-                        <goals>
-                            <goal>integration-test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>verify</id>
-                        <goals>
-                            <goal>verify</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>${tomcat7.maven.version}</version>
-                <configuration>
-                    <path>/${project.build.finalName}</path>
-                    <update>true</update>
-                    <url>${tomcat.url}</url>
-                    <username>nyuron</username>
-                    <password>nyuron.15</password>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven.failsafe.version}</version>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</execution>
+					<execution>
+						<id>verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>${tomcat7.maven.version}</version>
+				<configuration>
+					<path>/${project.build.finalName}</path>
+					<update>true</update>
+					<url>${tomcat.url}</url>
+					<username>nyuron</username>
+					<password>nyuron.15</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

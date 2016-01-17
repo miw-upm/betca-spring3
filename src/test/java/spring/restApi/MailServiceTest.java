@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import spring.configuration.TestsMailConfiguration;
 import spring.restApi.MailService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestMailConfiguration.class})
+@ContextConfiguration(classes = {TestsMailConfiguration.class})
 public class MailServiceTest {
 
     @Autowired

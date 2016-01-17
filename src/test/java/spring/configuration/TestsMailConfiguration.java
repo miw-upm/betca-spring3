@@ -1,4 +1,4 @@
-package spring.restApi;
+package spring.configuration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +9,6 @@ import spring.restApiConfig.MailConfig;
 @Configuration
 @Import({MailConfig.class})
 @ComponentScan({"spring.restApi"})
-public class TestMailConfiguration {
+public class TestsMailConfiguration {
 
 }

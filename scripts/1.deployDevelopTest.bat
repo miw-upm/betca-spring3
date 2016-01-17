@@ -33,7 +33,7 @@ rd /s /q temp
 mkdir temp
 cd webapps
 del *.war /q
-rd /s /q net.nyuron.nyuronApi.1.1.0-SNAPSHOT
+rd /s /q JEE.Spring.0.0.1-SNAPSHOT
 
 exit
 
