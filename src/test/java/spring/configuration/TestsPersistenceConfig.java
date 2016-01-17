@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "spring.persistence.daos")
-public class SpringTestPersistenceConfiguration {
+public class TestsPersistenceConfig {
     
 }

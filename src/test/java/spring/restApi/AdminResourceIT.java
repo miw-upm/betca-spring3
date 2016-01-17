@@ -43,6 +43,7 @@ public class AdminResourceIT {
     @PostConstruct
     private void postConstruct() {
         this.url = environment.getProperty("server.uri") + environment.getProperty("deploy.uri") + Uris.SERVLET_MAP;
+        System.out.println(">>>>>>>>>>>>>>>> URI:::::"+url);
     }
 
     @Test

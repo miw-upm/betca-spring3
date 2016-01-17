@@ -20,7 +20,8 @@ public class RequestProcessingTimeInterceptor extends HandlerInterceptorAdapter 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
             throws Exception {
         long startTime = (Long) request.getAttribute("startTime");
-        System.out.println(">>>>>> ProcessingTime:" + request.getRequestURL().toString() + "::" + (System.currentTimeMillis() - startTime));
+        System.out.println("[INFO ] ProcessingTime:" + request.getRequestURL().toString() + "::" + (System.currentTimeMillis() - startTime)
+                + "ms");
     }
 
 }

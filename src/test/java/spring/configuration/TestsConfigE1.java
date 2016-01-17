@@ -9,7 +9,7 @@ import spring.injection.annotation.e1.MessageServiceMock;
 
 @Configuration
 @ComponentScan(basePackages = "spring.injection.annotation.e1")
-public class SpringTestConfigurationE1 {
+public class TestsConfigE1 {
     
     @Bean
     public MessageService messageService() {

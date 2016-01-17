@@ -21,6 +21,7 @@
 		<!-- Maven -->
 		<maven.compiler.version>3.3</maven.compiler.version>
 		<maven.failsafe.version>2.12</maven.failsafe.version>
+        <tomcat7.maven.version>2.2</tomcat7.maven.version>
 		<!-- Logs -->
 		<log4j.version>2.3</log4j.version>
 		<!-- Pruebas -->
@@ -61,6 +62,7 @@
 				<database.password></database.password>
 				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
 				<server.uri>http://localhost:8080</server.uri>
+                <tomcat.url>http://localhost:8080/manager/text</tomcat.url>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=preproduction -->
@@ -75,13 +77,14 @@
 			<properties>
 				<logs.level>debug</logs.level>
 				<logs.path>../logs</logs.path>
-				<database.user>miw**</database.user>
-				<database.password>********</database.password>
+				<database.user>miw33</database.user>
+				<database.password>289345117</database.password>
 				<database.url>jdbc:mysql://localhost:3306/${database.user}</database.url>
 				<!-- validate, create sólo una vez, cada vez que cambie la estructura 
 					de las tablas -->
 				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
-				<server.uri>http://${database.user}.calamar.etsisi.upm.es:8080</server.uri>
+				<server.uri>http://art83.etsisi.upm.es:80</server.uri>
+                <tomcat.url>http://art83.etsisi.upm.es:80/manager/text</tomcat.url>
 			</properties>
 		</profile>
 		<!-- mvn install -Denvironment.type=production -->
@@ -100,6 +103,8 @@
 				<database.user>root</database.user>
 				<database.password></database.password>
 				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+                <server.uri></server.uri>
+                <tomcat.url></tomcat.url>
 			</properties>
 		</profile>
 	</profiles>
@@ -266,6 +271,18 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${tomcat7.maven.version}</version>
+                <configuration>
+                    <path>/${project.build.finalName}</path>
+                    <update>true</update>
+                    <url>${tomcat.url}</url>
+                    <username>nyuron</username>
+                    <password>nyuron.15</password>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
