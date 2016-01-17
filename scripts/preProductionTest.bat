@@ -10,9 +10,7 @@ echo .
 
 cd %workspace%
 
-call mvn clean -Dmaven.test.skip=true package -Denvironment.type=preproduction
-
-call mvn -Dmaven.test.skip=true verify -Denvironment.type=preproduction 
+call mvn clean -Dmaven.test.skip=true verify -Denvironment.type=preproduction 
 
 pause
 exit

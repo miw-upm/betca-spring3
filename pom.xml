@@ -20,7 +20,7 @@
 		<jdk.version>1.8</jdk.version>
 		<!-- Maven -->
 		<maven.compiler.version>3.3</maven.compiler.version>
-		<maven.failsafe.version>2.12</maven.failsafe.version>
+		<maven.failsafe.version>2.19.1</maven.failsafe.version>
         <tomcat7.maven.version>2.2</tomcat7.maven.version>
 		<!-- Logs -->
 		<log4j.version>2.3</log4j.version>
@@ -39,7 +39,6 @@
 		<hibernate.version>4.3.8.Final</hibernate.version>
 		<!-- EMail -->
 		<javax.mail.version>1.4.3</javax.mail.version>
-
 		<deploy.uri>/${deploy}</deploy.uri>
 	</properties>
 
@@ -97,7 +96,7 @@
 				</property>
 			</activation>
 			<properties>
-				<logs.level.root>error</logs.level.root>
+				<logs.level>error</logs.level>
 				<logs.path>../logs</logs.path>
 				<database.url>jdbc:mysql://localhost:3306/jee</database.url>
 				<database.user>root</database.user>
@@ -131,7 +130,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -241,36 +239,36 @@
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${maven.failsafe.version}</version>
-				<configuration>
-					<includes>
-						<include>**/*IT.java</include>
-					</includes>
-				</configuration>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-					</execution>
-					<execution>
-						<id>verify</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*IT.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>verify</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>

@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import spring.restApi.RequestProcessingTimeInterceptor;
-import spring.restApi.Uris;
 
 @Configuration
 @EnableWebMvc
@@ -20,15 +19,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new RequestProcessingTimeInterceptor()).addPathPatterns("/admins/**").excludePathPatterns("/foo/**");
     }
-    
-    //CORS
+
+    // CORS
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping(Uris.SERVLET_MAP + "/**")
-            .allowedOrigins("*").maxAge(3600)
-            .allowedMethods("POST","PUT","PATH","GET","DELETE","OPTIONS")
-            .allowedHeaders("Authorization");
+        registry.addMapping("/**").allowedOrigins("*").maxAge(3600);
     }
-
 
 }

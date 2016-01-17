@@ -1,0 +1,24 @@
+swagger: '2.0'
+
+info:
+  title: JEE. Spring
+  description: API-REST
+  version: "0.0.1.SNAPSHOT"
+host: art83.etsisi.upm.es
+schemes:
+  - http
+basePath: /JEE.Spring.0.0.1-SNAPSHOT/api/v0
+
+paths:
+          
+  /admins/start:
+    get:
+      tags:
+        - admins
+      summary: Test API-REST
+      description: Test API-REST. Prueba el api rest este funcionado
+      responses:
+        200:
+          description: successful response
+
+  

@@ -31,7 +31,7 @@ import spring.restApi.Uris;
 import spring.restApi.Wrapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ApiTestConfiguration.class})
+@ContextConfiguration(classes = {ApiTestConfig.class})
 @TestPropertySource(locations = "classpath:test.properties")
 public class AdminResourceIT {
 
@@ -42,8 +42,10 @@ public class AdminResourceIT {
 
     @PostConstruct
     private void postConstruct() {
-        this.url = environment.getProperty("server.uri") + environment.getProperty("deploy.uri") + Uris.SERVLET_MAP;
-        System.out.println(">>>>>>>>>>>>>>>> URI:::::"+url);
+        //this.url = environment.getProperty("server.uri") + environment.getProperty("deploy.uri") + Uris.SERVLET_MAP;
+        //System.out.println(">>>>>>>>>>>>>>>> URI:::::"+url);
+        //url="http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
+        url="http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
     }
 
     @Test

@@ -10,7 +10,7 @@ echo .
 
 cd %workspace%
 
-call mvn -Dmaven.test.skip=true tomcat7:redeploy -Denvironment.type=preproduction
+call mvn clean -Dmaven.test.skip=true tomcat7:redeploy -Denvironment.type=preproduction
 
 pause
 exit

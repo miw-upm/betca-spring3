@@ -18,7 +18,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import spring.restApi.Uris;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ApiTestConfiguration.class})
+@ContextConfiguration(classes = {ApiTestConfig.class})
 @TestPropertySource(locations = "classpath:test.properties")
 public class SecurityResourceIT {
 

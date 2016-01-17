@@ -5,7 +5,7 @@
 			<PatternLayout
 				pattern="[%-5level] %d{dd/MMM HH:mm:ss} %-30.30c{2} --> %msg%n" />
 		</Console>
-		<RollingFile name="RollingFile" fileName="${logs.path}/miw.JavaWeb.log"
+		<RollingFile name="RollingFile" fileName="${logs.path}/miw.log"
 			filePattern="${logs.path}/miw.JavaWeb-%d{yyyy-MM-dd.HH}-%i.log">
 			<PatternLayout>
 				<pattern>[%-5level] %d{dd-MMM HH:mm:ss} %-30.30c{2} --> %msg%n
@@ -18,7 +18,7 @@
 		</RollingFile>
 	</appenders>
 	<loggers>
-		<Logger name="es.upm.miw" level="${logs.level}" additivity="false">
+		<Logger name="spring" level="${logs.level}" additivity="false">
 			<AppenderRef ref="Console" />
 			<appenderRef ref="RollingFile" />
 		</Logger>
