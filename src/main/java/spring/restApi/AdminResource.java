@@ -17,7 +17,7 @@ import spring.restApi.exceptions.UnauthorizedException;
 import spring.restApi.exceptions.UserIdNotExistException;
 
 @RestController
-@RequestMapping(Uris.ADMINS)
+@RequestMapping(Uris.SERVLET_MAP + Uris.ADMINS)
 public class AdminResource {
 
     @RequestMapping(value = Uris.START, method = RequestMethod.GET)

@@ -1,4 +1,4 @@
-package spring.configurationMain;
+package spring.config.enterprise;
 
 import java.util.Properties;
 

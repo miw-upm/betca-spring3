@@ -1,4 +1,4 @@
-package spring.restApiConfig;
+package spring.config.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

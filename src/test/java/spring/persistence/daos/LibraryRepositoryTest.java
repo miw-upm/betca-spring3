@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import spring.config.enterprise.PersistenceConfig;
 import spring.configuration.TestsPersistenceConfig;
-import spring.configurationMain.PersistenceConfig;
 import spring.persistence.daos.library.BookDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -1,4 +1,4 @@
-package spring.restApiConfig;
+package spring.config.enterprise;
 
 import java.util.Properties;
 

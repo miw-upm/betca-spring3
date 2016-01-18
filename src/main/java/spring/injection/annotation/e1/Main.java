@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import spring.configurationMain.AnnotationE1Config;
+import spring.config.test.AnnotationE1Config;
 
 public final class Main {
 

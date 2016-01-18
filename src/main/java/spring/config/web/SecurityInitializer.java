@@ -1,4 +1,4 @@
-package spring.restApiConfig;
+package spring.config.web;
  
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
  

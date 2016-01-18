@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @PreAuthorize("authenticated")//Opcion alternativa a las rutas http
 @RestController
-@RequestMapping(Uris.SECURITY)
+@RequestMapping(Uris.SERVLET_MAP + Uris.SECURITY)
 public class SecurityResource {
 
     @RequestMapping(value = Uris.USER, method = RequestMethod.GET)

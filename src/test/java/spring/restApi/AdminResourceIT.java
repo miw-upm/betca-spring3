@@ -15,7 +15,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
@@ -29,11 +28,12 @@ import spring.restApi.Wrapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestsApiConfig.class})
-@TestPropertySource(locations = "classpath:test.properties")
+// @TestPropertySource(locations = "classpath:test.properties")
 public class AdminResourceIT {
 
     private static final String url = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
-    //private static final String url = "http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
+
+    // private static final String url = "http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
 
     @Test
     public void testStart() {
@@ -55,8 +55,8 @@ public class AdminResourceIT {
         params.add("other", "ooooother");
 
         // Uri
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.ECHO).path("/666").queryParams(params).build()
-                .encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.ECHO).path("/666").queryParams(params).build().encode()
+                .toUri();
         System.out.println("URI: " + uri);
 
         String response = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<String>(headers), String.class).getBody();
@@ -87,8 +87,7 @@ public class AdminResourceIT {
 
     @Test
     public void testBodyWrapperList() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).path(Uris.WRAPPER_LIST).build().encode()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).path(Uris.WRAPPER_LIST).build().encode().toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
         List<Wrapper> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
