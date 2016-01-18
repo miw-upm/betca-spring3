@@ -29,7 +29,7 @@ public class WebInitializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
 
         // Se configura la ruta relativa del servlet
-        servlet.addMapping("/*");
+        servlet.addMapping("/");
     }
 
 }
