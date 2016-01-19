@@ -20,11 +20,11 @@ import spring.restApi.RequestProcessingTimeInterceptor;
 @ComponentScan(basePackages = {"spring.restApi", "spring.mvc"})
 @Import(value = {MailConfig.class})
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-    
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                        .addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
 
     // Se configuran los interceptores
