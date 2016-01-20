@@ -21,6 +21,10 @@
 <link href="<c:url value='/static/css/jumbotron.css' />"
 	rel="stylesheet">
 
+<!-- Custom styles for this template -->
+<link href="<c:url value='/static/css/blog.css' />" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -38,60 +42,63 @@
 				<a class="navbar-brand" href="<c:url value='home'/>">Spring MVC
 					4</a>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="text" placeholder="Name" class="form-control">
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
-					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
-				</form>
-			</div>
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Mi primer Spring MVC!!!</h1>
-			<p>Accede al controlador, este sitúa en el Model un String con la
-				clave "name" y la vista lo presenta mediante &#36;{name}</p>
-			<h3>Hello ${name}!!!</h3>
-		</div>
-	</div>
-
 	<div class="container">
 		<!-- Example row of columns -->
 		<div class="row">
-			<div class="col-md-4">
-				<h2>Lista de String</h2>
-				<p>En este caso, el controlador sitúa en el Model un
-					List&lt;String&gt; y lo presenta a partir de JSTL mediante la
-					etiqueta c:forEach...</p>
-				<ul>
-					<c:forEach var="var" items="${stringList}">
-						<li>...${var}</li>
-					</c:forEach>
-				</ul>
+			<div class="col-md-8">
+				<div class="table-responsive">
+					<table class="table table-hover table-condensed">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Id</th>
+								<th>name</th>
+								<th>age</th>
+								<th>email</th>
+								<th>password</th>
+								<th>country</th>
+								<th>languages</th>
+								<th>description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${userList}" var="user">
+								<tr>
+									<td>${user.id}</td>
+									<td>${user.name}</td>
+									<td>${user.age}</td>
+									<td>${user.email}</td>
+									<td>${user.password}</td>
+									<td>${user.country}</td>
+									<td>${user.languages}</td>
+									<td>${user.description}</td>
+									<td><a href="<c:url value='/delete-user/${user.id}' />"><span
+											class="label label-danger">Delete</span></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<h2>Acceso a cookies</h2>
-				<p>El framework puede injectar cookies al controlador mediante
-					anotaciones:@CookieValue, y este guarda en el Model el valor de la
-					cookie.</p>
-				<p>cookie: ${cookie}</p>
+			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+				<div class="sidebar-module sidebar-module-inset">
+					<h4>Acerca de las tablas</h4>
+					<p>Para que los contenidos de la tabla sean todavía más fáciles
+						de entender, añade la clase .table-hover para modificar
+						ligeramente el aspecto de las filas cuando el usuario pasa el
+						ratón por encima de ellas (sólo funciona para las filas dentro de
+						&lt;tbody&gt;).</p>
+					<p>Cuando una tabla es muy grande o cuando tienes muchas tablas
+						en una misma página, puede ser interesante mostrar sus contenidos
+						de forma más compacta. Añade la clase .table-condensed a tus
+						tablas y el padding se reducirá a la mitad</p>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<h2>HttpServletRequest</h2>
-				<p>Si el controlador define un parámetro de tipo:
-					HttpServletRequest, el framework lo injecta, y así, el
-					controlador tiene acceso a todos los parámetros de la petición, por
-					ejemplo a la IP del cliente. http.</p>
-				<h4>Ip: ${ip}</h4>
-			</div>
+			<!-- /.blog-sidebar -->
 		</div>
 
 		<hr>

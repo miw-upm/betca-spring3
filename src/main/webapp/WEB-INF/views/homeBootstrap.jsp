@@ -25,7 +25,6 @@
 <body>
 	<div class="navbar-wrapper">
 		<div class="container">
-
 			<nav class="navbar navbar-inverse navbar-static-top">
 				<div class="container">
 					<div class="navbar-header">
@@ -41,16 +40,23 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Home</a></li>
-							<li><a href="<c:url value="form"/>">Form</a></li>
-							<li><a href="<c:url value="greeting?name=JBB"/>">Greeting</a></li>
+							<li><a href="<c:url value="greeting"/>">Mi primer Spring</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Data <span class="caret"></span></a>
+								aria-expanded="false">Usuario<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li class="dropdown-header">Collection</li>
-									<li><a href="<c:url value="collection"/>">List</a></li>
+									<li class="dropdown-header">CRUD</li>
+									<li><a href="<c:url value='user-list'/>">Listar</a></li>
+									<li><a href="<c:url value="create-user"/>">Crear</a></li>
 								</ul></li>
 						</ul>
+						<form action="<c:url value='theme'/>"
+							class="navbar-form navbar-right" method="get">
+							<div class="form-group">
+								<input name="theme" type="text" placeholder="Theme" class="form-control">
+							</div>
+							<button type="submit" class="btn btn-success">Cambia</button>
+						</form>
 					</div>
 				</div>
 			</nav>
@@ -75,11 +81,12 @@
 					alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Inicio</h1>
-						<p>Un primer ejemplo</p>
+						<h1>Mi primer Spring</h1>
+						<p>Se accede al controlador, este crea una serie de datos y
+							los deja en el Model, y la vista los presenta</p>
 						<p>
 							<a class="btn btn-lg btn-primary"
-								href="<c:url value="greeting?name=JBB"/>" role="button">Probar</a>
+								href="<c:url value="greeting"/>" role="button">Probar</a>
 						</p>
 					</div>
 				</div>
@@ -90,11 +97,11 @@
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Formularios</h1>
-						<p>Ejemplo con Formularios</p>
+						<h1>Listar usuarios</h1>
+						<p>Muestra una tabla con la lista completa de usuarios</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="<c:url value="form"/>"
-								role="button">Probar</a>
+							<a class="btn btn-lg btn-primary"
+								href="<c:url value="user-list"/>" role="button">Probar</a>
 						</p>
 					</div>
 				</div>
@@ -105,11 +112,11 @@
 					alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Datos</h1>
-						<p>Colecciones de datos</p>
+						<h1>Crear usuario</h1>
+						<p>Saca un formulario para crear un nuevo usuario</p>
 						<p>
 							<a class="btn btn-lg btn-primary"
-								href="<c:url value="collection"/>" role="button">probar</a>
+								href="<c:url value="create-user"/>" role="button">probar</a>
 						</p>
 					</div>
 				</div>

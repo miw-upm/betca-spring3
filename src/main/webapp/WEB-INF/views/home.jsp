@@ -9,8 +9,21 @@
 
 </head>
 <H1>Home</H1>
-<p><a href="<c:url value="greeting"/>">Empezar</a></p>
-<p><a href="<c:url value="user-list"/>">Lista de usuarios</a></p>
-<p><a href="<c:url value="create-user"/>">Crear un usuario</a></p>
-</body> 
+<form action="<c:url value='theme'/>" method="get">
+	<p>
+		Theme:<input name="theme" type="text">
+		<button type="submit">Cambia</button>
+	</p>
+</form>
+
+<p>
+	<a href="<c:url value="greeting"/>">Empezar</a>
+</p>
+<p>
+	<a href="<c:url value="user-list"/>">Lista de usuarios</a>
+</p>
+<p>
+	<a href="<c:url value="create-user"/>">Crear un usuario</a>
+</p>
+</body>
 </html>

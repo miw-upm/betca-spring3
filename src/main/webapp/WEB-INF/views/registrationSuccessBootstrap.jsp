@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +22,13 @@
 <link href="<c:url value='/static/css/jumbotron.css' />"
 	rel="stylesheet">
 
+<!-- Custom styles for this template -->
+<link href="<c:url value='/static/css/blog.css' />" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="<c:url value='/static/css/signin.css' />" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -38,69 +46,21 @@
 				<a class="navbar-brand" href="<c:url value='home'/>">Spring MVC
 					4</a>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="text" placeholder="Name" class="form-control">
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
-					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
-				</form>
-			</div>
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Mi primer Spring MVC!!!</h1>
-			<p>Accede al controlador, este sitúa en el Model un String con la
-				clave "name" y la vista lo presenta mediante &#36;{name}</p>
-			<h3>Hello ${name}!!!</h3>
+			<h3>El usuario (${user.name}) ha sido creado satisfactoriamente</h3>
+			<p>
+				<a href="<c:url value='/user-list' />">Ir a Lista de Usuario</a>
+			</p>
+			<footer>
+				<p>&copy; UPM MIW ETSISI</p>
+			</footer>
 		</div>
 	</div>
-
-	<div class="container">
-		<!-- Example row of columns -->
-		<div class="row">
-			<div class="col-md-4">
-				<h2>Lista de String</h2>
-				<p>En este caso, el controlador sitúa en el Model un
-					List&lt;String&gt; y lo presenta a partir de JSTL mediante la
-					etiqueta c:forEach...</p>
-				<ul>
-					<c:forEach var="var" items="${stringList}">
-						<li>...${var}</li>
-					</c:forEach>
-				</ul>
-			</div>
-			<div class="col-md-4">
-				<h2>Acceso a cookies</h2>
-				<p>El framework puede injectar cookies al controlador mediante
-					anotaciones:@CookieValue, y este guarda en el Model el valor de la
-					cookie.</p>
-				<p>cookie: ${cookie}</p>
-			</div>
-			<div class="col-md-4">
-				<h2>HttpServletRequest</h2>
-				<p>Si el controlador define un parámetro de tipo:
-					HttpServletRequest, el framework lo injecta, y así, el
-					controlador tiene acceso a todos los parámetros de la petición, por
-					ejemplo a la IP del cliente. http.</p>
-				<h4>Ip: ${ip}</h4>
-			</div>
-		</div>
-
-		<hr>
-
-		<footer>
-			<p>&copy; UPM MIW ETSISI</p>
-		</footer>
-	</div>
-	<!-- /container -->
 
 
 	<!-- Bootstrap core JavaScript

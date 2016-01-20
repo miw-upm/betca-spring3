@@ -3,10 +3,12 @@ package spring.mvc;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,13 +17,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes({"name"})
+@Scope("session")
+@SessionAttributes("name")
 public class MmvController {
 
-    private static final String VIEW = "";// VIEW = "Bootstrap"
+    private String theme = "";
+
+    public MmvController() {
+    }
 
     @Autowired
     private UserService userService;
@@ -37,47 +44,57 @@ public class MmvController {
         if (model.asMap().get("name") == null) {
             model.addAttribute("name", "World");
         }
-        return "home" + VIEW;
+        return "home" + theme;
+    }
+
+    @RequestMapping("/theme")
+    public String theme(@RequestParam String theme, Model model) {
+        this.theme = theme;
+        return "home" + theme;
     }
 
     @RequestMapping(value = "/greeting")
-    public String greeting(@CookieValue("JSESSIONID") String cookie, HttpServletRequest request, Model model) {
+    public String greeting(@CookieValue("JSESSIONID") Cookie cookie, HttpServletRequest request, Model model) {
         model.addAttribute("stringList", Arrays.asList("uno", "dos", "tres"));
-        model.addAttribute("cookie", cookie);
+        model.addAttribute("cookie", cookie.getName());
         model.addAttribute("ip", request.getRemoteAddr());
-        return "greeting" + VIEW;
+        return "greeting" + theme;
     }
 
     @RequestMapping("/user-list")
     public String listUsers(Model model) {
         model.addAttribute("userList", userService.findAll());
-        return "userList" + VIEW;
+        return "userList" + theme;
     }
 
     @RequestMapping(value = {"/delete-user/{id}"}, method = RequestMethod.GET)
     public String deleteUser(@PathVariable int id) {
         userService.delete(id);
-        return "redirect:/user-list" + VIEW;
+        return "redirect:/user-list";
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.GET)
     public String createUser(Model model) {
         model.addAttribute("user", new User(userService.generateId(), "", 18, ""));
         model.addAttribute("languages", userService.languages());
-        return "createUser" + VIEW;
+        return "createUser" + theme;
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.POST)
     public String createUserSubmit(@Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("languages", userService.languages());
-            return "createUser" + VIEW;
+            return "createUser" + theme;
         } else {
-            userService.save(user);
-            model.addAttribute("name", user.getName());
-            return "registrationSuccess" + VIEW;
+            if (!userService.save(user)) {
+                bindingResult.rejectValue("id", "error.user", "Usuario ya existente");
+                model.addAttribute("languages", userService.languages());
+                return "createUser" + theme;
+            } else {
+                model.addAttribute("name", user.getName());
+                return "registrationSuccess" + theme;
+            }
         }
     }
-
 
 }
