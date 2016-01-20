@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,17 +39,23 @@
 				<a class="navbar-brand" href="<c:url value='home'/>">Spring MVC
 					4</a>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="text" placeholder="Name" class="form-control">
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
-					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
-				</form>
-			</div>
+			<c:if test="${name==null}">
+				<div id="navbar" class="navbar-collapse collapse">
+					<form:form action="login" class="navbar-form navbar-right"
+						method="post" modelAttribute="loginUser">
+						<div class="form-group">
+							<input name="id" type="number" placeholder="Id"
+								class="form-control" required>
+							<form:errors class="control-label" path="id" />
+						</div>
+						<div class="form-group">
+							<input name="password" type="password" placeholder="Password"
+								class="form-control">
+						</div>
+						<button type="submit" class="btn btn-success">Sign in</button>
+					</form:form>
+				</div>
+			</c:if>
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
@@ -87,9 +94,9 @@
 			<div class="col-md-4">
 				<h2>HttpServletRequest</h2>
 				<p>Si el controlador define un parámetro de tipo:
-					HttpServletRequest, el framework lo injecta, y así, el
-					controlador tiene acceso a todos los parámetros de la petición, por
-					ejemplo a la IP del cliente. http.</p>
+					HttpServletRequest, el framework lo injecta, y así, el controlador
+					tiene acceso a todos los parámetros de la petición, por ejemplo a
+					la IP del cliente. http.</p>
 				<h4>Ip: ${ip}</h4>
 			</div>
 		</div>

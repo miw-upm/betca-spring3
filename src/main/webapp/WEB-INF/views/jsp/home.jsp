@@ -10,8 +10,11 @@
 </head>
 <H1>Home</H1>
 <form action="<c:url value='theme'/>" method="get">
-	<p>
-		Theme:<input name="theme" type="text">
+	<p>Tema:
+		<select name="theme" class="form-control">
+			<option>jsp</option>
+			<option>bootstrap</option>
+		</select>
 		<button type="submit">Cambia</button>
 	</p>
 </form>

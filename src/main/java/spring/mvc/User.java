@@ -1,5 +1,6 @@
 package spring.mvc;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.constraints.Min;
@@ -31,11 +32,7 @@ public class User {
     }
 
     public User(int id, String name, int age, String email) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.email = email;
+        this(id,name,age,email,"","",Arrays.asList(),"");
     }
 
     public User(int id, String name, int age, String email, String password, String country, List<String> languages, String description) {

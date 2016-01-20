@@ -1,5 +1,6 @@
 package spring.mvc;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("name")
 public class MmvController {
 
-    private String theme = "";
+    private String theme = "jsp";
 
     public MmvController() {
     }
@@ -33,24 +34,21 @@ public class MmvController {
     @Autowired
     private UserService userService;
 
-    // Se ejecuta siempre
+    // Se ejecuta siempre y antes. Añade un atributo al Model
     @ModelAttribute("now")
     public String addDate() {
-        return new Date().toString();
+        return new SimpleDateFormat("EEEE, d MMM yyyy HH:mm:ss").format(new Date());
     }
 
     @RequestMapping("/home")
     public String home(Model model) {
-        if (model.asMap().get("name") == null) {
-            model.addAttribute("name", "World");
-        }
-        return "home" + theme;
+        return theme + "/home";
     }
 
     @RequestMapping("/theme")
     public String theme(@RequestParam String theme, Model model) {
         this.theme = theme;
-        return "home" + theme;
+        return theme + "/home";
     }
 
     @RequestMapping(value = "/greeting")
@@ -58,13 +56,24 @@ public class MmvController {
         model.addAttribute("stringList", Arrays.asList("uno", "dos", "tres"));
         model.addAttribute("cookie", cookie.getName());
         model.addAttribute("ip", request.getRemoteAddr());
-        return "greeting" + theme;
+        return theme + "/greeting";
     }
 
     @RequestMapping("/user-list")
     public String listUsers(Model model) {
         model.addAttribute("userList", userService.findAll());
-        return "userList" + theme;
+        return theme + "userList";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(LoginUser loginUser, BindingResult bindingResult, Model model) {
+        User user = userService.findOne(loginUser.getId());
+        if (user != null && user.getPassword().equals(loginUser.getPassword())) {
+            model.addAttribute("name", user.getName());
+        } else {
+            bindingResult.rejectValue("id", "error.loginUser", "Usuario o clave incorrecto");
+        }
+        return theme + "greeting";
     }
 
     @RequestMapping(value = {"/delete-user/{id}"}, method = RequestMethod.GET)
@@ -77,24 +86,21 @@ public class MmvController {
     public String createUser(Model model) {
         model.addAttribute("user", new User(userService.generateId(), "", 18, ""));
         model.addAttribute("languages", userService.languages());
-        return "createUser" + theme;
+        return theme + "createUser";
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.POST)
     public String createUserSubmit(@Valid User user, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("languages", userService.languages());
-            return "createUser" + theme;
-        } else {
-            if (!userService.save(user)) {
-                bindingResult.rejectValue("id", "error.user", "Usuario ya existente");
-                model.addAttribute("languages", userService.languages());
-                return "createUser" + theme;
-            } else {
+        if (!bindingResult.hasErrors()) {
+            if (userService.save(user)) {
                 model.addAttribute("name", user.getName());
                 return "registrationSuccess" + theme;
+            } else {
+                bindingResult.rejectValue("id", "error.user", "Usuario ya existente");
             }
         }
+        model.addAttribute("languages", userService.languages());
+        return theme + "createUser";
     }
 
 }

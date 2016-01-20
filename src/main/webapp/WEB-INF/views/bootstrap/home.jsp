@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,17 +9,11 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="MIW. Spring 4 MVC">
 <meta name="author" content="J.Bernal">
-
-<title>Spring 4 MVC con Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
 <link href="<c:url value='/static/css/bootstrap.css' />"
 	rel="stylesheet" />
-
-<!-- Custom styles for this template -->
 <link href="<c:url value='/static/css/carousel.css' />" rel="stylesheet" />
+<title>Spring 4 MVC con Bootstrap</title>
 </head>
-
 <!-- NAVBAR -->
 <body>
 	<div class="navbar-wrapper">
@@ -53,7 +46,11 @@
 						<form action="<c:url value='theme'/>"
 							class="navbar-form navbar-right" method="get">
 							<div class="form-group">
-								<input name="theme" type="text" placeholder="Theme" class="form-control">
+							Tema:
+								<select name="theme" class="form-control">
+									<option>jsp</option>
+									<option>bootstrap</option>
+								</select>
 							</div>
 							<button type="submit" class="btn btn-success">Cambia</button>
 						</form>
@@ -128,17 +125,13 @@
 		</a> <a class="right carousel-control" href="#myCarousel" role="button"
 			data-slide="next"> <span
 			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">PrÃ³ximo</span>
+			<span class="sr-only">Próximo</span>
 		</a>
+		<footer>
+			<p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
+		</footer>
 	</div>
-	<blockquote class="pull-right">
-		<p>${now}</p>
-	</blockquote>
-	<!-- /.carousel -->
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- ============================= -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<c:url value='/static/js/bootstrap.js' />"></script>
