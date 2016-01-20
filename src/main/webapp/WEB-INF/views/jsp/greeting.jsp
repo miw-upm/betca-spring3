@@ -9,6 +9,15 @@
 </head>
 <h1>Mi primer Spring MVC</h1>
 <h3>Hello ${name}!!!</h3>
+<c:if test="${name==null}">
+	<form:form action="login" method="post" modelAttribute="loginUser">
+		<input name="id" type="number" placeholder="Id" required="required">
+		<form:errors class="control-label" path="id" />
+		<input name="password" type="password" placeholder="Password">
+		<button type="submit" class="btn btn-success">Sign in</button>
+	</form:form>
+</c:if>
+
 <h5>Lista de Strings</h5>
 <ul>
 	<c:forEach var="var" items="${stringList}">

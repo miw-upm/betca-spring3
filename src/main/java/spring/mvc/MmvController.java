@@ -62,7 +62,7 @@ public class MmvController {
     @RequestMapping("/user-list")
     public String listUsers(Model model) {
         model.addAttribute("userList", userService.findAll());
-        return theme + "userList";
+        return theme + "/userList";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public class MmvController {
         } else {
             bindingResult.rejectValue("id", "error.loginUser", "Usuario o clave incorrecto");
         }
-        return theme + "greeting";
+        return theme + "/greeting";
     }
 
     @RequestMapping(value = {"/delete-user/{id}"}, method = RequestMethod.GET)
@@ -86,7 +86,7 @@ public class MmvController {
     public String createUser(Model model) {
         model.addAttribute("user", new User(userService.generateId(), "", 18, ""));
         model.addAttribute("languages", userService.languages());
-        return theme + "createUser";
+        return theme + "/createUser";
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.POST)
@@ -94,13 +94,13 @@ public class MmvController {
         if (!bindingResult.hasErrors()) {
             if (userService.save(user)) {
                 model.addAttribute("name", user.getName());
-                return "registrationSuccess" + theme;
+                return theme + "/registrationSuccess";
             } else {
                 bindingResult.rejectValue("id", "error.user", "Usuario ya existente");
             }
         }
         model.addAttribute("languages", userService.languages());
-        return theme + "createUser";
+        return theme + "/createUser";
     }
 
 }

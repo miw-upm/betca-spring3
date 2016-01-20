@@ -44,7 +44,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="<c:url value='home'/>">Spring MVC
-					4</a>
+					4</a> <a class="navbar-brand" href="<c:url value="user-list"/>">Crear</a>
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
@@ -57,7 +57,7 @@
 				<a href="<c:url value='/user-list' />">Ir a Lista de Usuario</a>
 			</p>
 			<footer>
-				<p>&copy; UPM MIW ETSISI</p>
+				<p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
 			</footer>
 		</div>
 	</div>

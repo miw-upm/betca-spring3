@@ -100,12 +100,10 @@
 				<h4>Ip: ${ip}</h4>
 			</div>
 		</div>
-
 		<hr>
-
-		<footer>
-			<p>&copy; UPM MIW ETSISI</p>
-		</footer>
+        <footer>
+            <p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
+        </footer>
 	</div>
 	<!-- /container -->
 

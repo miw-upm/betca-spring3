@@ -29,6 +29,7 @@ public class User {
     private String description;
  
     public User() {
+        this(0,"",18,"");
     }
 
     public User(int id, String name, int age, String email) {
@@ -36,7 +37,6 @@ public class User {
     }
 
     public User(int id, String name, int age, String email, String password, String country, List<String> languages, String description) {
-        super();
         this.id = id;
         this.name = name;
         this.age = age;
