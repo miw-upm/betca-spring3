@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -26,13 +27,17 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("name")
 public class MmvController {
 
+    @Autowired
+    private ServletContext servletContext;
+    
+    @Autowired
+    private UserService userService;
+    
     private String theme = "jsp";
 
     public MmvController() {
     }
 
-    @Autowired
-    private UserService userService;
 
     // Se ejecuta siempre y antes. Añade un atributo al Model
     @ModelAttribute("now")
