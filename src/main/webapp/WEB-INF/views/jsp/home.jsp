@@ -8,12 +8,13 @@
 <title>Spring 4 MVC con Bootstrap</title>
 
 </head>
-<H1>Home</H1>
+<H1>Home con ViewResolver: JSP</H1>
 <form action="<c:url value='theme'/>" method="get">
 	<p>Tema:
-		<select name="theme" class="form-control">
-			<option>jsp</option>
-			<option>bootstrap</option>
+		<select name="theme">
+		<c:forEach items="${themes}" var="theme">
+				<option>${theme}</option>
+			</c:forEach>
 		</select>
 		<button type="submit">Cambia</button>
 	</p>

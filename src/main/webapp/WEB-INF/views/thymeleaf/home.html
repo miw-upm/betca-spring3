@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <title>Thymeleaf</title>
 </head>
 <body>
-	<h2 th:text="${title}">Title</h2>
+	<h1>Home en Thymeleaf</h1>
+	<form th:action="@{/theme}" method="get" >
+		<p>
+			Tema: <select name="theme">
+				<option th:each="tm : ${themes}" th:value="${tm}" th:text="${tm}"></option>
+			</select>
+			<button type="submit">Cambia</button>
+		</p>
+	</form>
+
+	<p>
+        <a href="#">Empezar. En construcción</a>
+	</p>
+	<p>
+		<a href="#">Lista de usuarios. En construcción</a>
+	</p>
+	<p>
+		<a href="#">Crear un usuario. En construcción</a>
+	</p>
+
 </body>
 </html>

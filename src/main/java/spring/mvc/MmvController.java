@@ -3,6 +3,7 @@ package spring.mvc;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
@@ -27,17 +28,18 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("name")
 public class MmvController {
 
+    private static final List<String> THEMES = Arrays.asList("jsp", "bootstrap", "thymeleaf");
+
     @Autowired
     private ServletContext servletContext;
-    
+
     @Autowired
     private UserService userService;
-    
-    private String theme = "jsp";
+
+    private String theme = THEMES.get(0);
 
     public MmvController() {
     }
-
 
     // Se ejecuta siempre y antes. Añade un atributo al Model
     @ModelAttribute("now")
@@ -47,12 +49,14 @@ public class MmvController {
 
     @RequestMapping("/home")
     public String home(Model model) {
+        model.addAttribute("themes", THEMES);
         return theme + "/home";
     }
 
     @RequestMapping("/theme")
     public String theme(@RequestParam String theme, Model model) {
         this.theme = theme;
+        model.addAttribute("themes", THEMES);
         return theme + "/home";
     }
 

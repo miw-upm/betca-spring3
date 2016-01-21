@@ -46,10 +46,10 @@
 						<form action="<c:url value='theme'/>"
 							class="navbar-form navbar-right" method="get">
 							<div class="form-group">
-							Tema:
-								<select name="theme" class="form-control">
-									<option>jsp</option>
-									<option>bootstrap</option>
+								Tema: <select name="theme" class="form-control">
+									<c:forEach items="${themes}" var="theme">
+										<option>${theme}</option>
+									</c:forEach>
 								</select>
 							</div>
 							<button type="submit" class="btn btn-success">Cambia</button>
