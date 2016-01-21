@@ -70,8 +70,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public ViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
-        viewResolver.setViewNames(new String[]{"*thymeleaf/*"});
         viewResolver.setOrder(1);
+        viewResolver.setViewNames(new String[]{"*thymeleaf/*"});
         return viewResolver;
     }
     
@@ -80,9 +80,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setViewNames("*jsp/*","*bootstrap/*");
         viewResolver.setSuffix(".jsp");
         viewResolver.setOrder(2);
+        viewResolver.setViewNames("*jsp/*","*bootstrap/*");
         return viewResolver;
     }
 
