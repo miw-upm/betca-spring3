@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,59 +9,47 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>Jumbotron Template for Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
 <link href="<c:url value='/static/css/bootstrap.css' />"
 	rel="stylesheet">
-
-<!-- Custom styles for this template -->
 <link href="<c:url value='/static/css/jumbotron.css' />"
 	rel="stylesheet">
-
-<!-- Custom styles for this template -->
 <link href="<c:url value='/static/css/blog.css' />" rel="stylesheet">
-
-
+<title>Spring 4 MVC. UserList</title>
 </head>
 
 <body>
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='home'/>">Spring MVC
-					4</a><a class="navbar-brand" href="<c:url value="create-user"/>">Crear Usuario</a>
+				<a class="navbar-brand" href="<c:url value='/home'/>">Spring MVC</a><a
+					class="navbar-brand" href="<c:url value="/create-user"/>">Crear
+					Usuario</a>
 			</div>
-			<!--/.navbar-collapse -->
 		</div>
 	</nav>
 
 	<div class="container">
-		<!-- Example row of columns -->
 		<div class="row">
 			<div class="col-md-8">
 				<div class="table-responsive">
 					<table class="table table-hover table-condensed">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>Id</th>
-								<th>name</th>
-								<th>age</th>
-								<th>email</th>
-								<th>password</th>
-								<th>country</th>
-								<th>languages</th>
-								<th>description</th>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Email</th>
+								<th>Password</th>
+								<th>Native</th>
+								<th>Languages</th>
+								<th>Descript</th>
+								<th>#</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -73,11 +60,11 @@
 									<td>${user.age}</td>
 									<td>${user.email}</td>
 									<td>${user.password}</td>
-									<td>${user.country}</td>
+									<td>${user.nativeLanguage}</td>
 									<td>${user.languages}</td>
 									<td>${user.description}</td>
-									<td><a href="<c:url value='/delete-user/${user.id}' />"><span
-											class="label label-danger">Delete</span></a></td>
+									<td><a class="btn btn-danger btn-xs"
+										href="<c:url value='/delete-user/${user.id}' />">Delete</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -87,30 +74,24 @@
 			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 				<div class="sidebar-module sidebar-module-inset">
 					<h4>Acerca de las tablas</h4>
-					<p>Para que los contenidos de la tabla sean todav√≠a m√°s f√°ciles
-						de entender, a√±ade la clase .table-hover para modificar
+					<p>Para que los contenidos de la tabla sean todavÌa m·s f·ciles
+						de entender, aÒade la clase .table-hover para modificar
 						ligeramente el aspecto de las filas cuando el usuario pasa el
-						rat√≥n por encima de ellas (s√≥lo funciona para las filas dentro de
+						ratÛn por encima de ellas (sÛlo funciona para las filas dentro de
 						&lt;tbody&gt;).</p>
 					<p>Cuando una tabla es muy grande o cuando tienes muchas tablas
-						en una misma p√°gina, puede ser interesante mostrar sus contenidos
-						de forma m√°s compacta. A√±ade la clase .table-condensed a tus
-						tablas y el padding se reducir√° a la mitad</p>
+						en una misma p·gina, puede ser interesante mostrar sus contenidos
+						de forma m·s compacta. AÒade la clase .table-condensed a tus
+						tablas y el padding se reducir· a la mitad</p>
 				</div>
 			</div>
 			<!-- /.blog-sidebar -->
 		</div>
 		<hr>
-        <footer>
-            <p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
-        </footer>
+		<footer>
+			<p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
+		</footer>
 	</div>
-	<!-- /container -->
-
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<c:url value='/static/js/bootstrap.js' />"></script>

@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,62 +9,33 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>Jumbotron Template for Bootstrap</title>
-
-<!-- Bootstrap core CSS -->
+<title>Spring 4 MVC. Greeting</title>
 <link href="<c:url value='/static/css/bootstrap.css' />"
 	rel="stylesheet">
-
-<!-- Custom styles for this template -->
 <link href="<c:url value='/static/css/jumbotron.css' />"
 	rel="stylesheet">
-
 </head>
 
 <body>
-
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='home'/>">Spring MVC
-					4</a>
+				<a class="navbar-brand" href="<c:url value='/home'/>">Spring MVC</a>
 			</div>
-			<c:if test="${name==null}">
-				<div id="navbar" class="navbar-collapse collapse">
-					<form:form action="login" class="navbar-form navbar-right"
-						method="post" modelAttribute="loginUser">
-						<div class="form-group">
-							<input name="id" type="number" placeholder="Id"
-								class="form-control" required>
-							<form:errors class="control-label" path="id" />
-						</div>
-						<div class="form-group">
-							<input name="password" type="password" placeholder="Password"
-								class="form-control">
-						</div>
-						<button type="submit" class="btn btn-success">Sign in</button>
-					</form:form>
-				</div>
-			</c:if>
-			<!--/.navbar-collapse -->
 		</div>
 	</nav>
-
-	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Mi primer Spring MVC!!!</h1>
-			<p>Accede al controlador, este sit√∫a en el Model un String con la
-				clave "name" y la vista lo presenta mediante &#36;{name}</p>
-			<h3>Hello ${name}!!!</h3>
+			<p>Acceso a un atributo llamado "name" del Model mediante:
+				&#36;{name}</p>
+			<h5>Hello ${name}!!!</h5>
 		</div>
 	</div>
 
@@ -74,8 +43,31 @@
 		<!-- Example row of columns -->
 		<div class="row">
 			<div class="col-md-4">
+				<h2>Acceso a un atributo del Model condicional (if)</h2>
+				<p>En este caso, si el atributo no existe o est· vacÌo, no se
+					presenta nada: &lt;c:if test="&#36;{not empty
+					name}"&gt;...&lt;/c:if&gt;</p>
+				<c:if test="${not empty name}">
+					<h5>Hello ${name}!!!</h5>
+				</c:if>
+			</div>
+			<div class="col-md-4">
+				<h2>Acceso a un atributo del Model con opciones (else-if)</h2>
+				<p>En este caso, si el atributo no existe o est· vacÌo, se
+					presenta una alternativa: &lt;c:choose>&lt;c:when test="&#36;{empty
+					name}">...&lt;c:otherwise>...</p>
+				<c:choose>
+					<c:when test="${empty name}">
+						<h5>No se encuentra el atributo</h5>
+					</c:when>
+					<c:otherwise>
+						<h5>Atributo encontrado con el valor: ${name}</h5>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="col-md-4">
 				<h2>Lista de String</h2>
-				<p>En este caso, el controlador sit√∫a en el Model un
+				<p>En este caso, el controlador sit˙a en el Model un
 					List&lt;String&gt; y lo presenta a partir de JSTL mediante la
 					etiqueta c:forEach...</p>
 				<ul>
@@ -84,6 +76,8 @@
 					</c:forEach>
 				</ul>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-4">
 				<h2>Acceso a cookies</h2>
 				<p>El framework puede injectar cookies al controlador mediante
@@ -93,24 +87,19 @@
 			</div>
 			<div class="col-md-4">
 				<h2>HttpServletRequest</h2>
-				<p>Si el controlador define un par√°metro de tipo:
-					HttpServletRequest, el framework lo injecta, y as√≠, el controlador
-					tiene acceso a todos los par√°metros de la petici√≥n, por ejemplo a
+				<p>Si el controlador define un par·metro de tipo:
+					HttpServletRequest, el framework lo injecta, y asÌ, el controlador
+					tiene acceso a todos los par·metros de la peticiÛn, por ejemplo a
 					la IP del cliente. http.</p>
-				<h4>Ip: ${ip}</h4>
+				<p>Ip: ${ip}</p>
 			</div>
+			<div class="col-md-4"></div>
 		</div>
 		<hr>
-        <footer>
-            <p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
-        </footer>
+		<footer>
+			<p>&nbsp;&nbsp;&copy; UPM-MIW --- ${now}</p>
+		</footer>
 	</div>
-	<!-- /container -->
-
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<c:url value='/static/js/bootstrap.js' />"></script>

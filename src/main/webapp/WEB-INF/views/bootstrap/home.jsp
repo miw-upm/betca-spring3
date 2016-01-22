@@ -12,9 +12,8 @@
 <link href="<c:url value='/static/css/bootstrap.css' />"
 	rel="stylesheet" />
 <link href="<c:url value='/static/css/carousel.css' />" rel="stylesheet" />
-<title>Spring 4 MVC con Bootstrap</title>
+<title>Spring 4 MVC. Home</title>
 </head>
-<!-- NAVBAR -->
 <body>
 	<div class="navbar-wrapper">
 		<div class="container">
@@ -24,43 +23,37 @@
 						<button type="button" class="navbar-toggle collapsed"
 							data-toggle="collapse" data-target="#navbar"
 							aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
+							<span
+								class="icon-bar"></span><span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Spring MVC 4</a>
+						<a class="navbar-brand" href="#">Spring MVC</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Home</a></li>
-							<li><a href="<c:url value="greeting"/>">Mi primer Spring</a></li>
+							<li><a href="<c:url value="/greeting"/>">Empezar</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Usuario<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-header">CRUD</li>
-									<li><a href="<c:url value='user-list'/>">Listar</a></li>
-									<li><a href="<c:url value="create-user"/>">Crear</a></li>
+									<li><a href="<c:url value='/user-list'/>">Listar</a></li>
+									<li><a href="<c:url value="/create-user"/>">Crear</a></li>
 								</ul></li>
 						</ul>
-						<form action="<c:url value='theme'/>"
-							class="navbar-form navbar-right" method="get">
-							<div class="form-group">
-								Tema: <select name="theme" class="form-control">
-									<c:forEach items="${themes}" var="theme">
-										<option>${theme}</option>
-									</c:forEach>
-								</select>
-							</div>
-							<button type="submit" class="btn btn-success">Cambia</button>
-						</form>
+						<ul class="nav navbar-nav navbar-right">
+							<c:forEach items="${themes}" var="theme">
+								<li><a class="btn btn-default btn-xs"
+									href="<c:url value="create-theme?theme=${theme}"/>">${theme}</a></li>;
+							</c:forEach>
+						</ul>
 					</div>
 				</div>
 			</nav>
 
 		</div>
 	</div>
-
 
 	<!-- Carousel
     ================================================== -->
@@ -78,12 +71,17 @@
 					alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Mi primer Spring</h1>
-						<p>Se accede al controlador, este crea una serie de datos y
-							los deja en el Model, y la vista los presenta</p>
+						<h1>Empezar con Spring MVC</h1>
+						<p>Se realiza una petición al dispatcher, este delega en el
+							controlador. El controlador traslada a la capa de negocio la
+							petición y obtiene los resultados. Prepara los datos de
+							presentación sobre el objeto Model y devuelve el control al
+							dispatcher. El dispatcher, solicita al ViewResolver que resuelva
+							la vista a presentar y le da el control a la vista. La vista los
+							presenta a partir de los datos del objeto Model</p>
 						<p>
 							<a class="btn btn-lg btn-primary"
-								href="<c:url value="greeting"/>" role="button">Probar</a>
+								href="<c:url value="/greeting"/>" role="button">Probar</a>
 						</p>
 					</div>
 				</div>
@@ -98,7 +96,7 @@
 						<p>Muestra una tabla con la lista completa de usuarios</p>
 						<p>
 							<a class="btn btn-lg btn-primary"
-								href="<c:url value="user-list"/>" role="button">Probar</a>
+								href="<c:url value="/user-list"/>" role="button">Probar</a>
 						</p>
 					</div>
 				</div>
@@ -113,7 +111,7 @@
 						<p>Saca un formulario para crear un nuevo usuario</p>
 						<p>
 							<a class="btn btn-lg btn-primary"
-								href="<c:url value="create-user"/>" role="button">probar</a>
+								href="<c:url value="/create-user"/>" role="button">probar</a>
 						</p>
 					</div>
 				</div>

@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Spring MVC. User List</title>
+<meta charset="utf-8">
+<title>Spring MVC. User List</title>
 </head>
 
 <body>
