@@ -74,7 +74,7 @@ public class MmvController {
         return theme + "/userList";
     }
     
-    @RequestMapping(value = {"/delete-user/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/delete-user/{id}"})
     public String deleteUser(@PathVariable int id, Model model) {
         userService.delete(id);
         model.addAttribute("userList", userService.findAll());

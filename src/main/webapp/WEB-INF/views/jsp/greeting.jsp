@@ -13,6 +13,21 @@
 	<h3>Acceso a un atributo del Model</h3>
 	<h5>Hello ${name}!!!</h5>
 
+	<h3>Acceso a un atributo del Model condicional (if)</h3>
+	<c:if test="${not empty name}">
+		<h5>Hello ${name}!!!</h5>
+	</c:if>
+
+	<h3>Acceso a un atributo del Model con opciones (else-if)</h3>
+	<c:choose>
+		<c:when test="${empty name}">
+			<p>No se encuentra el atributo</p>
+		</c:when>
+		<c:otherwise>
+			<p>Atributo encontrado con el valor: ${name}</p>
+		</c:otherwise>
+	</c:choose>
+
 	<h3>Lista de Strings</h3>
 	<ul>
 		<c:forEach var="var" items="${stringList}">
@@ -28,7 +43,7 @@
 		<a href="<c:url value="/home"/>">Home</a>
 	</p>
 
-    <p>UPM-MIW --- ${now}</p>
+	<p>UPM-MIW --- ${now}</p>
 
 </body>
 </html>
