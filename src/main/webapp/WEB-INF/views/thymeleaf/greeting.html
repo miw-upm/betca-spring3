@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Spring MVC. Greeting</title>
+</head>
+
+<body>
+	<h1>Saludos. Ejercicios básicos con Thymeleaf</h1>
+
+	<h3>Acceso a un atributo del Model</h3>
+	<p>
+		Hello <span th:text="${name}"></span>!!!
+	</p>
+
+	<h3>Acceso a un atributo del Model condicional (if)</h3>
+	<p th:if="${not #strings.isEmpty(name)}">
+		Hello <span th:text="${name}"></span>!!!
+	</p>
+
+	<h3>Acceso a un atributo del Model con opciones (else-if)</h3>
+	<p
+		th:text="${(#strings.isEmpty(name))?'No se encuentra el atributo':'Atributo encontrado'}"></p>
+
+	<h3>Lista de Strings</h3>
+	<ul>
+		<li th:each="var : ${stringList}" th:text="${var}"></li>
+	</ul>
+
+	<h3>Acceso por parte del controlador al contexto del Servlet</h3>
+	<p>
+		cookie:<span th:text="${cookie}"></span>
+	</p>
+	<p>
+		Ip:<span th:text="${ip}"></span>
+	</p>
+	<p>
+		Acceso directo httpServletRequest:getRemoteAddr()::<span
+			th:text="${#httpServletRequest.getRemoteAddr()}"></span>
+	</p>
+	<p>
+		<a th:href="@{/home}">Home</a>
+	</p>
+	<p>UPM-MIW --- ${now}</p>
+
+</body>
+</html>
