@@ -1,8 +1,9 @@
 package spring.mvc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -51,7 +52,12 @@ public class UserService {
         return id++;
     }
 
-    public List<String> languages() {
-        return Arrays.asList("es", "fr", "uk", "de");
+    public Map<String, String> languageMap() {
+        Map<String, String> languageMap = new HashMap<>();
+        languageMap.put("es", "Español");
+        languageMap.put("fr", "Francés");
+        languageMap.put("uk", "Inglés");
+        languageMap.put("de", "Alemán");
+        return languageMap;
     }
 }

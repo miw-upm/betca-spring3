@@ -22,34 +22,34 @@ public class User {
     
     private String password;
     
-    private String country;
+    private String nativeLanguage;
     
     private List<String> languages;
     
     private String description;
  
     public User() {
-        this(0,"",18,"");
+    }
+
+    public User(int id) {
+        this(id, "", 18, "");
     }
 
     public User(int id, String name, int age, String email) {
         this(id,name,age,email,"","",Arrays.asList(),"");
     }
 
-    public User(int id, String name, int age, String email, String password, String country, List<String> languages, String description) {
+    public User(int id, String name, int age, String email, String password, String nativeLanguage, List<String> languages, String description) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
         this.password = password;
-        this.country = country;
+        this.nativeLanguage = nativeLanguage;
         this.languages = languages;
         this.description = description;
     }
 
-    public User(int id) {
-        this(id, "", 18, "");
-    }
 
     public int getId() {
         return id;
@@ -91,12 +91,12 @@ public class User {
         this.password = password;
     }
 
-    public String getCountry() {
-        return country;
+    public String getNativeLanguage() {
+        return nativeLanguage;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setNativeLanguage(String nativeLanguage) {
+        this.nativeLanguage = nativeLanguage;
     }
 
     public List<String> getLanguages() {
@@ -133,8 +133,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", age=" + age + ", email=" + email + ", password=" + password + ", country="
-                + country + ", languages=" + languages + ", description=" + description + "]";
+        return "User [id=" + id + ", name=" + name + ", age=" + age + ", email=" + email + ", password=" + password + ", nativeLanguage="
+                + nativeLanguage + ", languages=" + languages + ", description=" + description + "]";
     }
 
 }

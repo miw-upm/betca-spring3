@@ -1,58 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<title>Form</title>
-<style>
-.error {
-	color: red;
-}
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Spring MVC</title>
+    <style>.error {color: red;}</style>
 </head>
 <body>
-	<h1>Form</h1>
-	<form:form action="create-user" method="post" modelAttribute="user">
+	<h1>Crear un usuario</h1>
+	<form:form action="create-user" modelAttribute="user">
 		<p>
-			Id:
-			<form:input path="id" />
+		    Id:
+			<form:input path="id" placeholder="Id" required="required"/>
 			<form:errors path="id" cssClass="error" />
 		</p>
 		<p>
-			Name:
-			<form:input path="name" />
+		    Name:
+			<form:input path="name" placeholder="Name" required="required"/>
 			<form:errors path="name" cssClass="error" />
 		</p>
 		<p>
-			Age:
-			<form:input path="age" />
+		    Age:
+			<form:input path="age" placeholder="Age"/>
 			<form:errors path="age" cssClass="error" />
 		<p>
-			Email:
-			<form:input path="email" />
-			<form:errors path="email" cssClass="error" />
+		    Email:
+			<form:input path="email" placeholder="Email" required="required"/>
 		</p>
 		<p>
-			Password:
-			<form:password path="password" />
+		    Password:
+			<form:password path="password" placeholder="Password" required="required" showPassword="true"/>
 		</p>
 		<p>
-			Country:
-			<form:radiobuttons path="country" items="${languages}" />
+            Idioma nativo:
+			<form:select path="nativeLanguage" items="${languageMap}" />
 		</p>
 		<p>
-			Languages:
-			<form:select path="languages" items="${languages}" />
+			Idiomas:
+			<form:checkboxes path="languages" items="${languageMap}" />
 		</p>
 		<p>
-			Description:
-			<form:textarea path="description" rows="3" cols="20" />
+		    Descriptción:
+			<form:textarea placeholder="Description" path="description" rows="3" cols="20" />
 		</p>
 		<p>
-			<input type="submit" value="Execute">
+			<input type="submit" value="Crear">
 		</p>
 	</form:form>
-	<a href="<c:url value="home"/>">Home</a>
+	
+	<a href="<c:url value="/home"/>">Home</a>
+
+    <p>UPM-MIW --- ${now}</p>
+	
 </body>
 </html>

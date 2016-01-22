@@ -53,7 +53,7 @@ public class MmvController {
         return theme + "/home";
     }
 
-    @RequestMapping("/theme")
+    @RequestMapping("/create-theme")
     public String theme(@RequestParam String theme, Model model) {
         this.theme = theme;
         model.addAttribute("themes", THEMES);
@@ -73,28 +73,18 @@ public class MmvController {
         model.addAttribute("userList", userService.findAll());
         return theme + "/userList";
     }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(LoginUser loginUser, BindingResult bindingResult, Model model) {
-        User user = userService.findOne(loginUser.getId());
-        if (user != null && user.getPassword().equals(loginUser.getPassword())) {
-            model.addAttribute("name", user.getName());
-        } else {
-            bindingResult.rejectValue("id", "error.loginUser", "Usuario o clave incorrecto");
-        }
-        return theme + "/greeting";
-    }
-
+    
     @RequestMapping(value = {"/delete-user/{id}"}, method = RequestMethod.GET)
-    public String deleteUser(@PathVariable int id) {
+    public String deleteUser(@PathVariable int id, Model model) {
         userService.delete(id);
-        return "redirect:/user-list";
+        model.addAttribute("userList", userService.findAll());
+        return theme + "/userList";
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.GET)
     public String createUser(Model model) {
-        model.addAttribute("user", new User(userService.generateId(), "", 18, ""));
-        model.addAttribute("languages", userService.languages());
+        model.addAttribute("user", new User(userService.generateId()));
+        model.addAttribute("languageMap", userService.languageMap());
         return theme + "/createUser";
     }
 
@@ -108,7 +98,7 @@ public class MmvController {
                 bindingResult.rejectValue("id", "error.user", "Usuario ya existente");
             }
         }
-        model.addAttribute("languages", userService.languages());
+        model.addAttribute("languageMap", userService.languageMap());
         return theme + "/createUser";
     }
 
