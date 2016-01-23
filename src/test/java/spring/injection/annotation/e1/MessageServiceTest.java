@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import spring.config.test.AnnotationE1Config;
+import spring.config.start.AnnotationE1Config;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AnnotationE1Config.class)
