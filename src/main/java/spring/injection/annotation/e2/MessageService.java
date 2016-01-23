@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Scope("prototype")
 @PropertySource("classpath:application.properties")
-//@PropertySource("file:///C:/Temp/application.properties")
-//@PropertySource("http://myserver/application.properties")
-
-    public class MessageService {
+// @PropertySource("file:///C:/Temp/application.properties")
+// @PropertySource("http://myserver/application.properties")
+public class MessageService {
 
     @Autowired
     private Environment environment;
