@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@Scope("session")
+@Scope(WebApplicationContext.SCOPE_SESSION)
 @SessionAttributes("name")
-public class MmvController {
+public class Presenter {
 
     private static final List<String> THEMES = Arrays.asList("jsp", "bootstrap", "thymeleaf");
 
@@ -38,12 +40,12 @@ public class MmvController {
 
     private String theme = THEMES.get(0);
 
-    public MmvController() {
+    public Presenter() {
     }
 
     // Se ejecuta siempre y antes. Añade un atributo al Model
     @ModelAttribute("now")
-    public String addDate() {
+    public String now() {
         return new SimpleDateFormat("EEEE, d MMM yyyy HH:mm:ss").format(new Date());
     }
 
@@ -54,10 +56,9 @@ public class MmvController {
     }
 
     @RequestMapping("/create-theme")
-    public String theme(@RequestParam String theme, Model model) {
+    public ModelAndView theme(@RequestParam String theme) {
         this.theme = theme;
-        model.addAttribute("themes", THEMES);
-        return theme + "/home";
+        return new ModelAndView(theme + "/home", "themes", THEMES);
     }
 
     @RequestMapping(value = "/greeting")
@@ -69,11 +70,12 @@ public class MmvController {
     }
 
     @RequestMapping("/user-list")
-    public String listUsers(Model model) {
-        model.addAttribute("userList", userService.findAll());
-        return theme + "/userList";
+    public ModelAndView listUsers(Model model) {
+        ModelAndView modelAndView = new ModelAndView(theme + "/userList");
+        modelAndView.addObject("userList", userService.findAll());
+        return modelAndView;
     }
-    
+
     @RequestMapping(value = {"/delete-user/{id}"})
     public String deleteUser(@PathVariable int id, Model model) {
         userService.delete(id);

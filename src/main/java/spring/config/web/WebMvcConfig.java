@@ -44,12 +44,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addMapping("/**").allowedOrigins("*").maxAge(3600);
     }
 
-
-    // <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-    // <property name="prefix" value="/WEB-INF/templates/" />
-    // <property name="suffix" value=".html" />
-    // <property name="templateMode" value="HTML5" />
-    // </bean>
+    // Thymeleaf
     @Bean
     public TemplateResolver templateResolver() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
@@ -58,7 +53,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         templateResolver.setTemplateMode("HTML5");
         return templateResolver;
     }
+    // <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+    // <property name="prefix" value="/WEB-INF/templates/" />
+    // <property name="suffix" value=".html" />
+    // <property name="templateMode" value="HTML5" />
+    // </bean>
 
+    // Thymeleaf
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -66,15 +67,17 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return templateEngine;
     }
 
+    // Thymeleaf
     @Bean
     public ViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setOrder(1);
-        viewResolver.setViewNames(new String[]{"thymeleaf/*"});
+        viewResolver.setViewNames(new String[] {"thymeleaf/*"});
         return viewResolver;
     }
-    
+
+    // JSP
     @Bean
     public ViewResolver jspViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -82,8 +85,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         viewResolver.setOrder(2);
-        viewResolver.setViewNames("jsp/*","bootstrap/*");
+        // Incompatible con "redirect:/action"
+        viewResolver.setViewNames("jsp/*", "bootstrap/*");
         return viewResolver;
     }
+    // <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    // <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    // <property name="prefix" value="/WEB-INF/jsp/"/>
+    // <property name="suffix" value=".jsp"/>
+    // </bean>
 
 }

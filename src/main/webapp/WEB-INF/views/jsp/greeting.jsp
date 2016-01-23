@@ -39,9 +39,7 @@
 	<h5>cookie:${cookie}</h5>
 	<h5>Ip:${ip}</h5>
 
-	<p>
-		<a href="<c:url value="/home"/>">Home</a>
-	</p>
+	<p><a href="<c:url value="/home"/>">Home</a></p>
 
 	<p>UPM-MIW --- ${now}</p>
 

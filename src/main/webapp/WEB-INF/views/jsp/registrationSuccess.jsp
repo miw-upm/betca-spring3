@@ -12,9 +12,7 @@
 
 	<h3>El usuario (${user}) ha sido creado satisfactoriamente</h3>
 
-	<p>
-		<a href="<c:url value='/user-list' />">Ir a Lista de Usuario</a>
-	</p>
+	<p><a href="<c:url value='/user-list' />">Ir a Lista de Usuario</a></p>
 
 	<p>UPM-MIW --- ${now}</p>
 
