@@ -3,7 +3,7 @@ package spring.config.start;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import spring.injection.annotation.e1.MessagePrinter;
+import spring.injection.annotation.e1.MessageManager;
 import spring.injection.annotation.e1.MessageService;
 
 @Configuration
@@ -17,8 +17,8 @@ public class AnnotationE1BConfig {
     
     //<bean id="messagePrinter" class="spring.injection.e1.MessagePrinter">
     @Bean
-    public MessagePrinter messagePrinter() {
-        return new MessagePrinter();
+    public MessageManager messagePrinter() {
+        return new MessageManager();
     }
     
 }

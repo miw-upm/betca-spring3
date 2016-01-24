@@ -10,9 +10,9 @@ public final class Main2 {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AnnotationE1BConfig.class);
-        MessagePrinter printer = context.getBean(MessagePrinter.class);
-        printer.print();
-        printer.print();
+        MessageManager manager = context.getBean(MessageManager.class);
+        manager.addMessage("1","uno");
+        System.out.println(manager.findMessage("1"));
         ((AbstractApplicationContext) context).close();
     }
 }

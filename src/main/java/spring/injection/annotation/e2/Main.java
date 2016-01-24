@@ -10,8 +10,7 @@ public final class Main {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AnnotationE2Config.class);
-        MessagePrinter printer = context.getBean("messagePrinter", MessagePrinter.class);
-        printer.print();
+        MessagePrinter printer = context.getBean(MessagePrinter.class);
         printer.print();
         ((AbstractApplicationContext) context).close();
     }

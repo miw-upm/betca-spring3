@@ -9,9 +9,9 @@ public class Main3 {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.scan("spring.injection.annotation.e1");
         context.refresh();
-        MessagePrinter printer = context.getBean(MessagePrinter.class);
-        printer.print();
-        printer.print();
+        MessageManager manager = context.getBean(MessageManager.class);
+        manager.addMessage("1","uno");
+        System.out.println(manager.findMessage("1"));
         ((AbstractApplicationContext) context).close();
     }
 

@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class MessagePrinter {
 
     @Autowired
-    private MessageService messageService1;
+    private ExtendedMessageService messageService1;
 
-    //Es una instancia diferente a la anterior
+    // Es una instancia diferente a la anterior por ser "prototype"
     @Autowired
-    private MessageService messageService2;
+    private ExtendedMessageService messageService2;
 
     public MessagePrinter() {
         // La inyeccción todavía no esta realizada
@@ -22,17 +22,18 @@ public class MessagePrinter {
     
     @PostConstruct
     public void postConstruct(){
-        messageService1.setPrefix("1:");
-        messageService2.setPrefix("2:");
+        messageService1.setPrefix("prefix");
     }
 
     public void print() {
-        System.out.println(messageService1.message());
-        System.out.println(messageService2.message());
+        messageService1.add("1", "uno");
+        System.out.println(">>> messageService1 (message(1)): " + messageService1.message("1"));
+        System.out.println(">>> messageService1 (key(uno)): " + messageService1.key("uno"));
+        System.out.println(">>> messageService2 (message(1)): " + messageService2.message("1"));
     }
-    
+
     @PreDestroy
-    public void preDestroy(){
+    public void preDestroy() {
         System.out.println("liberando a printer...");
     }
 

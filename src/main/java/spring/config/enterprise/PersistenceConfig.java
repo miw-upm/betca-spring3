@@ -48,7 +48,20 @@ public class PersistenceConfig {
         properties.put("hibernate.format_sql", "true");
         properties.put("hibernate.connection.charSet", "UTF-8");
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+        //create-drop, create, update, validate
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+
+        // Recomendación de Madeja
+        // hibernate.dialect = org.hibernate.dialect.HSQLDialect
+        // hibernate.c3p0.min_size = 5
+        // hibernate.c3p0.max_size = 20
+        // hibernate.c3p0.timeout = 300
+        // hibernate.c3p0.max_statements = 50
+        // hibernate.c3p0.idle_test_period = 3000
+        //
+        // hibernate.show_sql = true
+        // hibernate.format_sql = true
+
         entityManagerFactoryBean.setJpaProperties(properties);
         entityManagerFactoryBean.setPackagesToScan("spring.persistence.entities");
         entityManagerFactoryBean.setDataSource(dataSource());

@@ -1,5 +1,7 @@
 package spring.injection.annotation.e1;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,18 @@ public class MessageServiceTest {
     private MessageService messageService;
 
     @Test
-    public void testMessage() {
-        System.out.println(messageService.message());
-        System.out.println(messageService.message());
+    public void testAddMessage() {
+        messageService.add("1", "uno");
+        assertEquals("uno", messageService.message("1"));
+    }
+
+    @Test
+    public void testKey() {
+        messageService.add("2", "dos");
+        messageService.add("3", "tres");
+        messageService.add("4", "cuatro");
+        assertEquals("2", messageService.key("dos"));
+        assertEquals("4", messageService.key("cuatro"));
     }
 
 }

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 
 // @Component("messagePrinter") o @Component(value="messagePrinter")
 @Component
-public class MessagePrinter {
+public class MessageManager {
+
+    private static final int YEAR = 2016;
 
     // Se inyecta un objeto de la clase indicada
     // @Autowired(required = true)
@@ -16,9 +18,12 @@ public class MessagePrinter {
     @Autowired
     private MessageService messageService2;
 
-    public void print() {
-        System.out.println(messageService1.message());
-        System.out.println(messageService2.message());
+    public void addMessage(String key, String message) {
+        messageService1.add(key, message + "(" + YEAR + ")");
+    }
+
+    public String findMessage(String key) {
+        return messageService2.message(key);
     }
 
 }
