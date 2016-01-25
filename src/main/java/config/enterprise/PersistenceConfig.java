@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:META-INF/application.properties")
-@EnableJpaRepositories(basePackages = "persistence.daos", repositoryImplementationPostfix = "Impl")
+@EnableJpaRepositories(basePackages = PackageNames.DAOS, repositoryImplementationPostfix = "Impl")
 @EnableTransactionManagement
 public class PersistenceConfig {
 
@@ -60,7 +60,7 @@ public class PersistenceConfig {
         // properties.put("hibernate.c3p0.idle_test_period", "3000");
 
         entityManagerFactoryBean.setJpaProperties(properties);
-        entityManagerFactoryBean.setPackagesToScan("persistence.entities");
+        entityManagerFactoryBean.setPackagesToScan(PackageNames.ENTITIES);
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.afterPropertiesSet();
         return entityManagerFactoryBean.getObject();

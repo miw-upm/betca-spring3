@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan(basePackages = {"persistence.controller", "persistence.daos"})
+@ComponentScan(basePackages = {PackageNames.CONTROLLERS, PackageNames.DAOS})
 @Import(PersistenceConfig.class)
 public class ControllerConfig {
 }

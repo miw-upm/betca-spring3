@@ -18,11 +18,12 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 import config.enterprise.MailConfig;
+import config.enterprise.PackageNames;
 import restApi.RequestProcessingTimeInterceptor;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"restApi", "web"})
+@ComponentScan(basePackages = {PackageNames.REST_API, PackageNames.WEB})
 @Import(value = {MailConfig.class})
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
