@@ -1,6 +1,7 @@
 package spring.injection.annotation.e1;
 
 import static org.junit.Assert.assertEquals;
+import injection.annotation.e1.MessageManager;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import spring.configuration.TestsConfigE1;
+import config.TestsConfigE1;
 
 //S utilizan Mocks
 @RunWith(SpringJUnit4ClassRunner.class)

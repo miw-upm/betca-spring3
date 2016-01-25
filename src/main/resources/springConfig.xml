@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="messageService" class="spring.injection.xml.MessageService" />
+	<bean id="messageService" class="injection.xml.MessageService" />
 
-	<bean id="messagePrinter" class="spring.injection.xml.MessagePrinter">
+	<bean id="messagePrinter" class="injection.xml.MessagePrinter">
 		<property name="messageService" ref="messageService" />
 	</bean>
 

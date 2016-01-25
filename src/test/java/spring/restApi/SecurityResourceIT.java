@@ -10,8 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
-import spring.configuration.TestsApiConfig;
-import spring.restApi.Uris;
+import config.TestsApiConfig;
+import restApi.Uris;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestsApiConfig.class})

@@ -1,5 +1,7 @@
 package spring.injection.annotation.e1;
 
+import injection.annotation.e1.MessageService;
+
 public class MessageServiceMock extends MessageService {
 
     private String key;

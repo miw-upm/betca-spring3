@@ -21,10 +21,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import spring.configuration.TestsApiConfig;
-import spring.restApi.Gender;
-import spring.restApi.Uris;
-import spring.restApi.Wrapper;
+import config.TestsApiConfig;
+import restApi.Gender;
+import restApi.Uris;
+import restApi.Wrapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestsApiConfig.class})
