@@ -1,4 +1,4 @@
-package config.web;
+package config.webRestApi;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ public class WebInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext annConWebAppCtx = new AnnotationConfigWebApplicationContext();
 
         // Se configura el paquete de los ficheros de configuración
-        annConWebAppCtx.setConfigLocation("config.web");
+        annConWebAppCtx.setConfigLocation("config.webRestApi");
         
         // Se configura el contexto utilizado en Securiry
         annConWebAppCtx.setServletContext(servletContext);

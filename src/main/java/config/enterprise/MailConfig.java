@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:META-INF/application.properties")
 public class MailConfig {
     @Autowired
     private Environment environment;

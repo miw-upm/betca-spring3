@@ -20,7 +20,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:META-INF/application.properties")
 @EnableJpaRepositories(basePackages = "persistence.daos", repositoryImplementationPostfix = "Impl")
 @EnableTransactionManagement
 public class PersistenceConfig {

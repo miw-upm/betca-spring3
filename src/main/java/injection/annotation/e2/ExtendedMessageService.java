@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Scope("prototype")
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:META-INF/application.properties")
 // @PropertySource("file:///C:/Temp/application.properties")
 // @PropertySource("http://myserver/application.properties")
 public class ExtendedMessageService {
