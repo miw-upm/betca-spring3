@@ -1,4 +1,4 @@
-package spring.persistence.daos;
+package persistence.daos;
 
 import static org.junit.Assert.assertTrue;
 

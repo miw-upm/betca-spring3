@@ -1,4 +1,4 @@
-package spring.injection.annotation.e1;
+package injection.annotation.e1;
 
 import static org.junit.Assert.assertEquals;
 import injection.annotation.e1.MessageManager;

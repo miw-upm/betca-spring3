@@ -10,6 +10,6 @@ import config.enterprise.MailConfig;
 @Configuration
 @Import({MailConfig.class})
 @ComponentScan({"restApi"})
-public class TestsMailConfiguration {
+public class TestsMailConfig {
 
 }

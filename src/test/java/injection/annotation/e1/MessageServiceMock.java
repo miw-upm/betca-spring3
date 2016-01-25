@@ -1,4 +1,4 @@
-package spring.injection.annotation.e1;
+package injection.annotation.e1;
 
 import injection.annotation.e1.MessageService;
 

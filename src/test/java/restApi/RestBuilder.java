@@ -1,4 +1,4 @@
-package spring.restApi;
+package restApi;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
