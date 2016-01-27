@@ -16,8 +16,8 @@ public class WebInitializer implements WebApplicationInitializer {
         // Se crea un contexto basado en anotaciones
         AnnotationConfigWebApplicationContext annConWebAppCtx = new AnnotationConfigWebApplicationContext();
 
-        // Se configura el paquete de los ficheros de configuración
-        annConWebAppCtx.setConfigLocation("config.webRestApi");
+        // Se configura el paquete de los ficheros de configuración. En el propio paquete!!!
+        annConWebAppCtx.setConfigLocation(this.getClass().getPackage().getName());
         
         // Se configura el contexto utilizado en Securiry
         annConWebAppCtx.setServletContext(servletContext);

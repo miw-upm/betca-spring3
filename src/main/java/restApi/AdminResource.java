@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -20,9 +21,12 @@ import restApi.exceptions.UserIdNotExistException;
 @RequestMapping(Uris.SERVLET_MAP + Uris.ADMINS)
 public class AdminResource {
 
+    @Value("${app.version}:?")
+    private String version;
+
     @RequestMapping(value = Uris.START, method = RequestMethod.GET)
     public String start() {
-        return "OK. Servidor levantado";
+        return "OK. Servidor levantado. " + version;
     }
 
     @RequestMapping(value = Uris.ECHO + Uris.ID, method = RequestMethod.GET)

@@ -10,11 +10,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @Configuration
-@PropertySource("classpath:META-INF/application.properties")
+@PropertySource(PackageNames.PROPERTIES)
 public class MailConfig {
     @Autowired
     private Environment environment;
 
+    //Preparado para gmail
     @Bean
     public JavaMailSenderImpl mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
