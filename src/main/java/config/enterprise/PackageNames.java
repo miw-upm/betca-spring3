@@ -6,7 +6,7 @@ public class PackageNames {
 
     public static final String ENTITIES = "persistence.entities";
 
-    public static final String DAOS = "persistence.entities";
+    public static final String DAOS = "persistence.daos";
 
     public static final String CONTROLLERS = "persistence.controller";
 
