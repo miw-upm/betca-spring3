@@ -1,4 +1,4 @@
-package injection.annotation.e1;
+package injection.e1e2e4;
 
 import static org.junit.Assert.assertEquals;
 import injection.e1e2e4.MessageManager;
@@ -13,7 +13,7 @@ import config.start.E1Config;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = E1Config.class)
-public class MessagePrinterIntegrationTest {
+public class MessageManagerIntegrationTest {
 
     @Autowired
     private MessageManager manager;
@@ -23,8 +23,8 @@ public class MessagePrinterIntegrationTest {
         manager.addMessage("1", "uno");
         manager.addMessage("2", "dos");
         manager.addMessage("3", "tres");
-        assertEquals("uno(2016)", manager.findMessage("1"));
-        assertEquals("tres(2016)", manager.findMessage("3"));
+        assertEquals("uno", manager.findMessage("1"));
+        assertEquals("tres", manager.findMessage("3"));
     }
 
 }

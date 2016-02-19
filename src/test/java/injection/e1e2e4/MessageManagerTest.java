@@ -1,4 +1,4 @@
-package injection.annotation.e1;
+package injection.e1e2e4;
 
 import static org.junit.Assert.assertEquals;
 import injection.e1e2e4.MessageManager;
@@ -26,7 +26,7 @@ public class MessageManagerTest {
     public void testAddMessage() {
         manager.addMessage("1", "uno");
         assertEquals("1", service.getKey());
-        assertEquals("uno(2016)", service.getMessage());
+        assertEquals("uno", service.getMessage());
     }
 
     @Test

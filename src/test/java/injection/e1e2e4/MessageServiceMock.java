@@ -1,4 +1,4 @@
-package injection.annotation.e1;
+package injection.e1e2e4;
 
 import injection.e1e2e4.MessageService;
 

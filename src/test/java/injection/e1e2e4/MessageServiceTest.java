@@ -1,22 +1,19 @@
-package injection.annotation.e1;
+package injection.e1e2e4;
 
 import static org.junit.Assert.assertEquals;
 import injection.e1e2e4.MessageService;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import config.start.E1Config;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = E1Config.class)
 public class MessageServiceTest {
 
-    @Autowired
     private MessageService messageService;
+    
+    @Before
+    public void before(){
+        this.messageService= new MessageService();
+    }
 
     @Test
     public void testAddMessage() {
