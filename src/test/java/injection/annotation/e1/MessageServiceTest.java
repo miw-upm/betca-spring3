@@ -1,7 +1,7 @@
 package injection.annotation.e1;
 
 import static org.junit.Assert.assertEquals;
-import injection.annotation.e1.MessageService;
+import injection.e1e2e4.MessageService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import config.start.AnnotationE1Config;
+import config.start.E1Config;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AnnotationE1Config.class)
+@ContextConfiguration(classes = E1Config.class)
 public class MessageServiceTest {
 
     @Autowired

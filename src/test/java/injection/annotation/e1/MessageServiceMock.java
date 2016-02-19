@@ -1,6 +1,6 @@
 package injection.annotation.e1;
 
-import injection.annotation.e1.MessageService;
+import injection.e1e2e4.MessageService;
 
 public class MessageServiceMock extends MessageService {
 

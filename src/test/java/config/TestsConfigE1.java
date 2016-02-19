@@ -1,7 +1,7 @@
 package config;
 
-import injection.annotation.e1.MessageService;
 import injection.annotation.e1.MessageServiceMock;
+import injection.e1e2e4.MessageService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

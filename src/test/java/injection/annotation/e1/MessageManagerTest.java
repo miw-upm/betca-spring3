@@ -1,7 +1,7 @@
 package injection.annotation.e1;
 
 import static org.junit.Assert.assertEquals;
-import injection.annotation.e1.MessageManager;
+import injection.e1e2e4.MessageManager;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

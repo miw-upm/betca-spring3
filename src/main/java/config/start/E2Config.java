@@ -1,13 +1,13 @@
 package config.start;
 
-import injection.annotation.e1.MessageManager;
-import injection.annotation.e1.MessageService;
+import injection.e1e2e4.MessageManager;
+import injection.e1e2e4.MessageService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AnnotationE1BConfig {
+public class E2Config {
     
     //<bean id="messageService" class="spring.injection.e1.MessageService" />
     @Bean

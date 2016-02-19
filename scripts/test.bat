@@ -1,5 +1,5 @@
 @echo off
-set workspace=C:\DatosJBB\WorkSpaces\Luna\JEE.Spring
+set workspace=C:\DatosJBB\WorkSpaces\Luna\JEE.Paddle
 echo -----------------------------------------
 echo . Test (C)MIW
 echo -----------------------------------------
