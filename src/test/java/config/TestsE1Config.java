@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "injection.e1e2e4")
-public class TestsConfigE1 {
+public class TestsE1Config {
     
     @Bean
     public MessageService messageService() {

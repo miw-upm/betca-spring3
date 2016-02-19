@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import config.TestsConfigE1;
+import config.TestsE1Config;
 
 //S utilizan Mocks
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestsConfigE1.class)
+@ContextConfiguration(classes = TestsE1Config.class)
 public class MessageManagerTest {
 
     @Autowired
