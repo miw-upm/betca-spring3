@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageManager {
 
-    private static final int YEAR = 2016;
-
     private MessageService messageService1;
 
     private MessageService messageService2;
@@ -26,7 +24,7 @@ public class MessageManager {
     }
 
     public void addMessage(String key, String message) {
-        messageService1.add(key, message + "(" + YEAR + ")");
+        messageService1.add(key, message);
     }
 
     public String findMessage(String key) {

@@ -1,4 +1,4 @@
-package injection.annotation.e2;
+package injection.e5;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Scope("prototype")
 @PropertySource("classpath:META-INF/application.properties")
 // @PropertySource("file:///C:/Temp/application.properties")
-// @PropertySource("http://myserver/application.properties")
+// @PropertySource("http://myServer/application.properties")
 public class ExtendedMessageService {
 
     @Autowired
@@ -30,12 +30,12 @@ public class ExtendedMessageService {
     public ExtendedMessageService() {
         messageMap = new HashMap<>();
         prefix = "";
-        //OJO la inyección no está realizada
+        // OJO la inyección no está realizada
     }
 
     @PostConstruct
     public void postConstruct() {
-        suffix = environment.getProperty("e2.suffix");
+        suffix = environment.getProperty("e5.suffix");
     }
 
     public void add(String key, String message) {
