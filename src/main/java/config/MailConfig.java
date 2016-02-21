@@ -1,4 +1,4 @@
-package config.enterprise;
+package config;
 
 import java.util.Properties;
 

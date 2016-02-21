@@ -17,8 +17,8 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
-import config.enterprise.MailConfig;
-import config.enterprise.PackageNames;
+import config.MailConfig;
+import config.PackageNames;
 import restApi.RequestProcessingTimeInterceptor;
 
 @Configuration

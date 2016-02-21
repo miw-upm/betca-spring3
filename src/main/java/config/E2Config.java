@@ -1,4 +1,4 @@
-package config.start;
+package config;
 
 import injection.e1e2e4.MessageManager;
 import injection.e1e2e4.MessageService;

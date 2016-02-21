@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import config.start.E1Config;
+import config.E1Config;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = E1Config.class)

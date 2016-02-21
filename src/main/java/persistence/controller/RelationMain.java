@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import config.enterprise.ControllerConfig;
+import config.ControllerConfig;
 
 public final class RelationMain {
 

@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import config.enterprise.AspectConfig;
+import config.AspectConfig;
 import aspectTarget.ServiceOne;
 
 public final class Main {

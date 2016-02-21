@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import persistence.daos.LibraryRepository;
 import persistence.daos.library.BookDao;
+import config.PersistenceConfig;
 import config.TestsPersistenceConfig;
-import config.enterprise.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersistenceConfig.class, TestsPersistenceConfig.class})

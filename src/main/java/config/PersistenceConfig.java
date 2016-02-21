@@ -1,4 +1,4 @@
-package config.enterprise;
+package config;
 
 import java.util.Properties;
 
@@ -43,6 +43,7 @@ public class PersistenceConfig {
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        
         Properties properties = new Properties();
         properties.put("hibernate.connection.charSet", "UTF-8");
         properties.put("hibernate.show_sql", "false");
@@ -50,18 +51,11 @@ public class PersistenceConfig {
         // create-drop, create, update, validate
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-
-        // Recomendación de Madeja
-        // properties.put("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-        // properties.put("hibernate.c3p0.min_size", "5");
-        // properties.put("hibernate.c3p0.max_size", "20");
-        // properties.put("hibernate.c3p0.timeout", "300");
-        // properties.put("hibernate.c3p0.max_statements", "50");
-        // properties.put("hibernate.c3p0.idle_test_period", "3000");
-
         entityManagerFactoryBean.setJpaProperties(properties);
+        
         entityManagerFactoryBean.setPackagesToScan(PackageNames.ENTITIES);
         entityManagerFactoryBean.setDataSource(dataSource());
+        
         entityManagerFactoryBean.afterPropertiesSet();
         return entityManagerFactoryBean.getObject();
     }

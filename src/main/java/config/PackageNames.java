@@ -1,4 +1,4 @@
-package config.enterprise;
+package config;
 
 public class PackageNames {
 
