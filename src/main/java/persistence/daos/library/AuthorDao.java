@@ -13,11 +13,11 @@ public interface AuthorDao extends JpaRepository<Author, Integer> {
     List<Author> findByStyle(Style style);
 
     @Query("select author.name from Author author where author.style.name = ?1")
-    List<String> findName(String styleName);
+    List<String> findNameByStyleName(String styleName);
     
     @Query("select distinct author.name from Book book join book.authorList author")
     List<String> findNameByAnyBook();
-    
+        
     @Query("select author.name from Book book join book.authorList author join book.themeList theme where theme.name = ?1")
     List<String> findNameByThemeName(String themeName);
 }

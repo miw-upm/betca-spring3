@@ -3,9 +3,9 @@ package persistence.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import persistence.daos.LibraryRepository;
 import persistence.daos.library.AuthorDao;
 import persistence.daos.library.BookDao;
+import persistence.daos.library.LibraryRepository;
 import persistence.daos.library.StyleDao;
 
 @Controller
@@ -32,7 +32,7 @@ public class LibraryController {
         System.out.println("     " + authorDao.findByStyle(styleDao.findByNameIgnoreCase("Infantil")));
 
         System.out.println(">>>> Nombre de Authores a partir del nombre del estilo: infantil");
-        System.out.println("     " + authorDao.findName("Infantil"));
+        System.out.println("     " + authorDao.findNameByStyleName("Infantil"));
 
         System.out.println(">>>> Nombre de Authores que tienen algun libro");
         System.out.println("     " + authorDao.findNameByAnyBook());

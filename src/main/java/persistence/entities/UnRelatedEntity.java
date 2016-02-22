@@ -1,11 +1,11 @@
 package persistence.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -78,8 +78,9 @@ public class UnRelatedEntity {
 
     @Override
     public String toString() {
-        return "UnRelatedEntity [id=" + id + ", nick=" + nick + ", gender=" + gender + ", bornDate=" + formatBornDate() + ", large="
-                + large + ", strings=" + Arrays.toString(strings) + ", list=" + list + ", noPersistent=" + noPersistent + "]";
+        String time = new SimpleDateFormat("dd-MMM-yyyy ").format(bornDate.getTime());
+        return "UnRelatedEntity [id=" + id + ", nick=" + nick + ", gender=" + gender + ", bornDate=" + time + ", large=" + large
+                + ", strings=" + Arrays.toString(strings) + ", list=" + list + ", noPersistent=" + noPersistent + "]";
     }
 
     @Override
@@ -97,11 +98,6 @@ public class UnRelatedEntity {
             UnRelatedEntity other = (UnRelatedEntity) obj;
             return nick.equals(other.nick);
         }
-    }
-
-    public String formatBornDate() {
-        String month = bornDate.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-        return bornDate.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + bornDate.get(Calendar.YEAR);
     }
 
     public int getId() {
@@ -143,5 +139,5 @@ public class UnRelatedEntity {
     public void setLarge(String large) {
         this.large = large;
     }
-    
+
 }

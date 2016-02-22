@@ -11,6 +11,7 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class AbstractRootEntity {
+
     @Id
     @GeneratedValue
     private int id;
@@ -23,7 +24,7 @@ public abstract class AbstractRootEntity {
     public AbstractRootEntity(String nick) {
         this.nick = nick;
     }
-    
+
     @Override
     public int hashCode() {
         return id;

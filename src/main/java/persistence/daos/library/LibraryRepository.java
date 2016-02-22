@@ -1,14 +1,10 @@
-package persistence.daos;
+package persistence.daos.library;
 
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import persistence.daos.library.AuthorDao;
-import persistence.daos.library.BookDao;
-import persistence.daos.library.StyleDao;
-import persistence.daos.library.ThemeDao;
 import persistence.entities.library.Author;
 import persistence.entities.library.Book;
 import persistence.entities.library.Contact;
