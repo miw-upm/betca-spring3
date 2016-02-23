@@ -7,7 +7,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import config.AspectConfig;
 import aspectTarget.ServiceOne;
 
-public final class Main {
+public final class AspectMain {
 
     public static void main(String[] args){
         ApplicationContext context = new AnnotationConfigApplicationContext(AspectConfig.class);
