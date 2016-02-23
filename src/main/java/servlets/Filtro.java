@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 
 import org.apache.logging.log4j.LogManager;
 
-@WebFilter(urlPatterns = {"/HolaMundo", "/Parametros"})
+@WebFilter(urlPatterns = {"/helloServlet", "/Parametros"})
 public class Filtro implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
     }
