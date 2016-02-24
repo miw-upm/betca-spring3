@@ -221,7 +221,7 @@
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${org.thymeleaf.version}</version>
 		</dependency>
-		<!-- EMail -->
+		<!-- EMail  -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>

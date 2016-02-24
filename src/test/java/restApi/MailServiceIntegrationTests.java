@@ -11,7 +11,7 @@ import restApi.MailService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestsMailConfig.class})
-public class MailServiceTest {
+public class MailServiceIntegrationTests {
 
     @Autowired
     private MailService mailService;
