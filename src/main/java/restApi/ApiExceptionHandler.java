@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import restApi.exceptions.ApiException;
 import restApi.exceptions.MalformedHeaderException;
 import restApi.exceptions.UnauthorizedException;
-import restApi.exceptions.UserIdNotExistException;
+import restApi.exceptions.NotFoundUserIdException;
 
 @ControllerAdvice
 public class ApiExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler({UserIdNotExistException.class})
+    @ExceptionHandler({NotFoundUserIdException.class})
     @ResponseBody
     public ErrorMessage notFoundRequest(ApiException exception) {
         ErrorMessage apiErrorMessage = new ErrorMessage(exception);

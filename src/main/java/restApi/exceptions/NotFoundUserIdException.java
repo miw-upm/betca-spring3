@@ -1,6 +1,6 @@
 package restApi.exceptions;
 
-public class UserIdNotExistException extends ApiException {
+public class NotFoundUserIdException extends ApiException {
 
     private static final long serialVersionUID = -1344640670884805385L;
 
@@ -8,11 +8,11 @@ public class UserIdNotExistException extends ApiException {
 
     public static final int CODE = 333;
 
-    public UserIdNotExistException() {
+    public NotFoundUserIdException() {
         this("");
     }
 
-    public UserIdNotExistException(String detail) {
+    public NotFoundUserIdException(String detail) {
         super(DESCRIPTION + ". " + detail, CODE);
     }
 

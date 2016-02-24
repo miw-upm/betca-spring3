@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import restApi.exceptions.MalformedHeaderException;
 import restApi.exceptions.UnauthorizedException;
-import restApi.exceptions.UserIdNotExistException;
+import restApi.exceptions.NotFoundUserIdException;
 
 @RestController
 @RequestMapping(Uris.SERVLET_MAP + Uris.ADMINS)
@@ -51,10 +51,10 @@ public class AdminResource {
     }
 
     @RequestMapping(value = Uris.ERROR + Uris.ID, method = RequestMethod.GET)
-    public Wrapper error(@RequestHeader(value = "token") String token, @PathVariable(value = "id") int id) throws UserIdNotExistException,
+    public Wrapper error(@RequestHeader(value = "token") String token, @PathVariable(value = "id") int id) throws NotFoundUserIdException,
             UnauthorizedException, MalformedHeaderException {
         if (id == 0) {
-            throw new UserIdNotExistException("id:" + id);
+            throw new NotFoundUserIdException("id:" + id);
         }
         if (token.equals("kk")) {
             throw new MalformedHeaderException("token:" + token);
