@@ -25,13 +25,7 @@ import restApi.RequestProcessingTimeInterceptor;
 @EnableWebMvc
 @ComponentScan(basePackages = {PackageNames.REST_API, PackageNames.WEB})
 @Import(value = {MailConfig.class})
-public class WebMvcConfig extends WebMvcConfigurerAdapter {
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-    }
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     // Se configuran los interceptores
     @Override
@@ -45,6 +39,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addMapping("/**").allowedOrigins("*").maxAge(3600);
     }
 
+    // Web presenters
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+    }
+
     // Thymeleaf
     @Bean
     public TemplateResolver templateResolver() {
@@ -54,6 +54,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         templateResolver.setTemplateMode("HTML5");
         return templateResolver;
     }
+
     // <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
     // <property name="prefix" value="/WEB-INF/templates/" />
     // <property name="suffix" value=".html" />

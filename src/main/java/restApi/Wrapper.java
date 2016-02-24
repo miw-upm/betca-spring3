@@ -56,7 +56,7 @@ public class Wrapper {
 
     @Override
     public String toString() {
-        return "Wrapper [id=" + id + ", name=" + name + ", gender=" + gender + ", bornDate=" + bornDate.getTime() + "]";
+        return "Wrapper [id=" + id + ", name=" + name + ", gender=" + gender + ", bornDate=" + bornDate.getTimeInMillis() + "]";
     }
 
 }

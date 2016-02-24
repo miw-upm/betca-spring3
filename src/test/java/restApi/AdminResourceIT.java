@@ -14,6 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.MultiValueMap;
@@ -28,19 +29,18 @@ import restApi.Wrapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestsApiConfig.class})
-// @TestPropertySource(locations = "classpath:test.properties")
 public class AdminResourceIT {
 
-    private static final String url = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
-
-    // private static final String url = "http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
+    private static final String URL_API = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT" + Uris.SERVLET_MAP;
 
     @Test
     public void testStart() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url + Uris.ADMINS + Uris.START).build().encode().toUri();
-        String response = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<String>(new HttpHeaders()), String.class)
-                .getBody();
-        assertEquals("OK. Servidor levantado", response);
+        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API + Uris.ADMINS + Uris.START).build().encode().toUri();
+        RequestEntity<Object> requestEntity = new RequestEntity<>(HttpMethod.GET, uri);
+        
+        String response = new RestTemplate().exchange(requestEntity, String.class).getBody();
+        System.out.println("Response: " + response);
+        assertEquals("{\"response\":\"OK /v0\"}", response);
     }
 
     @Test
@@ -55,29 +55,32 @@ public class AdminResourceIT {
         params.add("other", "ooooother");
 
         // Uri
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.ECHO).path("/666").queryParams(params).build().encode()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API).path(Uris.ADMINS).path(Uris.ECHO).path(Uris.ID).queryParams(params)
+                .buildAndExpand(666).encode().toUri();
         System.out.println("URI: " + uri);
 
-        String response = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<String>(headers), String.class).getBody();
+        RequestEntity<Object> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, uri);
+        String response = new RestTemplate().exchange(requestEntity, String.class).getBody();
         System.out.println("Response: " + response);
+        assertEquals("{\"id\":666,\"token\":\"toooken\",\"param\":\"paaaaram\"}", response);
     }
 
     @Test
     public void testBodyWrapper() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API).path(Uris.ADMINS).path(Uris.BODY).build().encode().toUri();
         Wrapper wrapper = new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
-        String json = new RestTemplate().exchange(uri, HttpMethod.POST, new HttpEntity<Object>(wrapper, new HttpHeaders()), String.class)
-                .getBody();
+
+        RequestEntity<Wrapper> requestEntity = new RequestEntity<>(wrapper, HttpMethod.POST, uri);
+
+        String json = new RestTemplate().exchange(requestEntity, String.class).getBody();
         System.out.println(json);
-        Wrapper response = new RestTemplate().exchange(uri, HttpMethod.POST, new HttpEntity<Object>(wrapper, new HttpHeaders()),
-                Wrapper.class).getBody();
+        Wrapper response = new RestTemplate().exchange(requestEntity, Wrapper.class).getBody();
         System.out.println(response);
     }
 
     @Test
     public void testBodyStringList() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).path(Uris.STRING_LIST).build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API).path(Uris.ADMINS).path(Uris.BODY).path(Uris.STRING_LIST).build().encode().toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
         List<String> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
@@ -87,7 +90,7 @@ public class AdminResourceIT {
 
     @Test
     public void testBodyWrapperList() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(url).path(Uris.ADMINS).path(Uris.BODY).path(Uris.WRAPPER_LIST).build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API).path(Uris.ADMINS).path(Uris.BODY).path(Uris.WRAPPER_LIST).build().encode().toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
         List<Wrapper> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
@@ -98,7 +101,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorNotToken() {
         try {
-            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/66").get().build();
+            new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.ERROR).path("/66").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.BAD_REQUEST, httpError.getStatusCode());
@@ -110,7 +113,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorMalFormedToken() {
         try {
-            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "kk").get().build();
+            new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "kk").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.BAD_REQUEST, httpError.getStatusCode());
@@ -122,7 +125,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorNotExistToken() {
         try {
-            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "Basic kk").get().build();
+            new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "Basic kk").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
@@ -134,7 +137,7 @@ public class AdminResourceIT {
     @Test
     public void testErrorNotExistId() {
         try {
-            new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/0").header("token", "Basic good").get().build();
+            new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.ERROR).path("/0").header("token", "Basic good").get().build();
             fail();
         } catch (HttpClientErrorException httpError) {
             assertEquals(HttpStatus.NOT_FOUND, httpError.getStatusCode());
@@ -145,7 +148,7 @@ public class AdminResourceIT {
 
     @Test
     public void testErrorOk() {
-        Wrapper response = new RestBuilder<Wrapper>(url).path(Uris.ADMINS).path(Uris.ERROR).path("/666").header("token", "Basic good")
+        Wrapper response = new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.ERROR).path("/666").header("token", "Basic good")
                 .clazz(Wrapper.class).get().build();
         System.out.println("INFO >>>>> " + response);
     }

@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -21,21 +20,16 @@ import restApi.exceptions.UserIdNotExistException;
 @RequestMapping(Uris.SERVLET_MAP + Uris.ADMINS)
 public class AdminResource {
 
-    @Value("${app.version}:?")
-    private String version;
-
     @RequestMapping(value = Uris.START, method = RequestMethod.GET)
     public String start() {
-        return "OK. Servidor levantado. " + version;
+        return "{\"response\":\"OK " + Uris.VERSION + "\"}";
     }
 
     @RequestMapping(value = Uris.ECHO + Uris.ID, method = RequestMethod.GET)
-    public String eco(@RequestHeader(value = "token", required = false) String token, @PathVariable(value = "id") int id,
+    public String echo(@RequestHeader(value = "token", required = false) String token, @PathVariable(value = "id") int id,
             @RequestParam(defaultValue = "Non") String param) {
-        String response = "@PathVariable:" + id;
-        response += "@RequestHeader:" + token;
-        response += "@RequestParam:" + param;
-        return response;
+        String response = "{\"id\":%d,\"token\":\"%s\",\"param\":\"%s\"}";
+        return String.format(response, id, token, param);
     }
 
     @RequestMapping(value = Uris.BODY, method = RequestMethod.POST)
