@@ -19,7 +19,8 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 
 import config.MailConfig;
 import config.PackageNames;
-import restApi.RequestProcessingTimeInterceptor;
+import restApi.TimeBasedAccessInterceptor;
+import restApi.Uris;
 
 @Configuration
 @EnableWebMvc
@@ -30,7 +31,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     // Se configuran los interceptores
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new RequestProcessingTimeInterceptor()).addPathPatterns("/admins/**").excludePathPatterns("/foo/**");
+        registry.addInterceptor(new TimeBasedAccessInterceptor()).addPathPatterns(Uris.SERVLET_MAP + Uris.ADMINS + "/**")
+                .excludePathPatterns("/foo/**");
     }
 
     // CORS

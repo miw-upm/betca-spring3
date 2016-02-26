@@ -11,12 +11,13 @@ public class TimeBasedAccessInterceptor extends HandlerInterceptorAdapter {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object handler) throws Exception {
+        System.out.println(">>> interceptor...");
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         if (8 <= hour && hour < 21) {
             return true;
         }
-        response.sendRedirect("http://host.com/outsideOfficeHours.html");
+        response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
         return false;
     }
 }
