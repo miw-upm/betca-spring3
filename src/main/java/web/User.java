@@ -14,20 +14,20 @@ public class User {
 
     @Size(min = 2, max = 30)
     private String name;
-    
-   @Min(18)
+
+    @Min(18)
     private int age;
 
     private String email;
-    
+
     private String password;
-    
+
     private String nativeLanguage;
-    
+
     private List<String> languages;
-    
+
     private String description;
- 
+
     public User() {
     }
 
@@ -36,10 +36,11 @@ public class User {
     }
 
     public User(int id, String name, int age, String email) {
-        this(id,name,age,email,"","",Arrays.asList(),"");
+        this(id, name, age, email, "", "", Arrays.asList(), "");
     }
 
-    public User(int id, String name, int age, String email, String password, String nativeLanguage, List<String> languages, String description) {
+    public User(int id, String name, int age, String email, String password, String nativeLanguage, List<String> languages,
+            String description) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -49,7 +50,6 @@ public class User {
         this.languages = languages;
         this.description = description;
     }
-
 
     public int getId() {
         return id;

@@ -52,6 +52,7 @@ public class Presenter {
     @RequestMapping("/home")
     public String home(Model model) {
         model.addAttribute("themes", THEMES);
+        //La vista resultante no lleva extensión (.jsp) configurado en WebConfig.java
         return theme + "/home";
     }
 

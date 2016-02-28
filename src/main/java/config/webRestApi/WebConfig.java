@@ -56,9 +56,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         templateResolver.setTemplateMode("HTML5");
         return templateResolver;
     }
-
     // <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-    // <property name="prefix" value="/WEB-INF/templates/" />
+    // <property name="prefix" value="/WEB-INF/views/" />
     // <property name="suffix" value=".html" />
     // <property name="templateMode" value="HTML5" />
     // </bean>

@@ -13,7 +13,7 @@
 	<h3>Acceso a un atributo del Model</h3>
 	<h5>Hello ${name}!!!</h5>
 
-	<h3>Acceso a un atributo del Model condicional (if)</h3>
+	<h3>Acceso a un atributo del Model condicional (if). Si no lo encuentra no se escribe nada</h3>
 	<c:if test="${not empty name}">
 		<h5>Hello ${name}!!!</h5>
 	</c:if>
