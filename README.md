@@ -6,6 +6,7 @@
 
 ### Tecnologías necesarias
 * Eclipse
+* Maven
 * MySQL
 * Tomcat
 
