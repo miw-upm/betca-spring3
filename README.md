@@ -4,5 +4,13 @@
 
 > Ejemplos básicos para el uso de la tecnología Spring
 
+### Tecnologías necesarias
+* Eclipse
+* MySQL
+* Tomcat
+
 ### Importar el proyecto mediante Eclipse
-1. Clonar este repositorio en la máquina local: https://youtu.be/rQNixJQQ25g
+1. Clonar mediante Eclipse este repositorio en la máquina local: https://youtu.be/rQNixJQQ25g
+1. Importar el repositorio clonado: https://youtu.be/yYvD8ZJtWwI
+1. Crear una Base de Datos llamada: `jee`
+
