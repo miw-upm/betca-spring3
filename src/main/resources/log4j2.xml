@@ -18,7 +18,7 @@
 		</RollingFile>
 	</appenders>
 	<loggers>
-		<Logger name="spring" level="${logs.level}" additivity="false">
+		<Logger name="spring" level="debug" additivity="false">
 			<AppenderRef ref="Console" />
 			<appenderRef ref="RollingFile" />
 		</Logger>
