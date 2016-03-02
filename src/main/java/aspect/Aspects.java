@@ -15,6 +15,26 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class Aspects {
 
+    @Pointcut("execution(* * (..))")
+    public void allMethods() {
+    }
+
+    @Pointcut("execution(public * *(..))")
+    public void allMethodsPublic() {
+    }
+
+    @Pointcut("execution(* aspectTarget.*.* (..))")
+    public void allMethodsPackage() {
+    }
+
+    @Pointcut("within(aspectTarget.*)")
+    public void allMethodsInPackage() {
+    }
+
+    @Pointcut("within(aspectTarget..*)")
+    public void allMethodsInPackageAndSubPackage() {
+    }
+
     @Before("allMethodsPackage()")
     public void adviceA(JoinPoint jp) {
         System.out.println("=== Consejo Antes de ejecutar a metodos de un paquete:" + jp.getSignature().getName());
@@ -66,23 +86,4 @@ public class Aspects {
         return obj;
     }
 
-    @Pointcut("execution(* * (..))")
-    public void allMethods() {
-    }
-
-    @Pointcut("execution(public * *(..))")
-    public void allMethodsPublic() {
-    }
-
-    @Pointcut("execution(* aspectTarget.*.* (..))")
-    public void allMethodsPackage() {
-    }
-
-    @Pointcut("within(aspectTarget.*)")
-    public void allMethodsInPackage() {
-    }
-
-    @Pointcut("within(aspectTarget..*)")
-    public void allMethodsInPackageAndSubPackage() {
-    }
 }
