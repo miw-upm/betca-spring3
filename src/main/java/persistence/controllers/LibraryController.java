@@ -1,4 +1,4 @@
-package persistence.controller;
+package persistence.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +35,7 @@ public class LibraryController {
         System.out.println("     " + authorDao.findNameByStyleName("Infantil"));
 
         System.out.println(">>>> Nombre de Authores que tienen algun libro");
-        System.out.println("     " + authorDao.findNameByAnyBook());
+        System.out.println("     " + authorDao.findDistinctNameByAnyBook());
 
         System.out.println(">>>> Nombre de Authores que tienen algun libro con el nombre de tema: Acción");
         System.out.println("     " + authorDao.findNameByThemeName("Acción"));

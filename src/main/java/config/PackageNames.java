@@ -8,7 +8,7 @@ public class PackageNames {
 
     public static final String DAOS = "persistence.daos";
 
-    public static final String CONTROLLERS = "persistence.controller";
+    public static final String CONTROLLERS = "persistence.controllers";
 
     public static final String REST_API = "restApi";
 

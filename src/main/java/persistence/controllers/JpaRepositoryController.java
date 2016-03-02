@@ -1,4 +1,4 @@
-package persistence.controller;
+package persistence.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
