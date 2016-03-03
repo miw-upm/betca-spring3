@@ -1,11 +1,11 @@
 package aspectTarget;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import aspect.GenericAnnotation;
 import aspect.MethodAnnotation;
 
-@Controller
+@Service
 @GenericAnnotation
 public class ServiceOne {
 
