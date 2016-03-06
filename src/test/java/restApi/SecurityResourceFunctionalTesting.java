@@ -16,7 +16,7 @@ import restApi.Uris;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestsApiConfig.class})
 // @TestPropertySource(locations = "classpath:test.properties")
-public class SecurityResourceIT {
+public class SecurityResourceFunctionalTesting {
 
     private static final String url = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
 

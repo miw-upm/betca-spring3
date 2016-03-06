@@ -20,7 +20,7 @@ import restApi.exceptions.NotFoundUserIdException;
 @RequestMapping(Uris.SERVLET_MAP + Uris.ADMINS)
 public class AdminResource {
 
-    @RequestMapping(value = Uris.START, method = RequestMethod.GET)
+    @RequestMapping(value = Uris.STATE, method = RequestMethod.GET)
     public String start() {
         return "{\"response\":\"OK " + Uris.VERSION + "\"}";
     }
