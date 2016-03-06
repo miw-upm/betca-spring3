@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import restApi.exceptions.ApiException;
 import restApi.exceptions.MalformedHeaderException;
 import restApi.exceptions.UnauthorizedException;
 import restApi.exceptions.NotFoundUserIdException;
@@ -18,7 +17,7 @@ public class ApiExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({NotFoundUserIdException.class})
     @ResponseBody
-    public ErrorMessage notFoundRequest(ApiException exception) {
+    public ErrorMessage notFoundRequest(Exception exception) {
         ErrorMessage apiErrorMessage = new ErrorMessage(exception);
         LogManager.getLogger(this.getClass()).info("  ERROR: NOT_FOUND, " + apiErrorMessage);
         return apiErrorMessage;
@@ -26,7 +25,7 @@ public class ApiExceptionHandler {
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler({UnauthorizedException.class})
-    public void unauthorized(ApiException exception) {
+    public void unauthorized(Exception exception) {
         ErrorMessage apiErrorMessage = new ErrorMessage(exception);
         LogManager.getLogger(this.getClass()).info("  ERROR: UNAUTHORIZED, " + apiErrorMessage);
     }
@@ -34,7 +33,7 @@ public class ApiExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({MalformedHeaderException.class})
     @ResponseBody
-    public ErrorMessage badRequest(ApiException exception) {
+    public ErrorMessage badRequest(Exception exception) {
         ErrorMessage apiErrorMessage = new ErrorMessage(exception);
         LogManager.getLogger(this.getClass()).info("  ERROR: BAD_REQUEST, " + apiErrorMessage);
         return new ErrorMessage(exception);

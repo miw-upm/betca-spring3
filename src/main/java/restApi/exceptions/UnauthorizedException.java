@@ -1,6 +1,6 @@
 package restApi.exceptions;
 
-public class UnauthorizedException extends ApiException {
+public class UnauthorizedException extends Exception {
 
     private static final long serialVersionUID = -1344640670884805385L;
 
@@ -13,7 +13,7 @@ public class UnauthorizedException extends ApiException {
     }
 
     public UnauthorizedException(String detail) {
-        super(DESCRIPTION + ". " + detail, CODE);
+        super(DESCRIPTION + ". " + detail + ". CODE: " + CODE);
     }
 
 }
