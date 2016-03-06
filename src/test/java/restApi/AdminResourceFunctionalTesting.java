@@ -158,4 +158,36 @@ public class AdminResourceFunctionalTesting {
         System.out.println("INFO >>>>> " + response);
     }
 
+    @Test
+    public void testSecurityAnnotationOk() {
+        String response = new RestBuilder<String>(URL_API).path(Uris.ADMINS).path(Uris.SECURITY).basicAuth("admin", "123456")
+                .clazz(String.class).get().build();
+        System.out.println("INFO >>>>> " + response);
+    }
+
+    @Test
+    public void testSecurityAnnotationForbidden() {
+        try {
+            new RestBuilder<String>(URL_API).path(Uris.ADMINS).path(Uris.SECURITY).basicAuth("user", "123456").clazz(String.class).get()
+                    .build();
+            fail();
+        } catch (HttpClientErrorException httpError) {
+            assertEquals(HttpStatus.FORBIDDEN, httpError.getStatusCode());
+            System.out.println("ERROR >>>>> " + httpError.getMessage());
+            System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
+        }
+    }
+    
+    @Test
+    public void testSecurityAnnotationUnauthorized() {
+        try {
+            new RestBuilder<String>(URL_API).path(Uris.ADMINS).path(Uris.SECURITY).basicAuth("user", "kkk").clazz(String.class).get()
+                    .build();
+            fail();
+        } catch (HttpClientErrorException httpError) {
+            assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
+            System.out.println("ERROR >>>>> " + httpError.getMessage());
+            System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
+        }
+    }
 }

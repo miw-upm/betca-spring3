@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -63,6 +64,12 @@ public class AdminResource {
             throw new UnauthorizedException("token:" + token);
         }
         return new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
+    }
+    
+    @RequestMapping(value = Uris.SECURITY, method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ADMIN')")
+    public String securityAnnotation(){
+        return "{\"response\":\"Security\"}";
     }
 
 }
