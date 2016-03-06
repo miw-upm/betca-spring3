@@ -16,6 +16,10 @@ public class MailConfig {
     private Environment environment;
 
     //Preparado para gmail
+    //Mail properties. Se debe configurar la cuenta de gmail para soportar la conexion de la aplicacion
+    //Login to Gmail
+    //Access the URL as https://www.google.com/settings/security/lesssecureapps
+    //Select "Turn on"
     @Bean
     public JavaMailSenderImpl mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
