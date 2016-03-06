@@ -34,9 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers(Uris.SERVLET_MAP + Uris.ADMINS + "/**").permitAll()
+        http.csrf().disable().authorizeRequests()
+                .antMatchers(Uris.SERVLET_MAP + Uris.ADMINS + "/**").permitAll()
                 .antMatchers(Uris.SERVLET_MAP + Uris.SECURITY + Uris.USER + "/**").authenticated()
-                .antMatchers(HttpMethod.GET, Uris.SERVLET_MAP + Uris.SECURITY + Uris.ADMIN).hasRole("ADMIN").and().httpBasic();
+                .antMatchers(HttpMethod.GET, Uris.SERVLET_MAP + Uris.SECURITY + Uris.ADMIN).hasRole("ADMIN")
+                .and().httpBasic();
     }
 
     @Bean
