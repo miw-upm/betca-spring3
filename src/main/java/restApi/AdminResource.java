@@ -65,10 +65,10 @@ public class AdminResource {
         }
         return new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
     }
-    
+
     @RequestMapping(value = Uris.SECURITY, method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
-    public String securityAnnotation(){
+    public String securityAnnotation() {
         return "{\"response\":\"Security\"}";
     }
 

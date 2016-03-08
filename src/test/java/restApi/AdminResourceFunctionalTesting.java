@@ -102,7 +102,7 @@ public class AdminResourceFunctionalTesting {
                 Wrapper[].class).getBody());
         System.out.println(response);
     }
-
+    
     @Test
     public void testErrorNotToken() {
         try {
