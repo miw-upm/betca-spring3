@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
         }
-        return new User(username, new BCryptPasswordEncoder().encode("123456"), enabled, accountNonExpired, credentialsNonExpired,
+        return new User(username, new BCryptPasswordEncoder().encode(password), enabled, accountNonExpired, credentialsNonExpired,
                 accountNonLocked, authorities);
     }
 }
