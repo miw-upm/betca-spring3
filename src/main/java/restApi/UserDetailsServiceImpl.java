@@ -20,6 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+        //Se accede a UserDao para buscar el usuario y obtener su clave
         if ("user".equals(username)) {
             return this.userBuilder(username, "123456", "USER");
         } else if ("manager".equals(username)) {

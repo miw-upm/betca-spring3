@@ -23,8 +23,14 @@ public class SecurityResourceFunctionalTesting {
     // private static final String url = "http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
 
     @Test
-    public void testAdminOK() {
-        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.ADMIN).basicAuth("admin", "123456")
+    public void testUserOK() {
+        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).basicAuth("user", "123456")
+                .clazz(String.class).get().build();
+        System.out.println("INFO >>>>> " + response);
+    }
+    @Test
+    public void testUserOtherUserOK() {
+        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).basicAuth("manager", "123456")
                 .clazz(String.class).get().build();
         System.out.println("INFO >>>>> " + response);
     }
@@ -32,6 +38,13 @@ public class SecurityResourceFunctionalTesting {
     @Test
     public void testManagerOK() {
         String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.MANAGER).basicAuth("manager", "123456")
+                .clazz(String.class).get().build();
+        System.out.println("INFO >>>>> " + response);
+    }
+
+    @Test
+    public void testAdminOK() {
+        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.ADMIN).basicAuth("admin", "123456")
                 .clazz(String.class).get().build();
         System.out.println("INFO >>>>> " + response);
     }
