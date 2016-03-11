@@ -19,13 +19,14 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 
 import config.MailConfig;
 import config.PackageNames;
+import config.SecurityConfig;
 import restApi.TimeBasedAccessInterceptor;
 import restApi.Uris;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {PackageNames.REST_API, PackageNames.WEB})
-@Import(value = {MailConfig.class})
+@Import(value = {MailConfig.class, SecurityConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     // Se configuran los interceptores
@@ -56,6 +57,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         templateResolver.setTemplateMode("HTML5");
         return templateResolver;
     }
+
     // <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
     // <property name="prefix" value="/WEB-INF/views/" />
     // <property name="suffix" value=".html" />

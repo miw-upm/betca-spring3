@@ -11,6 +11,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class WebInitializer implements WebApplicationInitializer {
 
     // Se configura el dispatcher
+    
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         // Se crea un contexto basado en anotaciones
