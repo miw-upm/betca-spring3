@@ -20,9 +20,12 @@
 
 	<h3>Acceso a un atributo del Model con opciones (else-if)</h3>
 	<c:choose>
-		<c:when test="${empty name}">
-			<p>No se encuentra el atributo</p>
-		</c:when>
+    <c:when test="${empty name}">
+      <p>No se encuentra el atributo</p>
+    </c:when>
+    <c:when test="${name=='jesus'}">
+      <p>El atributo es JESUS</p>
+    </c:when>
 		<c:otherwise>
 			<p>Atributo encontrado con el valor: ${name}</p>
 		</c:otherwise>

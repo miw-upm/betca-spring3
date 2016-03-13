@@ -71,7 +71,7 @@ public class Presenter {
     }
 
     @RequestMapping("/user-list")
-    public ModelAndView listUsers(Model model) {
+    public ModelAndView listUsers() {
         ModelAndView modelAndView = new ModelAndView(theme + "/userList");
         modelAndView.addObject("userList", userService.findAll());
         return modelAndView;
