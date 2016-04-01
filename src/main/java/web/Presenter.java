@@ -92,6 +92,7 @@ public class Presenter {
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.POST)
+    //
     public String createUserSubmit(@Valid User user, BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             if (userService.save(user)) {
