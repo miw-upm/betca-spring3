@@ -1,8 +1,5 @@
 package injection.e5;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +9,6 @@ public class ExtendedMessageManager {
     private ExtendedMessageService messageService1;
 
     private ExtendedMessageService messageService2;
-
-    @PostConstruct
-    public void postConstruct() {
-        messageService1.setPrefix("prefix");
-    }
 
     // Se inyecta un objeto de la clase indicada
     // @Autowired(required = true) por defecto
@@ -46,11 +38,6 @@ public class ExtendedMessageManager {
 
     public String findMessage2(String key) {
         return messageService2.message(key);
-    }
-
-    @PreDestroy
-    public void preDestroy() {
-        System.out.println("liberando...");
     }
 
 }

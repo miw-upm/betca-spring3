@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -62,5 +63,11 @@ public class ExtendedMessageService {
     public void setPrefix(String prefix) {
         this.prefix = prefix;
     }
+    
+    @PreDestroy
+    public void preDestroy() {
+        System.out.println("liberando...");
+    }
+
 
 }
