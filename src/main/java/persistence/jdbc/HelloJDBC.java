@@ -11,7 +11,7 @@ public class HelloJDBC {
         Connection conexion = null;
         Statement sentencia = null;
         ResultSet result = null;
-        String url = "jdbc:mysql://localhost:3306/jee";
+        String url = "jdbc:mysql://localhost:3306/spring";
         String user = "root";
         String pass = "";
 
