@@ -1,4 +1,4 @@
-package persistence.daos;
+package persistence.daos.library;
 
 import static org.junit.Assert.assertTrue;
 

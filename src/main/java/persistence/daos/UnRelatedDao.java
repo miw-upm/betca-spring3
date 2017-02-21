@@ -23,7 +23,7 @@ public interface UnRelatedDao extends JpaRepository<UnRelatedEntity, Integer>, U
 
     List<UnRelatedEntity> findByIdGreaterThan(int id, Pageable pageable);
     
-    List<UnRelatedEntity> findByIdIn(Collection<Integer> values);
+    List<UnRelatedEntity> findByNickIn(Collection<String> values);
     
     //Consulta: JPQL
     //?1 ?2 ?3...
