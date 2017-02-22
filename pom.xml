@@ -227,7 +227,7 @@
 			<artifactId>mail</artifactId>
 			<version>${javax.mail.version}</version>
 		</dependency>
-		<!-- Programacion Orientada Aspectos -->
+		<!-- AOP Programacion Orientada Aspectos -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
