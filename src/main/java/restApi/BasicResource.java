@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import restApi.Uris;
 
 @RestController
-@RequestMapping(Uris.SERVLET_MAP + Uris.BASICS)
+@RequestMapping(Uris.VERSION + Uris.BASICS)
 public class BasicResource {
 
-    @RequestMapping(value = Uris.STATE, method = RequestMethod.GET)
-    public String start() {
-        return "{\"response\":\"OK " + Uris.VERSION + "\"}";
+    @RequestMapping(value = Uris.VERSION, method = RequestMethod.GET)
+    public String state() {
+        return "{\"version\":\"" + Uris.VERSION + "\"}";
     }
 
 }

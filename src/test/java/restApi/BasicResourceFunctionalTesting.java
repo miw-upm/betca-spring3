@@ -21,18 +21,26 @@ import restApi.Uris;
 @ContextConfiguration(classes = {TestsApiConfig.class})
 public class BasicResourceFunctionalTesting {
 
-    private static final String URL_API = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT" + Uris.SERVLET_MAP;
+    private static final String URL_API = "http://localhost:8080/SPRING.2.0.0-SNAPSHOT" + Uris.SERVLET_MAP + Uris.VERSION;
 
     @Test
     public void testState() {
-        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API + Uris.BASICS + Uris.STATE).build().encode().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(URL_API + Uris.BASICS + Uris.VERSION).build().encode().toUri();
         RequestEntity<Object> requestEntity = new RequestEntity<>(HttpMethod.GET, uri);
 
         ResponseEntity<String> responseEntity = new RestTemplate().exchange(requestEntity, String.class);
         String response = responseEntity.getBody();
 
         System.out.println("Response: " + response);
-        assertEquals("{\"response\":\"OK " + Uris.VERSION + "\"}", response);
+        assertEquals("{\"version\":\"" + Uris.VERSION + "\"}", response);
+    }
+
+    @Test
+    public void testStateRestBuilder() {
+        String response = new RestBuilder<String>(URL_API).path(Uris.BASICS).path(Uris.VERSION).clazz(String.class).get().build();
+
+        System.out.println("Response: " + response);
+        assertEquals("{\"version\":\"" + Uris.VERSION + "\"}", response);
     }
 
 }

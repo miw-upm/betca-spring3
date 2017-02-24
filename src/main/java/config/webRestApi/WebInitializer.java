@@ -8,6 +8,9 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import restApi.Uris;
+
+
 public class WebInitializer implements WebApplicationInitializer {
 
     // Se configura el dispatcher
@@ -30,7 +33,7 @@ public class WebInitializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
 
         // Se configura la ruta relativa del servlet
-        servlet.addMapping("/");
+        servlet.addMapping(Uris.SERVLET_MAP + "/*");
     }
 
 }

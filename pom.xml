@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -85,7 +83,8 @@
 				<database.user>miw33</database.user>
 				<database.password>289345117</database.password>
 				<database.url>jdbc:mysql://localhost:3306/${database.user}</database.url>
-				<!-- validate, create sólo una vez, cada vez que cambie la estructura de las tablas -->
+				<!-- validate, create sólo una vez, cada vez que cambie la estructura 
+					de las tablas -->
 				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
 				<tomcat.url>http://art83.etsisi.upm.es:80/manager/text</tomcat.url>
 			</properties>
@@ -221,7 +220,7 @@
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${org.thymeleaf.version}</version>
 		</dependency>
-		<!-- EMail  -->
+		<!-- EMail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -261,6 +260,9 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
 			</resource>
 		</resources>
 		<plugins>
