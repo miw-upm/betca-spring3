@@ -18,16 +18,15 @@ import restApi.Uris;
 // @TestPropertySource(locations = "classpath:test.properties")
 public class SecurityResourceFunctionalTesting {
 
-    private static final String url = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
-
-    // private static final String url = "http://art83.etsisi.upm.es/JEE.Spring.0.0.1-SNAPSHOT/api/v0";
+    private static final String url = "http://localhost:8080/SPRING.2.0.0-SNAPSHOT" + Uris.SERVLET_MAP + Uris.VERSION;;
 
     @Test
     public void testUserOK() {
-        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).basicAuth("user", "123456")
-                .clazz(String.class).get().build();
+        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).basicAuth("user", "123456").clazz(String.class)
+                .get().build();
         System.out.println("INFO >>>>> " + response);
     }
+
     @Test
     public void testUserOtherUserOK() {
         String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.USER).basicAuth("manager", "123456")
@@ -44,8 +43,8 @@ public class SecurityResourceFunctionalTesting {
 
     @Test
     public void testAdminOK() {
-        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.ADMIN).basicAuth("admin", "123456")
-                .clazz(String.class).get().build();
+        String response = new RestBuilder<String>(url).path(Uris.SECURITY).path(Uris.ADMIN).basicAuth("admin", "123456").clazz(String.class)
+                .get().build();
         System.out.println("INFO >>>>> " + response);
     }
 

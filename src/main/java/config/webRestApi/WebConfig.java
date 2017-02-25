@@ -16,14 +16,14 @@ import restApi.Uris;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {PackageNames.REST_API, PackageNames.WEB})
+@ComponentScan(basePackages = {PackageNames.REST_API})
 @Import(value = {MailConfig.class, SecurityConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     // Se configuran los interceptores
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TimeBasedAccessInterceptor()).addPathPatterns(Uris.SERVLET_MAP + Uris.ADMINS + "/**")
+        registry.addInterceptor(new TimeBasedAccessInterceptor()).addPathPatterns(Uris.VERSION + Uris.ADMINS + "/**")
                 .excludePathPatterns("/foo/**");
     }
 

@@ -17,7 +17,7 @@ public class TimeBasedAccessInterceptor extends HandlerInterceptorAdapter {
         if (8 <= hour && hour < 21) {
             return true;
         }
-        response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+        response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
         return false;
     }
 }
