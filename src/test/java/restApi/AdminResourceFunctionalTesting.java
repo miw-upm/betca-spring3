@@ -32,8 +32,9 @@ import restApi.Wrapper;
 @ContextConfiguration(classes = {TestsApiConfig.class})
 public class AdminResourceFunctionalTesting {
 
-    private static final String URL_API = "http://localhost:8080/JEE.Spring.0.0.1-SNAPSHOT" + Uris.SERVLET_MAP;
+    private static final String URL_API = "http://localhost:8080/SPRING.2.0.0-SNAPSHOT" + Uris.SERVLET_MAP + Uris.VERSION;
 
+    //Test de recurso
     @Test
     public void testState() {
         URI uri = UriComponentsBuilder.fromHttpUrl(URL_API + Uris.ADMINS + Uris.STATE).build().encode().toUri();
@@ -43,9 +44,10 @@ public class AdminResourceFunctionalTesting {
         String response = responseEntity.getBody();
 
         System.out.println("Response: " + response);
-        assertEquals("{\"response\":\"OK " + Uris.VERSION + "\"}", response);
+        assertEquals("{\"state\":\"ok\"}", response);
     }
 
+    //Parametros y cuerpo
     @Test
     public void testEcho() {
         // Header
@@ -69,6 +71,14 @@ public class AdminResourceFunctionalTesting {
     }
 
     @Test
+    public void testEchoRestBuilder() {
+        String response = new RestBuilder<String>(URL_API).path(Uris.ADMINS).path(Uris.ECHO).path("/666").param("param", "paaaaram")
+                .param("other", "ooooother").header("token", "toooken").clazz(String.class).get().build();
+        System.out.println("Response: " + response);
+        assertEquals("{\"id\":666,\"token\":\"toooken\",\"param\":\"paaaaram\"}", response);
+    }
+
+    @Test
     public void testBodyWrapper() {
         URI uri = UriComponentsBuilder.fromHttpUrl(URL_API).path(Uris.ADMINS).path(Uris.BODY).build().encode().toUri();
         Wrapper wrapper = new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
@@ -79,6 +89,16 @@ public class AdminResourceFunctionalTesting {
         System.out.println(json);
         Wrapper response = new RestTemplate().exchange(requestEntity, Wrapper.class).getBody();
         System.out.println(response);
+        assertEquals(wrapper, response);
+    }
+
+    @Test
+    public void testBodyWrapperRestBuilder() {
+        Wrapper wrapper = new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
+        Wrapper response = new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.BODY).body(wrapper).clazz(Wrapper.class).post()
+                .build();
+        System.out.println(response);
+        assertEquals(wrapper, response);
     }
 
     @Test
@@ -87,8 +107,8 @@ public class AdminResourceFunctionalTesting {
                 .toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
-        List<String> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
-                String[].class).getBody());
+        List<String> response = Arrays.asList(
+                new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String[].class).getBody());
         System.out.println(response);
     }
 
@@ -98,11 +118,12 @@ public class AdminResourceFunctionalTesting {
                 .toUri();
         String json = new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), String.class).getBody();
         System.out.println(json);
-        List<Wrapper> response = Arrays.asList(new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()),
-                Wrapper[].class).getBody());
+        List<Wrapper> response = Arrays.asList(
+                new RestTemplate().exchange(uri, HttpMethod.GET, new HttpEntity<Object>(new HttpHeaders()), Wrapper[].class).getBody());
         System.out.println(response);
     }
-    
+
+    //Exceptions
     @Test
     public void testErrorNotToken() {
         try {
@@ -177,7 +198,7 @@ public class AdminResourceFunctionalTesting {
             System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
         }
     }
-    
+
     @Test
     public void testSecurityAnnotationUnauthorized() {
         try {

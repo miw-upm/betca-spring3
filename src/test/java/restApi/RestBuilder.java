@@ -105,14 +105,6 @@ public class RestBuilder<T> {
         }
     }
 
-    public T build() {
-        if (body != null && !method.equals(HttpMethod.GET)) {
-            return restTemplate.exchange(this.uri(), method, new HttpEntity<Object>(body, this.headers()), clazz).getBody();
-        } else {
-            return restTemplate.exchange(this.uri(), method, new HttpEntity<Object>(this.headers()), clazz).getBody();
-        }
-    }
-
     public RestBuilder<T> post() {
         this.method = HttpMethod.POST;
         return this;
@@ -137,4 +129,13 @@ public class RestBuilder<T> {
         this.method = HttpMethod.DELETE;
         return this;
     }
+    
+    public T build() {
+        if (body != null && !method.equals(HttpMethod.GET)) {
+            return restTemplate.exchange(this.uri(), method, new HttpEntity<Object>(body, this.headers()), clazz).getBody();
+        } else {
+            return restTemplate.exchange(this.uri(), method, new HttpEntity<Object>(this.headers()), clazz).getBody();
+        }
+    }
+
 }

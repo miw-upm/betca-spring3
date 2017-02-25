@@ -13,11 +13,12 @@ public final class AspectMain {
         ApplicationContext context = new AnnotationConfigApplicationContext(AspectConfig.class);
         ServiceOne serviceOne = context.getBean(ServiceOne.class);
         serviceOne.method();
-        serviceOne.argOneString("cadena");
+        serviceOne.argString("cadena");
         serviceOne.returnInt();
         try {
             serviceOne.exception();
         } catch (Exception e) {
+            System.out.println(">>>Se procesa la exception");
         }
         serviceOne.annotation();
         ((AbstractApplicationContext) context).close();

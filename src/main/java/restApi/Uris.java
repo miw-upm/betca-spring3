@@ -2,12 +2,12 @@ package restApi;
 
 public class Uris {
 
+    public static final String SERVLET_MAP = "/api";
+
     public static final String VERSION = "/v0";
 
-    public static final String SERVLET_MAP = "/api" + VERSION;
-
     public static final String BASICS = "/basics";
-    
+
     public static final String ADMINS = "/admins";
 
     public static final String STATE = "/state";

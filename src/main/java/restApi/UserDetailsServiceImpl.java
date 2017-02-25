@@ -20,13 +20,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        //Se accede a UserDao para buscar el usuario y obtener su clave
+        //Se accede a UserDao para buscar el usuario y obtener su clave y roles
         if ("user".equals(username)) {
-            return this.userBuilder(username, "123456", "USER");
+            return this.userBuilder(username, new BCryptPasswordEncoder().encode("123456"), "USER");
         } else if ("manager".equals(username)) {
-            return this.userBuilder(username, "123456", "MANAGER");
+            return this.userBuilder(username, new BCryptPasswordEncoder().encode("123456"), "MANAGER");
         } else if ("admin".equals(username)) {
-            return this.userBuilder(username, "123456", "USER", "MANAGER", "ADMIN");
+            return this.userBuilder(username, new BCryptPasswordEncoder().encode("123456"), "USER", "MANAGER", "ADMIN");
         } else {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
         }
-        return new User(username, new BCryptPasswordEncoder().encode(password), enabled, accountNonExpired, credentialsNonExpired,
+        return new User(username, password, enabled, accountNonExpired, credentialsNonExpired,
                 accountNonLocked, authorities);
     }
 }

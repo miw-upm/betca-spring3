@@ -3,8 +3,11 @@ package persistence.daos;
 import java.util.Collection;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import persistence.entities.UnRelatedEntity;
@@ -20,7 +23,7 @@ public interface UnRelatedDao extends JpaRepository<UnRelatedEntity, Integer>, U
 
     List<UnRelatedEntity> findByIdGreaterThan(int id, Pageable pageable);
     
-    List<UnRelatedEntity> findByIdIn(Collection<Integer> values);
+    List<UnRelatedEntity> findByNickIn(Collection<String> values);
     
     //Consulta: JPQL
     //?1 ?2 ?3...
@@ -34,5 +37,16 @@ public interface UnRelatedDao extends JpaRepository<UnRelatedEntity, Integer>, U
     //Consulta: SQL
     @Query(value = "SELECT * FROM other_name_for_unrelatedentity WHERE KCIN = ?1", nativeQuery = true)
     UnRelatedEntity findByNick(String nick);
-
+    
+    @Transactional
+    int deleteByNick(String nick);
+    
+    @Transactional
+    int deleteByIdGreaterThan(int value);
+    
+    @Modifying
+    @Transactional
+    @Query(value="delete from other_name_for_unrelatedentity u where u.nick = ?1")
+    void deleteByNickQuery(String nick);
+    
 }

@@ -13,7 +13,7 @@ public class ServiceOne {
         System.out.println("-----------------> ServiceOne:method");
     }
 
-    public void argOneString(String name) {
+    public void argString(String name) {
         System.out.println("-----------------> ServiceOne:argOneString(name=" + name + ")");
     }
 

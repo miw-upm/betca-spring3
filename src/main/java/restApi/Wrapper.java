@@ -1,5 +1,6 @@
 package restApi;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Wrapper {
@@ -55,8 +56,25 @@ public class Wrapper {
     }
 
     @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        return id == ((Wrapper) obj).id;
+    }
+
+    @Override
     public String toString() {
-        return "Wrapper [id=" + id + ", name=" + name + ", gender=" + gender + ", bornDate=" + bornDate.getTimeInMillis() + "]";
+        String dayString = new SimpleDateFormat("dd-MMM-yyyy").format(bornDate.getTime());
+        return "Wrapper [id=" + id + ", name=" + name + ", gender=" + gender + ", bornDate=" + dayString + "]";
     }
 
 }

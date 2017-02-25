@@ -18,14 +18,16 @@ import restApi.exceptions.UnauthorizedException;
 import restApi.exceptions.NotFoundUserIdException;
 
 @RestController
-@RequestMapping(Uris.SERVLET_MAP + Uris.ADMINS)
+@RequestMapping(Uris.VERSION + Uris.ADMINS)
 public class AdminResource {
 
+    //Se puede comprobar con un navegador
     @RequestMapping(value = Uris.STATE, method = RequestMethod.GET)
     public String start() {
-        return "{\"response\":\"OK " + Uris.VERSION + "\"}";
+        return "{\"state\":\"ok\"}";
     }
 
+    //Intercambio de datos
     @RequestMapping(value = Uris.ECHO + Uris.ID, method = RequestMethod.GET)
     public String echo(@RequestHeader(value = "token", required = false) String token, @PathVariable(value = "id") int id,
             @RequestParam(defaultValue = "Non") String param) {
@@ -51,6 +53,7 @@ public class AdminResource {
         return Arrays.asList(wrapper1, wrapper2, wrapper3);
     }
 
+    //Excepciones
     @RequestMapping(value = Uris.ERROR + Uris.ID, method = RequestMethod.GET)
     public Wrapper error(@RequestHeader(value = "token") String token, @PathVariable(value = "id") int id) throws NotFoundUserIdException,
             UnauthorizedException, MalformedHeaderException {
@@ -66,6 +69,7 @@ public class AdminResource {
         return new Wrapper(666, "daemon", Gender.FEMALE, new GregorianCalendar(1979, 07, 22));
     }
 
+    //Seguridad
     @RequestMapping(value = Uris.SECURITY, method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
     public String securityAnnotation() {
