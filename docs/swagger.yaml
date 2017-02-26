@@ -1,13 +1,13 @@
 swagger: '2.0'
 
 info:
-  title: JEE. Spring
+  title: SPRING
   description: API-REST
-  version: "0.0.1.SNAPSHOT"
-host: art83.etsisi.upm.es
+  version: "2.0.0.SNAPSHOT"
+host: calamar.etsisi.upm.es
 schemes:
   - http
-basePath: /JEE.Spring.0.0.1-SNAPSHOT/api/v0
+basePath: /SPRING.2.0.0-SNAPSHOT/api/v0
 
 paths:
           
@@ -18,7 +18,7 @@ paths:
       summary: Test API-REST
       description: Test API-REST. Prueba el api rest este funcionado
       produces:
-        - text/plain; charset=utf-8
+        - application/json
       responses:
         200:
           description: successful response
@@ -30,7 +30,7 @@ paths:
       summary: Realiza un eco.
       description: Realiza un eco. 
       produces:
-        - text/plain; charset=utf-8
+        - application/json
       parameters:
         - name: token
           description: token...
