@@ -3,13 +3,14 @@ package injection.e1e2e4;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 // @Service("messageService") o  @Service(value="messageService") por defecto
 // @Scope(org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_SINGLETON) por defecto
 // @Scope("singleton") por defecto
 // @Scope(org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-// @Scope("prototype")
+@Scope("prototype")
 @Service
 public class MessageService {
     private Map<String, String> messageMap;

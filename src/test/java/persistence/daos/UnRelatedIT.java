@@ -36,7 +36,8 @@ public class UnRelatedIT {
                     Arrays.asList(list), "no persistence"));
         }
     }
-
+    
+    //CRUD
     @Test
     public void testCount() {
         assertEquals(4, unRelatedDao.count());
@@ -79,6 +80,7 @@ public class UnRelatedIT {
         assertEquals(2, unRelatedDao.findByNickIn(Arrays.asList(new String[] {"nick1", "nick2"})).size());
     }
 
+    //JPQL
     @Test
     public void testFindNickByNickLike() {
         assertEquals(0, unRelatedDao.findNickByNickLike("i%").size());
@@ -91,11 +93,13 @@ public class UnRelatedIT {
         assertEquals(2, unRelatedDao.findIdByIdBetween(id - 1, id + 2).size());
     }
 
+    //SQL
     @Test
     public void testFindByNick() {
         assertEquals("nick1", unRelatedDao.findByNick("nick1").getNick());
     }
 
+    //BORRADO
     @Test
     public void testDeleteByNick() {
         assertNotNull(unRelatedDao.findByNick("nick0"));

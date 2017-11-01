@@ -159,6 +159,19 @@ public class AdminResourceFunctionalTesting {
             System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
         }
     }
+    
+    //TODO ???
+    @Test(expected=HttpClientErrorException.class)
+    public void testErrorNotExistTokenExpected() {
+            new RestBuilder<Wrapper>(URL_API).path(Uris.ADMINS).path(Uris.ERROR).path("/66").header("token", "Basic kk").get().build();
+        try {
+            fail();
+        } catch (HttpClientErrorException httpError) {
+            assertEquals(HttpStatus.UNAUTHORIZED, httpError.getStatusCode());
+            System.out.println("ERROR >>>>> " + httpError.getMessage());
+            System.out.println("ERROR >>>>> " + httpError.getResponseBodyAsString());
+        }
+    }
 
     @Test
     public void testErrorNotExistId() {
